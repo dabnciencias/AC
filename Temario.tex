@@ -1,0 +1,123 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{amsmath,amsthm,amssymb,tabu}
+\usepackage[spanish,es-tabla]{babel}
+\decimalpoint
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hyphens]{url}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\setcounter{section}{-1}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{braket}
+\usepackage{tikz}
+\usepackage{mathrsfs}
+\usetikzlibrary{cd}
+\usepackage{pgfplots}
+\usepackage{caption}
+\usepackage{subcaption}
+\usetikzlibrary{babel}
+
+\definecolor{NARANJA}{rgb}{1,0.467,0}
+\definecolor{VERDE}{rgb}{0.31,1,0}
+\definecolor{AZUL}{rgb}{0,0.53,1}
+\definecolor{ROJO}{rgb}{1,0,0}
+
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=ROJO,
+    filecolor=magenta,
+    urlcolor=AZUL,
+}
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{teorema}[2][Teorema]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lema}[2][Lema]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corolario}[2][Corolario]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+\pgfplotsset{compat=1.15}
+
+\begin{document}
+\title{Temario de Algoritmos Computacionales}
+\author{Diego Alberto Barceló Nieves \\ Facultad de Ciencias \\ Universidad Nacional Autónoma de México}
+\date{}
+\maketitle
+
+El siguiente temario está basado en el \href{https://www.fciencias.unam.mx/estudiar-en-ciencias/estudios/licenciaturas/asignaturas/2016/1430}{temario oficial del curso}. Al elaborarlo, asumimos que l@s estudiantes del curso no tienen experiencia previa con programación, pero sí tienen bases teóricas sólidas de álgebra lineal y cálculo diferencial e integral de una variable, así como nociones básicas de ecuaciones diferenciales ordinarias, pues esto último será necesario en el módulo 3. Para los módulos 1, 2 y 3 utilizaremos el lenguaje de programación Julia. La duración aproximada de cada módulo se indica en paréntesis.
+
+\setcounter{section}{-1}
+
+\section{Introducción a la programación (2 semanas)} \label{Sec: Introducción a la programación (2 semanas)} 
+
+\begin{enumerate}[label=\arabic*.]
+
+    \item ¿Qué es un programa? (Paradigma imperativo de la programación)
+
+    \item ¿Cómo se ejecuta un programa? (Lenguaje de programación, código fuente y sintáxis, comentarios y mensajes de error)
+    \item Licencias: legalidad y ética. (Software privativo, software de código abierto y software libre)
+    \item ¿Cómo creo un programa? (Editor de texto y terminal virtual, REPLs e IDEs)
+    \item ¿Cómo aprendo a programar? (Manuales, documentación y foros de preguntas)
+    \item Herramientas útiles para hacer programación. (Jupyter y Pluto, Git y GitHub/GitLab)
+\end{enumerate}
+
+\section{Estructura básica de la programación (3 semanas)} \label{Sec: Estructura básica de la programación (3 semanas)}
+
+\begin{enumerate}[label=\arabic*.]
+
+    \item Algoritmos y diagramas de flujo.
+    \item Conceptos fundamentales. (Operaciones aritméticas, asociatividad y precedencia, tipos de datos, arreglos, variables y constantes, funciones, manejo de memoria, recursividad)
+    \item Estructura lógica. (Operaciones lógicas, condicionales y ciclos)
+    \item Sistemas numéricos de punto flotante y error numérico. (Épsilon de máquina y propagación de errores)
+    \item Métodos numéricos. (Estabilidad y convergencia).
+    \item Estructura de la programación modular. (Bibliotecas)
+\end{enumerate}
+
+\section{Representaciones visuales (2 semanas)} \label{Sec: Representaciones visuales (2 semanas)}
+
+\begin{enumerate}[label=\arabic*.]
+
+    \item Gráficación de funciones, visualización de datos y animación con Plots.
+    \item Manipulación de imágenes digitales con JuliaImages.
+\end{enumerate}
+
+\section{Cómputo científico: construcción de pseudocódigo e implementación en código (8 semanas)} \label{Sec: Cómputo científico: construcción de pseudocódigo e implementación en código (8 semanas)}
+
+\begin{enumerate}[label=\arabic*.]
+
+    \item Solución de sistemas lineales de ecuaciones algebráicas. (Método de eliminación Gaussiana)
+    \item Aproximación de raíces. (Método de Newton)
+    \item Solución de ecuaciones diferenciales ordinarias. (Método de Euler)
+    \item Caminante aleatorio.
+\end{enumerate}
+
+\section{Introducción a otros lenguajes de programación (1 semana)} \label{Sec: Introducción a otros lenguajes de programación (1 semana)}
+
+\begin{enumerate}[label=\arabic*.]
+
+    \item GNU Octave.
+    \item R.
+\end{enumerate}
+
+\end{document}
