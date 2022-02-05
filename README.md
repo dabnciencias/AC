@@ -19,7 +19,7 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 1. Corre el comando `git clone https://aur.archlinux.org/yay.git` y, después de que haya terminado, corre el comando `cd yay`.
 1. Instala `yay` con el comando `makepkg -si` y, después de que haya terminado, corre el comando `cd ~`, y luego el comando `rm -rf yay`.
 1. Sincroniza las bases de datos de las paqueterías del [AUR](https://wiki.archlinux.org/title/Arch_User_Repository_(Español)) con el comando `yay -Syyu` **antes de instalar cualquiera de los programas siguientes**.
-1. Instala [Julia](https://julialang.org/) y [Jupyter](https://jupyter.org/) con el comando `yay -S julia-bin jupyter` y, después de que haya terminado, corre el comando `julia` y teclea `]`; el texto en verde `julia>` debería cambiar algo como `(@v1.7) pkg>` en azul.
+1. Instala [Julia](https://julialang.org/) y [Jupyter](https://jupyter.org/) con el comando `yay -S julia-bin jupyter` y, después de que haya terminado, corre el comando `julia` y teclea `]`; al presionar esta tecla, el texto en verde `julia>` debería cambiar a algo como `(@v1.7) pkg>` en azul.
 1. Corre el comando `add IJulia` y, después de que haya terminado, presiona la tecla `BACKSPACE` para volver al texto verde `julia>` y  corre el comando `exit()` para volver a la terminal virtual.
 1. Corre el comando `git clone https://github.com/dabnciencias/AC` para clonar este repositorio localmente a tu computadora.
 1. Corre el comando `jupyter-notebook`.
