@@ -1,7 +1,7 @@
 # AC
   Repositorio de [mi curso de Algoritmos Computacionales en la Facultad de Ciencias (UNAM)](https://www.fciencias.unam.mx/docencia/horarios/presentacion/333034).
 
-## ¿Cómo puedo correr los _notebooks_ desde mi computadora?
+## ¿Cómo puedo correr los _notebooks_ del curso desde mi computadora?
 
 Para poder correr los _notebooks_ localmente en tu computadora es necesario instalar [Julia](https://julialang.org/), [Jupyter](https://jupyter.org/), [Git](https://git-scm.com/doc), [IJulia](https://julialang.github.io/IJulia.jl/stable/) y [Pluto](https://github.com/fonsp/Pluto.jl):
 * **Julia** es el lenguaje en el cual están escritos los programas del repositorio,
@@ -21,7 +21,7 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 1. Espéralo...
 
 * **...en distribuciones basadas en Arch** ([Manjaro](https://manjaro.org/)/[Endeavour](https://endeavouros.com/)/[Arch](https://archlinux.org/))
-1. Abre una terminal virtual y sincroniza las bases de datos de las paqueterías de Arch con el comando `sudo pacman -Syyu` **antes de instalar cualquier cosa**.
+1. Abre una terminal virtual y sincroniza las bases de datos de paqueterías de Arch con el comando `sudo pacman -Syyu` **antes de instalar cualquier cosa**.
 1. Instala `git` con el comando `sudo pacman -S git`.
 1. Corre los comandos `cd ~` y `git clone https://aur.archlinux.org/yay.git`; después de que el segundo comando haya terminado, corre el comando `cd yay`.
 1. Instala `yay` con el comando `makepkg -si`; después de que haya terminado, corre el comando `cd ~`, y luego el comando `rm -rf yay/`.
@@ -35,7 +35,7 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 
 #### Instalar IJulia y Pluto (para cualquier distribución GNU/Linux)
 1. Abre una terminal virtual y corre el comando `julia` -el _prompt_ de la terminal virtual debería cambiar al texto `julia>` en verde.
-1. Teclea `]` -el _prompt_ ahora debería cambiar a algo en azul que diga `pkg>`- y, después, corre el comando `add IJulia Pluto`.
+1. Teclea `]` -el _prompt_ ahora debería cambiar a algo en azul que diga `pkg>`; después, escribe `add IJulia Pluto` y teclea `ENTER`.
 
 #### Decargar y actualizar repositorio (para cualquier distribución GNU/Linux)
 1. Para descargar todo el repositorio (en su forma actual) a la carpeta "home" de tu computadora, abre una terminal virtual y corre los comandos `cd ~` y después `git clone https://github.com/dabnciencias/AC`. Esto creará una carpeta `AC` con todos los contenidos del repositorio.
