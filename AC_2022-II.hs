@@ -10,11 +10,13 @@ import Reanimate                          -- API declarativo de Reanimate.
 import Reanimate.Scene                    -- API imperativo de Reanimate; permite manipular objetos en la animación.
 
 ----------------------------------------------------------------------------------
--- Código principal de la animación, que fue generada usando reanimate-1.1.4.0. --
+-- Código principal de la animación, que fue generada usando reanimate-1.1.5.0. --
 ----------------------------------------------------------------------------------
 
 main :: IO ()
 main = reanimate $ addStatic (mkBackground "black") $ scene $ do
+
+  cam <- newObject Camera -- Creamos una cámara
 
   -- Este bloque genera una lista con los objetos de texto (SVGs) que serán utilizados en la escena.
   
@@ -22,9 +24,11 @@ main = reanimate $ addStatic (mkBackground "black") $ scene $ do
 
   -- Este bloque describe lo que sucederá en la escena con los objetos de texto.
 
-  forM_ (zip palabras posicionesY) $    -- Creamos un producto de las listas palabras y posicionesY (zip) e iteramos (forM_)
+  forM_ (zip texto posicionesY) $    -- Creamos un producto de las listas palabras y posicionesY (zip) e iteramos (forM_)
     \(obj, yPos) -> do                  -- sobre cada par ordenado del producto de las listas:
-    oModify obj $ oCenterY .~ yPos      -- modificamos la posición vertical del objeto y
+    oModify obj $ oCenterY .~ yPos      -- modificamos la posición vertical del objeto, 
+    cameraAttach cam obj                -- usamos al objeto como referencia para la cámara, 
+    cameraSetZoom cam 2.5                 -- fijamos la cámara tal que duplique el tamaño del objeto dee referencia
     oShowWith obj oDraw                 -- mostramos el objeto dibujándolo.
 
   forM_ texto $                         -- Iteramos sobre la lista de texto (forM_),
@@ -43,11 +47,12 @@ posicionesY = [ 0.5, -0.5 ]
 ----------------------------------------------------------------------------------
 
 curso :: SVG      
-curso = withSubgluphs [0] (withStrokeColorPixel miNaranja) $ withSubglyphs [0] (withFillColorPixel miNaranja) $ withSubgluphs [1] (withStrokeColorPixel miVerde) $ withSubglyphs [0] (withFillColorPixel miVerde) $ withStrokeWidth 0 $ withFillOpacity 1 $
+curso = withSubglyphs [0] (withStrokeColorPixel miNaranja) $ withSubglyphs [0] (withFillColorPixel miNaranja) $  withSubglyphs [1] (withStrokeColorPixel miVerde) $ withSubglyphs [1] (withFillColorPixel miVerde) $ withStrokeWidth 0 $ withFillOpacity 1 $ center $ scale 1.5 $
          latex "AC"
 
+
 semestre :: SVG      
-semestre = withSubgluphs [0..3] (withStrokeColorPixel miAzul) $ withSubglyphs [0..3] (withFillColorPixel miAzul) $  withSubgluphs [5,6] (withStrokeColorPixel miRojo) $ withSubglyphs [5,6] (withFillColorPixel miRojo) $ withStrokeWidth 0 $ withFillOpacity 1 $ withStrokeColor "white" $ withFillColor "white" $ center $
+semestre = withSubglyphs [0..3] (withStrokeColorPixel miAzul) $ withSubglyphs [0..3] (withFillColorPixel miAzul) $  withSubglyphs [5,6] (withStrokeColorPixel miRojo) $ withSubglyphs [5,6] (withFillColorPixel miRojo) $ withStrokeWidth 0 $ withFillOpacity 1 $ withStrokeColor "white" $ withFillColor "white" $ center $
          latex "2022-II"
 
 ---------------------------------------------------------------------------------
