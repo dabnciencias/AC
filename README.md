@@ -26,7 +26,7 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 **Nota** Si tu computadora tiene [ChromeOS](https://www.google.com/chromebook/chrome-os/), puedes [activar las opciones de desarrollador](https://www.androidauthority.com/how-to-enable-developer-mode-on-a-chromebook-906688/) y luego [activar Linux](https://support.google.com/chromebook/answer/9145439?hl=en). De esta manera, una vez que tengas acceso a una terminal virtual de Linux, podrás seguir las instrucciones para distribuciones basadas en Debian para instalar Julia, Jupyter y Git.
 
 * **...en distribuciones basadas en Arch** ([Manjaro](https://manjaro.org/)/[Endeavour](https://endeavouros.com/)/[Arch](https://archlinux.org/))
-1. Abre una terminal virtual y actualiza las bases de datos de paquetes de Arch con el administrador de paquetes [`pacman`](https://wiki.archlinux.org/title/Pacman) corriendo comando `sudo pacman -Syyu` **antes de instalar cualquier cosa**.
+1. Abre una terminal virtual y actualiza las bases de datos de paquetes de Arch con el administrador de paquetes [`pacman`](https://wiki.archlinux.org/title/Pacman) corriendo el comando `sudo pacman -Syyu` **antes de instalar cualquier cosa**.
 1. Instala `git` con el comando `sudo pacman -S git`.
 1. Corre los comandos `cd ~` y `git clone https://aur.archlinux.org/yay.git`; después de que el segundo comando haya terminado, corre el comando `cd yay`.
 1. Instala el programa auxiliar`yay` con el comando `makepkg -si`; después de que haya terminado, corre el comando `cd ~`, y luego el comando `rm -rf yay/`.
