@@ -55,28 +55,38 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 
 Julia
 1. Descarga julia utilizando el instalador desde su [página oficial](https://julialang.org/downloads/). Selecciona `64-bit (installer)` en la sección de Windows.
-1. Da click en el icono de la applicación de julia para abrir una terminal, deberás ver que el _prompt_ de la terminal virtual tiene el texto `julia>` en color verde.
-1. Teclea `]`, el _prompt_ ahora debería cambiar a algo en azul que diga `pkg>`; después, escribe `add IJulia Pluto` y teclea `ENTER`.
+1. Da click en el icono de la applicación de julia que se creó en tu escritorio para abrir una terminal, deberás ver que el _prompt_ de la terminal virtual tiene el texto `julia>` en color verde.
+1. Teclea `]` para ingresar al modo Pkg (Package), el _prompt_ ahora debería cambiar a algo en azul que diga `pkg>`; después, escribe `add IJulia Pluto` y teclea `ENTER` para instalar las paqueterías correspondientes. Para salir del modo Pkg, usa la tecla `DEL`.
+1. Para correr _notebooks_ de Pluto usa la terminal de julia (asegurate que el _prompt_ sea `julia>` en color verde) y corre el comando `using Pluto & Pluto.run()`, esto deberá crear una ventana emergente en tu navegador con la interfaz de Pluto.
 
 Jupyter
-1. Instala python utilizando el instalador desde su página oficial, accediendo a la siguiente [liga](https://www.python.org/ftp/python/3.10.2/python-3.10.2-amd64.exe).
+1. Instala python utilizando el instalador desde su página oficial descargando el [siguiente archivo](https://www.python.org/ftp/python/3.10.2/python-3.10.2-amd64.exe).
+1. **Al instalar asegurate de marcar la casilla 'Add Python 3 to PATH'.**
 1. Da click en la applicación de Power Shell para abrir una terminal virtual en Windows.
-1. Utiliza pip para instalar jupyter corriendo el siguiente comando: `python -m pip install jupyter`
-1. Para abrir un notebook de jupyter utiliza el siguiente comando en la terminal: `jupyter notebook` y espera a que se abra una ventana en tu navegador
+1. Utiliza pip para instalar jupyter copiando y pegando el siguiente comando en tu terminal de PowerShell: `python -m pip install jupyter`.
+1. Para abrir un notebook de jupyter utiliza el siguiente comando en la terminal de PowerShell: `jupyter notebook` y espera a que se abra una ventana emergente en tu navegador.
+1. Para terminar la sesión de Jupyter, cierra la ventana correspondiente de tu navegador y usa `Ctrl-C` dos veces en la terminal de PowerShell para terminar el proceso.
 
 Git/GitHub
-1. Descarga [GitHub Desktop](https://desktop.github.com/) desde la página oficial.
-1. Para clonar el repositorio del curso en tu computadora sigue los pasos descritos en la [siguiente página](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop).
+1. Crea una cuenta en la [página oficial de GitHub](https://github.com) usando tu correo @ciencias.
+1. Descarga GitHub Desktop desde la [página oficial](https://desktop.github.com/).
+1. Inicia GitHub Desktop dando click en el icono que se haya creado en tu escritorio y vincula tu sesión con la cuenta que acabas de crear.
+1. Para clonar el repositorio del curso en tu computadora da click en el botón 'Clonar un repositorio de internet', selecciona la pestaña correspondiente a 'URL', copia y pega la siguiente liga: `https://github.com/dabnciencias/AC` y determina la ubicación en la que quieres que se guarde el repositorio en el campo 'Local path' (puedes dejar ese campo con el valor predeterminado). Da click en el botón 'Clone' y espera a que se complete la carga, una vez que haya terminado podrás encontrar los archivos del repositorio en la ubicación que hayas determinado en el 'Local path'. Para una explicación más detallada visita la [siguiente página](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop).
 
 
 ### Alternativas para cualquier sistema operativo
-1. Anaconda  
-Una forma más sencilla (pero menos recomendada por el peso de descarga) para hacer la instalación es utilizando Anaconda Navigator.
-Puedes descargar anaconda directamente desde [su página web](https://www.anaconda.com/products/individual).
-
-
 1. Google Colab  
 Si no cuentas con una computadora personal o tu computadora no tiene los suficientes recursos suficientes para soportar la instalación, puedes usar google colab como alternativa.  
-Google Colab es un servicio que ofrece notebooks de Jupyter de manera gratuita con recursos de cómputo totalmente gestionados en la web sin necesidad de instalar nada en tu computadora local.  
-Los notebooks están desarrollados para correr en Python por default, sin embargo se pueden hacer manipulaciones para utilizar otros programas, en la [siguiente liga](https://colab.research.google.com/github/ageron/julia_notebooks/blob/master/Julia_for_Pythonistas.ipynb#scrollTo=f_1dr-2W5iSU) puedes encontrar un ejemplo de como hacer esta configuración y usar julia desde google colab.
+Google Colab es un servicio que ofrece notebooks de Jupyter de manera gratuita con recursos de cómputo totalmente gestionados en la nube sin necesidad de instalar nada en tu computadora local.  
+Los notebooks están desarrollados para correr en Python por default, sin embargo se pueden hacer manipulaciones para utilizar otros programas como julia.  
+Para utilizarlo, ve directamente a la [página oficial de Google Colab](https://colab.research.google.com/), una vez allí verás un recuadro que te pedirá seleccionar un archivo para abrir, selecciona la ventana Google Drive y da click en 'New notebook' para crear un notebook en blanco. Nota: Los archivos que crees de esta manera se almacenarán en una carpeta llamada 'Colab Notebooks' en la página principal de tu carpeta de Google Drive.
+
+También puedes abrir los notebooks del repositorio del curso yendo a la pestaña de 'GitHub', copiando y pegando la siguiente liga `https://github.com/dabnciencias/AC.git` y seleccionando el archivo que quieras abrir.  
+
+En la [siguiente liga](https://colab.research.google.com/github/ageron/julia_notebooks/blob/master/Julia_for_Pythonistas.ipynb#scrollTo=f_1dr-2W5iSU) puedes encontrar un ejemplo de como usar julia desde google colab.
+
+1. Anaconda  
+Una forma más sencilla (pero menos recomendada por el peso de descarga) para hacer la instalación es utilizando Anaconda Navigator.
+Puedes descargar anaconda directamente desde [su página web](https://www.anaconda.com/products/individual). Si decides utilizar esta opción de descarga y necesitas soporte, contacta directamente al ayudante del curso.
+
 
