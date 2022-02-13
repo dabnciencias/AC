@@ -54,17 +54,17 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 ### Windows
 
 Julia
-1. Descarga julia utilizando el instalador desde su [página oficial](https://julialang.org/downloads/). Selecciona `64-bit (installer)` en la sección de Windows.
-1. Da click en el icono de la applicación de julia que se creó en tu escritorio para abrir una terminal, deberás ver que el _prompt_ de la terminal virtual tiene el texto `julia>` en color verde.
+1. Descarga Julia utilizando el instalador desde su [página oficial](https://julialang.org/downloads/). Selecciona `64-bit (installer)` en la sección de Windows.
+1. Da click en el icono de la aplicación de Julia que se creó en tu escritorio para abrir una terminal, deberás ver que el _prompt_ de la terminal virtual tiene el texto `julia>` en color verde.
 1. Teclea `]` para ingresar al modo Pkg (Package), el _prompt_ ahora debería cambiar a algo en azul que diga `pkg>`; después, escribe `add IJulia Pluto` y teclea `ENTER` para instalar las paqueterías correspondientes. Para salir del modo Pkg, usa la tecla `DEL`.
 1. Para correr _notebooks_ de Pluto usa la terminal de julia (asegurate que el _prompt_ sea `julia>` en color verde) y corre el comando `using Pluto & Pluto.run()`, esto deberá crear una ventana emergente en tu navegador con la interfaz de Pluto.
 
 Jupyter
-1. Instala python utilizando el instalador desde su página oficial descargando el [siguiente archivo](https://www.python.org/ftp/python/3.10.2/python-3.10.2-amd64.exe).
+1. Instala Python utilizando el instalador desde su página oficial descargando el [siguiente archivo](https://www.python.org/ftp/python/3.10.2/python-3.10.2-amd64.exe).
 1. **Al instalar asegurate de marcar la casilla 'Add Python 3 to PATH'.**
-1. Da click en la applicación de Power Shell para abrir una terminal virtual en Windows.
-1. Utiliza pip para instalar jupyter copiando y pegando el siguiente comando en tu terminal de PowerShell: `python -m pip install jupyter`.
-1. Para abrir un notebook de jupyter utiliza el siguiente comando en la terminal de PowerShell: `jupyter notebook` y espera a que se abra una ventana emergente en tu navegador.
+1. Da click en la aplicación de Power Shell para abrir una terminal virtual en Windows.
+1. Utiliza pip para instalar `jupyter` copiando y pegando el siguiente comando en tu terminal de PowerShell: `python -m pip install jupyter`.
+1. Para abrir un notebook de Jupyter utiliza el siguiente comando en la terminal de PowerShell: `jupyter notebook` y espera a que se abra una ventana emergente en tu navegador.
 1. Para terminar la sesión de Jupyter, cierra la ventana correspondiente de tu navegador y usa `Ctrl-C` dos veces en la terminal de PowerShell para terminar el proceso.
 
 Git/GitHub
