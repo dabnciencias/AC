@@ -54,6 +54,7 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 
 #### Julia
 1. Descarga Julia utilizando el instalador desde su [página oficial](https://julialang.org/downloads/). Selecciona `64-bit (installer)` en la sección de Windows.
+1. Al instalar asegurate de marcar la casilla 'Add Julia to PATH'.
 1. Da click en el icono de la aplicación de Julia que se creó en tu escritorio para abrir una terminal, deberás ver que el _prompt_ de la terminal virtual tiene el texto `julia>` en color verde.
 1. Teclea `]` para ingresar al modo Pkg (Package), el _prompt_ ahora debería cambiar a algo en azul que diga `pkg>`; después, escribe `add IJulia Pluto` y teclea `ENTER` para instalar las paqueterías correspondientes. Para salir del modo Pkg, usa la tecla `DEL`.
 1. Para ejecutar _notebooks_ de Pluto usa la terminal de julia (asegurate que el _prompt_ sea `julia>` en color verde) y ejecuta el comando `using Pluto & Pluto.run()`, esto deberá crear una ventana emergente en tu navegador con la interfaz de Pluto.
