@@ -21,9 +21,11 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 * **...en distribuciones basadas en Debian** ([Mint](https://linuxmint.com/)/[Ubuntu](https://ubuntu.com/)/[Debian](https://www.debian.org/))
 1. Abre una terminal virtual y actualiza las bases de datos de paquetes de Debian con el administrador de paquetes [Aptitude](https://wiki.debian.org/Aptitude) corriendo el comando `sudo apt update && sudo apt -y upgrade`.
 1. Instala `julia` y `git` con el comando `sudo apt-get install julia git`.
-1. Para instalar `jupyter`, instala primero `python` y `pip` con el comando `apt-get install python3 python3-pip python3-dev -y`; después de que haya terminado, ejecuta el comando `pip install jupyter`.
+1. Para instalar `jupyter`, instala primero Python3 y `pip` con el comando `apt-get install python3 python3-pip python3-dev -y`; después de que haya terminado, ejecuta el comando `pip install jupyter`.
 
-**Nota** Si tu computadora tiene [ChromeOS](https://www.google.com/chromebook/chrome-os/), puedes [activar las opciones de desarrollador](https://www.androidauthority.com/how-to-enable-developer-mode-on-a-chromebook-906688/) y luego [activar Linux](https://support.google.com/chromebook/answer/9145439?hl=en). De esta manera, una vez que tengas acceso a una terminal virtual de Linux, podrás seguir las instrucciones para distribuciones basadas en Debian para instalar Julia, Jupyter y Git.
+**Nota**
+* No es posible actualizar versiones de Python2 a Python3; por ende, aunque ya tengas instalado Python2, tendrás que instalar Python3 para poder instalar Jupyter.
+* Si tu computadora tiene [ChromeOS](https://www.google.com/chromebook/chrome-os/), puedes [activar las opciones de desarrollador](https://www.androidauthority.com/how-to-enable-developer-mode-on-a-chromebook-906688/) y luego [activar Linux](https://support.google.com/chromebook/answer/9145439?hl=en). De esta manera, una vez que tengas acceso a una terminal virtual de Linux, podrás seguir las instrucciones para distribuciones basadas en Debian para instalar Julia, Jupyter y Git.
 
 * **...en distribuciones basadas en Arch** ([Manjaro](https://manjaro.org/)/[Endeavour](https://endeavouros.com/)/[Arch](https://archlinux.org/))
 1. Abre una terminal virtual y actualiza las bases de datos de paquetes de Arch con el administrador de paquetes [`pacman`](https://wiki.archlinux.org/title/Pacman) corriendo el comando `sudo pacman -Syyu` **antes de instalar cualquier cosa**.
@@ -54,13 +56,13 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 
 #### Julia
 1. Descarga Julia utilizando el instalador desde su [página oficial](https://julialang.org/downloads/). Selecciona `64-bit (installer)` en la sección de Windows.
-1. Al instalar asegurate de marcar la casilla 'Add Julia to PATH'.
-1. Da click en el icono de la aplicación de Julia que se creó en tu escritorio para abrir una terminal, deberás ver que el _prompt_ de la terminal virtual tiene el texto `julia>` en color verde.
+1. Al instalar, asegúrate de marcar la casilla 'Add Julia to PATH'.
+1. Da click en el ícono de la aplicación de Julia que se creó en tu escritorio para abrir una terminal, deberás ver que el _prompt_ de la terminal virtual tiene el texto `julia>` en color verde.
 1. Teclea `]` para ingresar al modo Pkg (Package), el _prompt_ ahora debería cambiar a algo en azul que diga `pkg>`; después, escribe `add IJulia Pluto` y teclea `ENTER` para instalar las paqueterías correspondientes. Para salir del modo Pkg, usa la tecla `DEL`.
 1. Para ejecutar _notebooks_ de Pluto usa la terminal de julia (asegurate que el _prompt_ sea `julia>` en color verde) y ejecuta el comando `using Pluto & Pluto.run()`, esto deberá crear una ventana emergente en tu navegador con la interfaz de Pluto.
 
 #### Jupyter
-1. Instala Python utilizando el instalador desde su página oficial descargando el [siguiente archivo](https://www.python.org/ftp/python/3.10.2/python-3.10.2-amd64.exe).
+1. Instala Python3 utilizando el instalador desde su página oficial descargando el [siguiente archivo](https://www.python.org/ftp/python/3.10.2/python-3.10.2-amd64.exe).
 1. **Al instalar asegurate de marcar la casilla 'Add Python 3 to PATH'.**
 1. Da click en la aplicación de Power Shell para abrir una terminal virtual en Windows.
 1. Utiliza pip para instalar `jupyter` copiando y pegando el siguiente comando en tu terminal de PowerShell: `python -m pip install jupyter`.
