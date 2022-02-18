@@ -88,4 +88,4 @@ En la [siguiente liga](https://colab.research.google.com/github/ageron/julia_not
 
 1. Anaconda  
 Una forma más sencilla (pero menos recomendada por el peso de descarga) para hacer la instalación es utilizando Anaconda Navigator.
-Puedes descargar anaconda directamente desde [su página web](https://www.anaconda.com/products/individual). Si decides utilizar esta opción de descarga y necesitas soporte, contacta directamente al ayudante del curso.
+Puedes descargar Anaconda directamente desde [su página web](https://www.anaconda.com/products/individual). Si decides utilizar esta opción de descarga y necesitas soporte, contacta directamente al ayudante del curso.
