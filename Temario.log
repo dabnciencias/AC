@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.3.22)  23 MAR 2022 13:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.3.22)  31 MAR 2022 09:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -819,7 +819,7 @@ Here is how much of TeX's memory you used:
 pdfTeX warning (dest): name{https://github.com/ManimCommunity/manim} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb>
-Output written on Temario.pdf (2 pages, 143094 bytes).
+Output written on Temario.pdf (2 pages, 143093 bytes).
 PDF statistics:
  128 PDF objects out of 1000 (max. 8388607)
  112 compressed objects within 2 object streams
