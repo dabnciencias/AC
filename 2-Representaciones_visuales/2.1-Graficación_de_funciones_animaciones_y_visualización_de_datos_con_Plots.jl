@@ -17,6 +17,9 @@ end
 # ╔═╡ 33f8289b-3e80-48a1-8a2c-ef6d2d2f107e
 using Plots, PlutoUI
 
+# ╔═╡ 8302701b-02ac-4d35-b7de-5dec8fe701fb
+using LaTeXStrings
+
 # ╔═╡ c3db98d4-84a3-11ec-17c2-7510b678ee8a
 md"# Graficación de funciones, animación y visualización de datos con _Plots_"
 
@@ -158,9 +161,6 @@ begin
 	plot(sin,0:0.25:2π, title = "plot y scatter", xlabel = "x", ylabel = "sin(x)", color = "darkorange", label = "plot", marker = true)
 end
 
-# ╔═╡ abb4b6a5-3248-4725-9064-1e94d34f2382
-
-
 # ╔═╡ 77a60b5d-ad7f-4c44-a68d-694417619668
 md"por lo que no es necesario llamar dos funciones cuando querramos hacer esto. Para quitar la legenda, podemos agregar el atributo `legend = false` (_¡Inténtalo!_)."
 
@@ -169,11 +169,106 @@ md""" **Ejercicio** Define un parámetro interactivo `d` que controle el nivel d
 
 """
 
+# ╔═╡ acfe0334-c7aa-471f-b39e-8276e2e3dd42
+md"""### LaTeXStrings
+
+Podemos usar LaTeX para escribir texto dentro de una gráfica creada con Plots, pero tiene una sintáxis complicada. Por ejemplo, si quisiéramos que la etiqueta del eje vertical de la gráfica anterior estuviera escrita como $\sin(x)$, tendríamos que reemplazar el String `"sin(x)"` por (¡inténtalo!)
+
+`"\$\\sin(x)\$"`.
+
+Afortunadamente, el paquete [LaTeXStrings](https://github.com/stevengj/LaTeXStrings.jl) facilita este proceso. Primero debemos instalarlo y cargarlo, lo cual, en Pluto, se hace automáticamente sólo con la siguiente línea:
+
+"""
+
+# ╔═╡ 02f9778e-21c8-42db-bed6-95a20d592f22
+md"""podemos escribir el String anterior simplemente como (¡inténtalo!)
+
+`L"\sin(x)"` 
+
+Es decir, si escribimos la letra `L` antes del inicio del String y el paquete LaTeXStrings está cargado, Julia interpretará el contenido del String utilizando LaTeX."""
+
 # ╔═╡ 754d5a6b-845b-4074-8686-96e1b57e088d
-md"## Animación"
+md"""## Animación
+
+### `@gif`
+
+La forma más fácil de animar un conjunto de gráficas es escribiendo la palabra `@gif` al inicio de un ciclo _for_ que genere las gráficas.
+
+Por ejemplo, sabemos que la función de dos variables
+
+$$A\sin(Bx - t) + C$$
+
+describe una onda sinodal que se mueve hacia la derecha, donde $A$ es la amplitud de la onda, $B$ es la frecuencia, y $C$ es la distancia del origen de la onda al eje horizontal.
+
+Podemos animar esto como sigue:
+
+"""
+
+# ╔═╡ 0b199197-6d85-4530-b70f-b82e16d183d6
+begin
+	A = 0.5    # Definimos los valores de los parámetros.
+	B = 2
+	C = 0.25
+	f(x) = A*sin(B*x)+C # Definimos la función f.
+	
+	@gif for t in 0:0.1:2π # para t en 0:0.1:2π
+	plot(f.( range(0,2π, step = 0.1) .- t/B),
+		 legend = false, title = L"A\sin(Bx-t)+C")
+    #= grafica Asin(B(x-t/B))+C = Asin(Bx-t)+C para todas
+	las x en el rango de 0 a 2π con tamaño de paso 0.1 =#
+		
+	end
+end
+
+# ╔═╡ 09c41f2a-2be2-48e5-9b83-6e066c7e03bf
+md""" ### `@animate` y la función `gif`
+
+Otra forma de animar un conjunto de gráficas es utilizando `@animate` y la **función** `gif`. Este método permite especificar el nombre del archivo que se generará al hacer la animación, así como la cantidad de cuadros por segundo, como se muestra en el siguiente ejemplo:
+"""
+
+# ╔═╡ 46154837-a68e-4bf0-b39f-2b8670d9370c
+begin
+
+	#= No hace falta definir los valores de los 
+	   parámetros ni la función f, pues ya fueron 
+	   definidos en otra celda y Pluto ejecuta todas
+	   las celdas al mismo tiempo. =#
+	
+	anim = @animate for t in 0:0.1:2π # para t ∈ 0:0.1:2π
+	plot(f.( range(0,2π, step = 0.1) .- t/B),
+		 legend = false, title = L"A\sin(Bx-t)+C")
+    #= grafica Asin(B(x-t/B))+C = Asin(Bx-t)+C para todas
+	las x en el rango de 0 a 2π con tamaño de paso 0.1 =#
+		
+	end
+
+	gif(anim, "onda_en_movimiento.gif", fps = 30)
+    #= Convertimos a la variable 'anim' en un gif de 
+	nombre "onda_en_movimiento.gif" con 30 cuadros por
+	segundo. =#
+	
+end
+
+# ╔═╡ 167dcedf-786f-471c-83ae-d8a09885005d
+md""" #### ¿Pero qué son `@animate` y `@gif`?
+
+`@animate` y `@gif` son ejemplos de _macros_, que tienen que ver con _metaprogramación_ (lo cual no veremos en este curso). Básicamente, un _macro_ es una función cuyo trabajo es _modificar código_. En Julia, los nombres de los _macros_ inician con el símbolo `@`. 
+
+La forma de generar la misma animación anterior _sin utilizar macros_ sería como sigue:
+
+"""
+
+# ╔═╡ 765a0e10-4217-4a50-8fb1-e46bee83aaa6
+
+
+# ╔═╡ abbce622-7912-40ee-8632-261b5129dcb4
+md"Los _macros_ simplemente nos ahorran el tener que escribir secciones de códigos recurrentes."
 
 # ╔═╡ 1fa662db-229d-4ccc-93ed-f70bb34dc02e
-md"## Visualización de datos"
+md"## Visualización de datos
+
+
+_Proximamente..._"
 
 # ╔═╡ 7bb4718f-5d5a-49f1-ba62-ecefcbfcc49c
 md" ### Subfiguras con `layouts`"
@@ -181,16 +276,22 @@ md" ### Subfiguras con `layouts`"
 # ╔═╡ 88299b4d-2a7d-4c18-956e-c6e75473c658
 md" ## Recursos complementarios
 
+* Repositorio de GitHub del paquete [Pluto](https://github.com/fonsp/Pluto.jl).
 * Documentación de [`Plots`](https://docs.juliaplots.org/latest/generated/gr/).
+* Repositorio de GitHub del paquete [LaTeXStrings](https://github.com/stevengj/LaTeXStrings.jl).
+* Manual de [backends de Plots](https://docs.juliaplots.org/latest/backends/) en Julia.
+* Manual de [Animaciones](https://docs.juliaplots.org/latest/animations/) en Julia.
 "
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
+LaTeXStrings = "b964fa9f-0449-5b57-a5c2-d3ea65f4040f"
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 
 [compat]
+LaTeXStrings = "~1.3.0"
 Plots = "~1.25.8"
 PlutoUI = "~0.7.34"
 """
@@ -199,7 +300,7 @@ PlutoUI = "~0.7.34"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.7.1"
+julia_version = "1.7.2"
 manifest_format = "2.0"
 
 [[deps.AbstractPlutoDingetjes]]
@@ -504,6 +605,12 @@ git-tree-sha1 = "f6250b16881adf048549549fba48b1161acdac8c"
 uuid = "c1c5ebd0-6772-5130-a774-d5fcae4a789d"
 version = "3.100.1+0"
 
+[[deps.LERC_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "bf36f528eec6634efc60d7ec062008f171071434"
+uuid = "88015f11-f218-50d7-93a8-a6af411a945d"
+version = "3.0.0+1"
+
 [[deps.LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "e5b909bcf985c5e2605737d2ce278ed791b89be6"
@@ -577,10 +684,10 @@ uuid = "4b2f31a3-9ecc-558c-b454-b3730dcb73e9"
 version = "2.35.0+0"
 
 [[deps.Libtiff_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
-git-tree-sha1 = "340e257aada13f95f98ee352d316c3bed37c8ab9"
+deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
+git-tree-sha1 = "c9551dd26e31ab17b86cbd00c2ede019c08758eb"
 uuid = "89763e89-9b03-5906-acba-b20f662cd828"
-version = "4.3.0+0"
+version = "4.3.0+1"
 
 [[deps.Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1113,7 +1220,7 @@ version = "0.9.1+5"
 # ╠═cdd16f8e-e945-4d5f-a71d-6896f9146512
 # ╠═576a42f0-bd11-4480-9e97-2f9098312a25
 # ╠═35d05477-a09e-4077-8513-2ac7dba4def1
-# ╠═fe4198bf-345a-46e5-bfeb-15619bd76f3a
+# ╟─fe4198bf-345a-46e5-bfeb-15619bd76f3a
 # ╠═c6c40996-bb5f-4c4b-848b-821c79660042
 # ╠═d6a012c7-47b6-4374-8522-aa8e6efbe84f
 # ╠═4d68a04e-6502-4478-a9c2-8a81bcc2b282
@@ -1123,10 +1230,18 @@ version = "0.9.1+5"
 # ╠═d0ec9526-1bf9-4e38-be43-9aeedc56e97e
 # ╠═f08d2863-8e08-4df1-a3e9-5914dc8f1600
 # ╟─fc94b6e8-cae9-46bc-9ac4-9cee5e86c8ee
-# ╠═abb4b6a5-3248-4725-9064-1e94d34f2382
 # ╟─77a60b5d-ad7f-4c44-a68d-694417619668
 # ╟─8b8aff3c-3d88-4022-bc86-b75ebefde2a3
+# ╟─acfe0334-c7aa-471f-b39e-8276e2e3dd42
+# ╠═8302701b-02ac-4d35-b7de-5dec8fe701fb
+# ╟─02f9778e-21c8-42db-bed6-95a20d592f22
 # ╟─754d5a6b-845b-4074-8686-96e1b57e088d
+# ╠═0b199197-6d85-4530-b70f-b82e16d183d6
+# ╟─09c41f2a-2be2-48e5-9b83-6e066c7e03bf
+# ╠═46154837-a68e-4bf0-b39f-2b8670d9370c
+# ╟─167dcedf-786f-471c-83ae-d8a09885005d
+# ╠═765a0e10-4217-4a50-8fb1-e46bee83aaa6
+# ╠═abbce622-7912-40ee-8632-261b5129dcb4
 # ╟─1fa662db-229d-4ccc-93ed-f70bb34dc02e
 # ╟─7bb4718f-5d5a-49f1-ba62-ecefcbfcc49c
 # ╟─88299b4d-2a7d-4c18-956e-c6e75473c658
