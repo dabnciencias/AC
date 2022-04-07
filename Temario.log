@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.3.22)  31 MAR 2022 09:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.3.22)  7 APR 2022 12:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -809,9 +809,9 @@ Package rerunfilecheck Info: File `Temario.out' has not changed.
 (rerunfilecheck)             Checksum: B17D81CA6339306F5B5411B3DCE94BE8;1411.
  ) 
 Here is how much of TeX's memory you used:
- 37734 strings out of 478276
- 868356 string characters out of 5853013
- 1288325 words of memory out of 5000000
+ 37735 strings out of 478276
+ 868363 string characters out of 5853013
+ 1286325 words of memory out of 5000000
  55314 multiletter control sequences out of 15000+600000
  502040 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -819,10 +819,10 @@ Here is how much of TeX's memory you used:
 pdfTeX warning (dest): name{https://github.com/ManimCommunity/manim} has been referenced but does not exist, replaced by a fixed one
 
 {/usr/share/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri10.pfb>
-Output written on Temario.pdf (2 pages, 143093 bytes).
+Output written on Temario.pdf (2 pages, 143294 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
- 44 named destinations out of 1000 (max. 500000)
+ 130 PDF objects out of 1000 (max. 8388607)
+ 114 compressed objects within 2 object streams
+ 45 named destinations out of 1000 (max. 500000)
  53 words of extra memory for PDF output out of 10000 (max. 10000000)
 
