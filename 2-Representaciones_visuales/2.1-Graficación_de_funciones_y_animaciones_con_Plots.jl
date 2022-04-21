@@ -242,7 +242,10 @@ y, después, ejecutamos la función `quiver` _reemplazando el tercer argumento p
 """
 
 # ╔═╡ 7c580a14-b5ec-4bb1-960b-fbce583a9b62
-quiver( (-2:0.2:2)', (-2:0.2:2) , quiver=g, color=:green)
+quiver((-2:0.2:2)', (-2:0.2:2) , quiver=g, color=:green)
+
+# ╔═╡ 8eac3ff8-f71a-41b2-a3b2-5d7965270cdf
+md"donde la apóstrofe `'` fue utilizada para transponer la matriz `(-2:0.2:2)`, pues un vector renglón es equivalente a una matriz de un renglón."
 
 # ╔═╡ 3910bcbb-0e94-4c70-93c4-106a5fd4006a
 md""" #### Conjuntos de nivel con `contour`
@@ -270,24 +273,27 @@ Por ejemplo:
 """
 
 # ╔═╡ 7c8f914f-ad47-4487-8434-f02f2ce6d9e6
-contour(0:0.05:2π,0:0.05:2π,h)
+begin
+    R = 0:0.05:2π # Un rango arbitrario para los ejemplos
+    contour(R,R,h)
+end
 
 # ╔═╡ 28bff1c1-4fe1-41ce-92fa-09277a48762b
 md"Para tener una representación más completa de la función, podemos usar el atributo `fill` y asignarle el valor `true` o, equivalentemente, usar la función `contourf`:"
 
 # ╔═╡ 8af3a0a7-df3b-4204-a806-9c330e636d84
-contourf(0:0.05:2π,0:0.05:2π,h)
+contourf(R,R,h)
 # Esto es equivalente a contourf(0:0.05:2π,0:0.05:2π,h)
 
 # ╔═╡ db29912b-936a-4770-9f3b-fcd57a1ffd3a
 md"""### Gráficas tridimensionales
 
-A continuación, veremos varias formas diferentes de hacer gráficas de tres dimensiones.
+A continuación, veremos varias formas diferentes de hacer gráficas de tres dimensiones espaciales.
 
 """
 
 # ╔═╡ cd549e6e-23f6-4591-a21e-bcc3936e4b0e
-md"""#### Puntos en tres dimensiones con `scatter3d`
+md"""#### Puntos en tres dimensiones con `scatter`
 
 Supongamos que `x`, `y` y `z` son arreglos de números y ejecutamos la función `scatter` con estos _tres_ argumentos:
 
@@ -298,6 +304,7 @@ Al ejecutar este comando:
 1. Para cada entrada `i` de los arreglos, Julia graficará un punto en la coordenada `[x[i], y[i], z[i]]`.
 1. Para cualquiera de los arreglos `x`, `y`, `z` que tenga menos entradas que los demás, Julia ciclará sobre los elementos de ese arreglo hasta haber utilizado todas las entradas del arreglo más grande de los tres.
 
+Por ejemplo:
 
 """
 
@@ -305,7 +312,7 @@ Al ejecutar este comando:
 scatter(0:10,0:10,0:10)
 
 # ╔═╡ 2caaaf8d-21f2-4cb8-9c06-b84e36b7e28c
-md"En particular, el arreglo `z` se puede obtener aplicando una función de dos variables a los arreglos `x` y `x`.
+md"En particular, el arreglo `z` se puede obtener aplicando una función de dos variables a los arreglos `x` y `y`.
 
 Por ejemplo, utilizando la función `h` definida anteriormente y la sintáxis
 
@@ -314,15 +321,12 @@ Por ejemplo, utilizando la función `h` definida anteriormente y la sintáxis
 para evaluarla en los puntos del arreglo `[ [A[1],B[1]], [A[2],B[2]], ... ]`, tenemos:"
 
 # ╔═╡ 3497133e-f009-47ba-bb70-c3c6d0b8bf7c
-begin
-	R = 0:0.05:2π
-	scatter3d(R,R,h.(R,R))
-end
+scatter(R,R,h.(R,R))
 
 # ╔═╡ 162a90d2-eda7-4a3a-b433-8c323bcf1334
 md"""
 
-#### Curvas en tres dimensiones con `plot3d`
+#### Curvas en tres dimensiones con `plot`
 
 Análogamente al ejemplo en gráficas de dos dimensiones, si queremos unir puntos por líneas rectas, podemos reemplazar la función `scatter` por `plot`:
 
@@ -345,13 +349,13 @@ Por ejemplo:
 """
 
 # ╔═╡ 56c967bd-feb0-4266-8209-3c97379152b1
-surface(0:0.05:2π,0:0.05:2π,h)
+surface(R,R,h, color = :gist_rainbow)
 
 # ╔═╡ 8eefdb22-91ad-494b-979a-d3b2a17f706e
 md"Para representar esta superficie como una _malla_ creada a partir de los puntos de la forma `[x[i],y[i]]` en los que se evalúa la función `h`, podemos usar la función `wireframe` con la misma sintáxis que `surface`:"
 
 # ╔═╡ 2d598963-c0e9-4808-93b0-d02740da047c
-wireframe(0:0.05:2π,0:0.05:2π,h)
+wireframe(R,R,h)
 
 # ╔═╡ e97b0843-45c9-4131-a52c-4880a644d5cb
 md"**Nota** Las funciones `quiver`, `contour`, `surface` y `wireframe` también tienen su versión _modificadora_ con el símbolo `!` al final."
@@ -456,12 +460,12 @@ end
 md"Los _macros_ simplemente nos ahorran el tener que escribir secciones de códigos recurrentes."
 
 # ╔═╡ 7577805b-1d52-47e4-aa45-2652943db1cf
-md"""**Ejercicio** Haz un código donde definas cuatro variables `h`, `r`, `θ` y `t`, y animes el tiro parabólico de una partícula lanzada desde una altura `h` con rapidez `r` a un ángulo `θ` durante un tiempo `t`. La partícula se debe representar con un punto y su trayectoria se debe ir trazando con una línea punteada. La animación debe terminar en cuanto la partícula toque el "suelo".
+md"""**Ejercicio** Haz un código donde definas cuatro variables `h`, `r`, `θ` y `t`, y animes el tiro parabólico de una partícula lanzada desde una altura `h` con rapidez `r` a un ángulo `θ` durante un tiempo `t`. La partícula se debe representar con un círculo y su trayectoria se debe ir trazando con una línea punteada. La animación debe terminar en cuanto la partícula toque el "suelo".
 
 Sugerencia: Repasa las ecuaciones cinemáticaticas del tiro parabólico e investiga los atributos `xaxis` y `yaxis` para poder fijar los ejes de la gráfica durante la animación."""
 
 # ╔═╡ 50f7f46b-081e-4b07-94af-1331b33a7c7f
-
+# Tu código (comentado) va aquí :D
 
 # ╔═╡ 59ec3890-303c-436a-8043-8e6bc9c427ed
 md"**Ejercicio** Crea una función que tome parámetros `h`, `r`, `θ` y `t`, y haga lo descrito en el Ejercicio anterior."
@@ -474,7 +478,7 @@ md"""**Ejercicio** Crea una animación de cómo la superficie obtenida de la fun
 """
 
 # ╔═╡ 4e68ad0c-17ef-41f7-b9fe-8561415bb7f2
-
+# Tu código (comentado) va aquí :D
 
 # ╔═╡ 88299b4d-2a7d-4c18-956e-c6e75473c658
 md" ## Recursos complementarios
@@ -1440,11 +1444,12 @@ version = "0.9.1+5"
 # ╠═8302701b-02ac-4d35-b7de-5dec8fe701fb
 # ╟─02f9778e-21c8-42db-bed6-95a20d592f22
 # ╟─1907f78f-e429-4a77-a90e-c9ebb94d6385
-# ╟─18368069-bf83-48e9-a6df-a2b5e6181277
+# ╠═18368069-bf83-48e9-a6df-a2b5e6181277
 # ╟─ec3dfa07-89c8-48a3-adaf-021c311d2c0d
 # ╠═73d1cb8f-4fc5-4a11-885d-9bc97ecd73d9
 # ╟─324cf67f-7cf1-4613-b072-aff38958612f
 # ╠═7c580a14-b5ec-4bb1-960b-fbce583a9b62
+# ╟─8eac3ff8-f71a-41b2-a3b2-5d7965270cdf
 # ╟─3910bcbb-0e94-4c70-93c4-106a5fd4006a
 # ╠═d6d981f5-155f-4fa9-8985-ef9a1aa8e28c
 # ╟─cc3f06b5-68b4-40c6-85ce-cb79a7f3a9df
