@@ -111,17 +111,17 @@ md"**Ejercicio** Usa los _sliders siguientes_ para definir el arreglo `nariz` de
 nariz = michi[rango_renglones, rango_columnas]
 
 # ╔═╡ 768e7b46-f7ef-44f8-b69f-f0a9fd4d797f
-md"**Ejercicio** Define una variable `arte_de_pixeles` como un arreglo bidimensional pequeño de `8x8` entradas con todas las celdas en blanco. Luego, edita las celdas de tu arreglo para hacer un poco de arte de pixeles (¡Puntos extra para las imágenes más **originales**!). Pueden consultar algunas imágenes para tomar inspiración [aquí](https://duckduckgo.com/?q=pixel+art&t=h_&iax=images&ia=images)."
+md"**Ejercicio** Define una variable `arte_de_pixeles` como un arreglo bidimensional pequeño de `8x8` entradas con todas las celdas en blanco. Luego, edita las celdas de tu arreglo para hacer un poco de arte de pixeles (¡Habrá puntos extra para las imágenes más **originales**!). Pueden consultar algunas imágenes para tomar inspiración [aquí](https://duckduckgo.com/?q=pixel+art&t=h_&iax=images&ia=images)."
 
-# ╔═╡ 39653a5c-19f0-4dad-b364-c44e0b4f2233
-md"## Transformaciones de imágenes
+# ╔═╡ 8270b927-ac96-4e45-8c26-47995b036313
+md""" ## Guardar imágenes
 
+Podemos guardar imágenes con la función `save(s,i)`, donde `s` es un _string_ con el nombre del archivo e `i` es la imagen que queremos guardar.
 
+"""
 
-"
-
-# ╔═╡ 5e1e074c-cbd5-4eb9-982c-8ea2af49ba1d
-
+# ╔═╡ 3e886602-1dbe-4000-8993-eab5d9edae54
+save("gato.png",michi)
 
 # ╔═╡ 47dbad09-c809-4a65-b25b-f3e049efb69f
 md"## Recursos complementarios
@@ -149,7 +149,7 @@ TestImages = "~1.6.2"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.7.1"
+julia_version = "1.7.2"
 manifest_format = "2.0"
 
 [[deps.ATK_jll]]
@@ -685,6 +685,12 @@ git-tree-sha1 = "d735490ac75c5cb9f1b00d8b5509c11984dc6943"
 uuid = "aacddb02-875f-59d6-b918-886e6ef4fbf8"
 version = "2.1.0+0"
 
+[[deps.LERC_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
+git-tree-sha1 = "bf36f528eec6634efc60d7ec062008f171071434"
+uuid = "88015f11-f218-50d7-93a8-a6af411a945d"
+version = "3.0.0+1"
+
 [[deps.LZO_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "e5b909bcf985c5e2605737d2ce278ed791b89be6"
@@ -763,10 +769,10 @@ uuid = "925c91fb-5dd6-59dd-8e8c-345e74382d89"
 version = "2.52.4+0"
 
 [[deps.Libtiff_jll]]
-deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
-git-tree-sha1 = "340e257aada13f95f98ee352d316c3bed37c8ab9"
+deps = ["Artifacts", "JLLWrappers", "JpegTurbo_jll", "LERC_jll", "Libdl", "Pkg", "Zlib_jll", "Zstd_jll"]
+git-tree-sha1 = "c9551dd26e31ab17b86cbd00c2ede019c08758eb"
 uuid = "89763e89-9b03-5906-acba-b20f662cd828"
-version = "4.3.0+0"
+version = "4.3.0+1"
 
 [[deps.Libuuid_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1415,8 +1421,8 @@ version = "0.9.1+5"
 # ╠═25541a59-3f11-4d5c-afe9-0e3a287ca5c2
 # ╠═176d687c-acf1-4516-9c45-0f52800bfcf3
 # ╟─768e7b46-f7ef-44f8-b69f-f0a9fd4d797f
-# ╟─39653a5c-19f0-4dad-b364-c44e0b4f2233
-# ╠═5e1e074c-cbd5-4eb9-982c-8ea2af49ba1d
+# ╟─8270b927-ac96-4e45-8c26-47995b036313
+# ╠═3e886602-1dbe-4000-8993-eab5d9edae54
 # ╟─47dbad09-c809-4a65-b25b-f3e049efb69f
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
