@@ -25,7 +25,7 @@ tenga que instalaras. =#
 # ╔═╡ d880df39-77b3-47a4-b4ee-0a1ec9d466b2
 md"# Manipulación de imágenes digitales con _JuliaImages_
 
-Sabemos por experiencia propia que las computadoras son capaces de mostrar imágenes, así como de almacenarlas, transferirlas, modificarlas, generarlas, etc. Todas estas funciones tienen poderosas aplicaciones, desde la **visión por computadora** -utilizada, por ejemplo, para una variedad de robots autónomos- hasta la **imagenología biomédica** -utilizada para observar el interior del cuerpo humano de forma no invasiva para hacer diagnósticos y dar terapia-. pasando por el **aprendizaje de máquina**.
+Sabemos por experiencia propia que las computadoras son capaces de mostrar imágenes, así como de almacenarlas, transferirlas, modificarlas, generarlas, etc. Todas estas funciones tienen poderosas aplicaciones, desde la **visión por computadora** -utilizada, por ejemplo, para una variedad de robots autónomos- hasta la **imagenología biomédica** -utilizada para observar el interior del cuerpo humano de forma no invasiva para hacer diagnósticos y dar terapia-, pasando por el **aprendizaje de máquina**.
 
 Como es de esperarse, Julia tiene una gran cantidad de funciones para programar trabajando con imágenes, las cuales se encuentran en diversas bibliotecas como `Images`, `ImageView` y `TestImages`, que en conjunto son conocidas como [_JuliaImages_](https://juliaimages.org/stable/).
 "
@@ -55,7 +55,7 @@ imshow(testimage("earth_apollo17"))
 
 # ╔═╡ bc0e18ca-5592-430b-a9b9-af54de6facbe
 md"
-¿Qué observas en la esquina inferior izquierda de `ImageView` cuando corres la celda anterior y colocas el cursor sobre la imagen? ¿Qué sucede si mueves el cursos de lugar? ¿Qué cosas cambian cuando repetimos el mismo ejercicio con otras imágenes de la lista?
+¿Qué observas en la esquina inferior izquierda de `ImageView` cuando ejecutas la celda anterior y colocas el cursor sobre la imagen? ¿Qué sucede si mueves el cursor de lugar? ¿Qué cosas cambian cuando repetimos el mismo ejercicio con otras imágenes de la lista?
 
 Antes de explicar el porqué de las observaciones anteriores, veamos un ejemplo de una imagen _tridimensional_ visualizada con `ImageView`. En este ejemplo, notarán que aparecen algunas cosas nuevas en la esquina inferior izquierda: ¡juegen con ellas, a ver qué pasa!
 
@@ -65,7 +65,7 @@ Antes de explicar el porqué de las observaciones anteriores, veamos un ejemplo 
 imshow(testimage("mri"))
 
 # ╔═╡ 775f4a1d-a724-4aa6-a5c5-835e86d6ba49
-md"La principal ventaja de `ImageView` es que nos permite obtener información importante sobre una imagen _mientras interactuamos con ella_; además, podemos es posible utilizarlo incluso cuando estamos programando desde una terminal virtual -las cuales, usualmente, no tienen interfaz gráfica.
+md"La principal ventaja de `ImageView` es que nos permite obtener información importante sobre una imagen _mientras interactuamos con ella_; además, es posible utilizarlo incluso cuando estamos programando desde una terminal virtual -las cuales, usualmente, no tienen interfaz gráfica.
 
 Las interfaces de _notebooks_ como Jupyter y Pluto usualmente tienen algunas funcionalidades integradas para mostrar imágenes, como se ve en la primer celda de código de esta sección; sin embargo, esto no significa que estas funcionalidades cubran todos los casos. Para ver un ejemplo, corre la siguiente celda de código:"
 
