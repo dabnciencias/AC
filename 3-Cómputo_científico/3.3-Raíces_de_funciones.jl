@@ -140,11 +140,11 @@ $$f^\prime(x) = \lim_{\frac{1}{h}\to0}\frac{f(x+\frac{1}{h})-f(x)}{\frac{1}{h}}$
 
 o, equivalentemente,
 
-$$f^\prime(x) = \lim_{h\to\infty} h f\bigg(x+\frac{1}{h}\bigg)-f(x).$$
+$$f^\prime(x) = \lim_{h\to\infty} h \bigg( f\bigg(x+\frac{1}{h}\bigg)-f(x) \bigg).$$
 
 Por lo tanto, si $h$ es un valor muy grande, tenemos que
 
-$$f^\prime(x) \approx h f\bigg(x+\frac{1}{h}\bigg)-f(x).$$
+$$f^\prime(x) \approx h \bigg(f\bigg(x+\frac{1}{h}\bigg)-f(x)\bigg).$$
 
 """
 
@@ -161,8 +161,9 @@ y calcule una aproximación de $f^\prime(x)$ usando el valor `h`.
 # ╔═╡ 356bdd92-50c0-4410-bd83-6c34e8951313
 # Tu código (comentado) va aquí :D
 
+
 # ╔═╡ 83fd7001-0fdb-4be4-b781-12bf8da68820
-md"**Ejercicio** Crea una función `newtonDN` que implemente el método de Newton calculando la **derivada numérica** de `f` en vez de tener a la derivada de `f` como argumento.
+md"**Ejercicio** Crea una variación de la función `newton` llamada `newtonDN` que implemente el método de Newton calculando la **derivada numérica** de `f` en vez de tener a la derivada de `f` como argumento.
 
 **Sugerencia** Usa la función `derivadaNumérica`."
 
