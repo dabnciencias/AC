@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.7
+# v0.19.4
 
 using Markdown
 using InteractiveUtils
@@ -64,6 +64,11 @@ md"**Ejercicio** Crea un programa que:
 * tome como entrada un arreglo que simule una caminata aleatoria en una dimensión y
 * devuelva como salida una *animación* de la caminata sobre la recta numérica."
 
+# ╔═╡ 4179e801-10e6-4ad3-97f1-7ddb8f90bd87
+md" https://github.com/dpsanders/metodos-computacionales/blob/master/notas/aleatorios-funciones-caminatas.tex
+
+"
+
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
 [deps]
@@ -73,7 +78,7 @@ PLUTO_PROJECT_TOML_CONTENTS = """
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.7.1"
+julia_version = "1.7.2"
 manifest_format = "2.0"
 
 [deps]
@@ -90,5 +95,6 @@ manifest_format = "2.0"
 # ╟─1e68a5ca-d78e-4371-a63c-d329d11b187f
 # ╟─5553d1a5-62e9-4a29-bb8e-e4e752ef0cea
 # ╟─75d3a337-a3b2-4319-bd1b-72d2642caef7
+# ╟─4179e801-10e6-4ad3-97f1-7ddb8f90bd87
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
