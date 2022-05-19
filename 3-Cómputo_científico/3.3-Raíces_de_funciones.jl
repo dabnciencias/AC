@@ -4,6 +4,18 @@
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ 8c6bcfb6-a597-4139-afd3-d239efbb13e7
+html"""
+<style>
+	main {
+		margin: 0 auto;
+		max-width: 2000px;
+    	padding-left: max(160px, 10%);
+    	padding-right: max(160px, 10%);
+	}
+</style>
+"""
+
 # ╔═╡ 4a059976-8c17-11ec-20da-01784e520c36
 md"""# Método de Newton
 
@@ -222,6 +234,7 @@ manifest_format = "2.0"
 """
 
 # ╔═╡ Cell order:
+# ╟─8c6bcfb6-a597-4139-afd3-d239efbb13e7
 # ╟─4a059976-8c17-11ec-20da-01784e520c36
 # ╟─83d0773d-4327-421c-9b54-f2d83c2a85dd
 # ╟─30ff22cd-0cf3-4471-adc2-144b967e5659

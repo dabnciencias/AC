@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.7
+# v0.19.4
 
 using Markdown
 using InteractiveUtils
@@ -19,6 +19,18 @@ using Plots, PlutoUI
 
 # ╔═╡ 8302701b-02ac-4d35-b7de-5dec8fe701fb
 using LaTeXStrings
+
+# ╔═╡ 967d628f-d940-45ae-ad80-947b15d8c099
+html"""
+<style>
+	main {
+		margin: 0 auto;
+		max-width: 2000px;
+    	padding-left: max(160px, 10%);
+    	padding-right: max(160px, 10%);
+	}
+</style>
+"""
 
 # ╔═╡ c3db98d4-84a3-11ec-17c2-7510b678ee8a
 md"# Graficación de funciones y animaciones con _Plots_"
@@ -1045,9 +1057,9 @@ uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 
 [[deps.Qt5Base_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Fontconfig_jll", "Glib_jll", "JLLWrappers", "Libdl", "Libglvnd_jll", "OpenSSL_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libxcb_jll", "Xorg_xcb_util_image_jll", "Xorg_xcb_util_keysyms_jll", "Xorg_xcb_util_renderutil_jll", "Xorg_xcb_util_wm_jll", "Zlib_jll", "xkbcommon_jll"]
-git-tree-sha1 = "ad368663a5e20dbb8d6dc2fddeefe4dae0781ae8"
+git-tree-sha1 = "c6c0f690d0cc7caddb74cef7aa847b824a16b256"
 uuid = "ea2cea3b-5b76-57ae-a6ef-0a8af62496e1"
-version = "5.15.3+0"
+version = "5.15.3+1"
 
 [[deps.REPL]]
 deps = ["InteractiveUtils", "Markdown", "Sockets", "Unicode"]
@@ -1411,6 +1423,7 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
+# ╟─967d628f-d940-45ae-ad80-947b15d8c099
 # ╟─c3db98d4-84a3-11ec-17c2-7510b678ee8a
 # ╠═33f8289b-3e80-48a1-8a2c-ef6d2d2f107e
 # ╟─b3f850d8-60d4-4798-9beb-d42a9cdac9ae

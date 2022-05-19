@@ -1,11 +1,23 @@
 ### A Pluto.jl notebook ###
-# v0.17.7
+# v0.19.4
 
 using Markdown
 using InteractiveUtils
 
 # ╔═╡ 01262438-917e-43f0-81f1-a3d14d591891
 using Plots, StatsPlots
+
+# ╔═╡ c3261039-7a38-4cf9-b360-481c99af5458
+html"""
+<style>
+	main {
+		margin: 0 auto;
+		max-width: 2000px;
+    	padding-left: max(160px, 10%);
+    	padding-right: max(160px, 10%);
+	}
+</style>
+"""
 
 # ╔═╡ 59aabf72-b698-11ec-02c5-71c3f7918cd2
 md"""# Visualización de datos con _Plots_
@@ -223,6 +235,7 @@ md" ## Recursos complementarios
 * Documentación de las funciones de [`Plots`](https://docs.juliaplots.org/latest/api/)
 * Documentación de [atributos de series en `Plots`](https://docs.juliaplots.org/latest/generated/attributes_series/).
 * Manual de [backends de Plots](https://docs.juliaplots.org/latest/backends/) en Julia.
+* Manual del paquete [`Measurements`](https://juliaphysics.github.io/Measurements.jl/stable/usage/).
 "
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -887,9 +900,9 @@ uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 
 [[deps.Qt5Base_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Fontconfig_jll", "Glib_jll", "JLLWrappers", "Libdl", "Libglvnd_jll", "OpenSSL_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libxcb_jll", "Xorg_xcb_util_image_jll", "Xorg_xcb_util_keysyms_jll", "Xorg_xcb_util_renderutil_jll", "Xorg_xcb_util_wm_jll", "Zlib_jll", "xkbcommon_jll"]
-git-tree-sha1 = "ad368663a5e20dbb8d6dc2fddeefe4dae0781ae8"
+git-tree-sha1 = "c6c0f690d0cc7caddb74cef7aa847b824a16b256"
 uuid = "ea2cea3b-5b76-57ae-a6ef-0a8af62496e1"
-version = "5.15.3+0"
+version = "5.15.3+1"
 
 [[deps.QuadGK]]
 deps = ["DataStructures", "LinearAlgebra"]
@@ -1323,6 +1336,7 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
+# ╟─c3261039-7a38-4cf9-b360-481c99af5458
 # ╟─59aabf72-b698-11ec-02c5-71c3f7918cd2
 # ╠═01262438-917e-43f0-81f1-a3d14d591891
 # ╟─6c4b8ea6-f01f-48a1-b2ad-9d16d634de81

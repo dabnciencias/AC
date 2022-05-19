@@ -4,6 +4,18 @@
 using Markdown
 using InteractiveUtils
 
+# ╔═╡ f4a77582-9121-4881-8139-fcb01d4ef6b9
+html"""
+<style>
+	main {
+		margin: 0 auto;
+		max-width: 2000px;
+    	padding-left: max(160px, 10%);
+    	padding-right: max(160px, 10%);
+	}
+</style>
+"""
+
 # ╔═╡ 6f5f31aa-2941-42f5-aceb-bedb2bd30ea2
 md"# Caminante aleatorio
 Un caminante aleatorio (o _random walk_, en inglés) es un tipo de modelo estocástico en el cual la posición de una partícula en cierto instante depende de su posición en el instante previo y alguna variable aleatoria que determina su subsecuente dirección y la longitud de paso.
@@ -85,6 +97,7 @@ manifest_format = "2.0"
 """
 
 # ╔═╡ Cell order:
+# ╟─f4a77582-9121-4881-8139-fcb01d4ef6b9
 # ╟─6f5f31aa-2941-42f5-aceb-bedb2bd30ea2
 # ╟─62816dec-c81a-40cb-aebd-8bda77d5e389
 # ╟─6dd575bd-5ee7-49ab-8234-ab83eff83ebf

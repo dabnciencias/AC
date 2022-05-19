@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.17.7
+# v0.19.4
 
 using Markdown
 using InteractiveUtils
@@ -21,6 +21,18 @@ using Images, ImageView, TestImages, PlutoUI, Colors
 biblioteca antes de correr otras celdas de código. Esto puede 
 tomar unos minutos la primera vez, porque probablemente Pluto 
 tenga que instalaras. =#
+
+# ╔═╡ c885e437-172e-406f-b1ac-cb4834812a1a
+html"""
+<style>
+	main {
+		margin: 0 auto;
+		max-width: 2000px;
+    	padding-left: max(160px, 10%);
+    	padding-right: max(160px, 10%);
+	}
+</style>
+"""
 
 # ╔═╡ d880df39-77b3-47a4-b4ee-0a1ec9d466b2
 md"# Manipulación de imágenes digitales con _JuliaImages_
@@ -1400,6 +1412,7 @@ version = "0.9.1+5"
 """
 
 # ╔═╡ Cell order:
+# ╟─c885e437-172e-406f-b1ac-cb4834812a1a
 # ╟─d880df39-77b3-47a4-b4ee-0a1ec9d466b2
 # ╠═55d431d6-22a8-4f32-b018-bb6d5c3cdefd
 # ╟─9c6c6e89-1dd1-4c45-b56f-00a36003ba85
