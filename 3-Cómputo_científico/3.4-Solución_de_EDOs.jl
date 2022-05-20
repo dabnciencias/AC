@@ -38,7 +38,7 @@ Una _ecuación diferencial ordinaria_ (EDO) es una ecuación de la forma
 
 $$f(t,x(t),x'(t),x''(t),...,x^{(n)}(t)) = 0, \quad (\ast)$$
 
-donde $f$ es una función arbitraria, $t$ es una _variable independiente_, $x$ es una función de $t$ llamada _función incógnita_ y $x',x'',...,x^{(n)}$ son derivadas de la función incógnita $x$ con respecto a la variable independiente $t$.
+donde $f$ es una función arbitraria, $t$ es una _variable independiente_, $x$ es una función de $t$ llamada _función incógnita_ y $x',x'',...,x^{(n)}$ son derivadas de la función incógnita $x$ con respecto a la variable independiente $t$. Una EDO _de grado_ $n$ es aquella en donde no aparecen derivadas de la función incógnita mayores a $n$.
 
 Observemos que, si consideramos que $t$ es la función identidad y $0$ es la función constante cero, entonces una EDO es una igualdad entre funciones; por esto es que la incógnita de una EDO es, precisamente, una **función**.
 
@@ -50,11 +50,11 @@ En este curso, nos enfocaremos en ecuaciones diferenciales donde la función inc
 # ╔═╡ c1d72411-519c-4c4a-9fe5-5f9929d1e586
 md""" 
 
-**Ejemplo** Consideremos la siguiente EDO (observemos que cumple la definición)
+**Ejemplo** Consideremos la siguiente EDO de primer grado (o de grado 1)
 
-$$\dot{x} - x = 0. \quad (1)$$
+$$x' - x = 0. \quad (1)$$
 
-Despejando y reescribiendo en notación de Leibnitz, tenemos que
+Despejando y reescribiendo en notación de Leibniz, tenemos que
 
 $$\frac{d}{dt}x = x.$$
 
@@ -62,7 +62,7 @@ $$\frac{d}{dt}x = x.$$
 
 $$x(t) = e^t.$$
 
-¿Para qué valores reales de $t$ tenemos que $x$ y $\dot{x}$ cumplen la ecuación $(1)$? Para todo $t\in\mathbb{R}$, como se ve en cualquier curso de cálculo diferencial de una variable. Por lo tanto, $x(t) = e^t$ es una solución a la EDO $(1)$ en el intervalo $I=\mathbb{R}$.
+¿Para qué valores reales de $t$ tenemos que $x$ y $x'$ cumplen la ecuación $(1)$? Para todo $t\in\mathbb{R}$, como se ve en cualquier curso de cálculo diferencial de una variable. Por lo tanto, $x(t) = e^t$ es una solución a la EDO $(1)$ en el intervalo $I=\mathbb{R}$.
 
 Sin embargo, dado que la derivada de una constante es cero entonces, por la regla de Leibniz, tenemos que
 
@@ -72,59 +72,65 @@ para todo $C\in\mathbb{R}$. Por lo tanto, cada miembro de la _familia de funcion
 
 $$\{Ce^t \mid C\in\mathbb{R}\}$$
 
-es una solución a la EDO $(1)$. A esto se le conoce como una _solución general_ de $(1)$.
+es una solución a la ecuación $(1)$. A esta familia se le conoce como una _solución general_ de la EDO $(1)$.
 
 """
 
 # ╔═╡ c5083d27-944d-4c3d-8f6b-301202371003
 md""" ### Condiciones iniciales
 
-Las EDOs de la forma $(\ast)$ para las cuales existen soluciones suelen tener soluciones _generales_ . Es decir que, en vez de que sólo exista una función que soluciona la EDO, existe toda una familia de funciones que la solucionan, parametrizada por uno o más parámetros. En el **Ejemplo** de la sección anterior, el parámetro $C\in\mathbb{R}$ parametriza la familia de soluciones $\{Ce^t \mid C\in\mathbb{R}\}$; esto significa que, para cada valor real que le demos a $C$, obtendremos una solución _particular_ a la EDO.
+Las EDOs de la forma $(\ast)$ para las cuales existen soluciones suelen tener soluciones _generales_ . Es decir que, en vez de que sólo exista una función que verifica la EDO, existe toda una familia de funciones que la solucionan, parametrizada por uno o más parámetros. En el **Ejemplo** de la sección anterior, el parámetro $C\in\mathbb{R}$ parametriza la familia de soluciones $\{Ce^t \mid C\in\mathbb{R}\}$; esto significa que, para cada valor real que le demos a $C$, obtendremos una solución _particular_ a la EDO.
 
 """
 
 # ╔═╡ 6c00513b-4db7-4995-9128-3263e19c7c77
 deslizador = @bind C Slider(-10:0.1:10, default = 1)
+#= Creamos una variable C, con valor asignado por un "slider" interactivo que se mueve en el rango -10:0.1:10.
+Además, le asignamos este "slider" a la variable deslizador para poder cambiar el valor de C más adelante. =#
 
 # ╔═╡ 5c5e85dd-8685-46fc-92fe-416ca717e696
-C
+C # Mostramos el valor de C.
 
 # ╔═╡ 1418e9a9-2253-4e03-a627-e64b13a3682a
-x(t) = C*exp(t)
+x(t) = C*exp(t) # Definimos una función x(t) = Ce^t con la variable interactiva C (el parámetro de la familia).
 
 # ╔═╡ 63e3150c-18d2-4db6-8208-810a5eb59b8c
 begin
-    plot(-1:0.1:9, x, ylims = (-1000,1000), label = L"$Ce^t$")
-	vline!([0,0], color = "grey", style = :dash, label = false)
-	hline!([0,0], color = "grey", style = :dash, label = false)
+    plot(-1:0.1:9, x, ylims = (-1000,1000), label = L"$Ce^t$")  # Graficamos a la función x de -1 a 9, y
+	vline!([0,0], color = "grey", style = :dash, label = false) # agregamos una línea punteada vertical y una
+	hline!([0,0], color = "grey", style = :dash, label = false) # línea punteada horizontal en el origen.
 end
 
 # ╔═╡ 46853ddf-0d40-4f7b-a480-30292668732b
 md"""
 
-Para plantear un problema utilizando EDOs cuya solución, de existir, debe ser _única_, debemos agregar **restricciones**. Estas suelen venir en forma de ecuaciones algebráicas que obliguen a la solución a tener cierto valor al ser evaluada en un punto específico de su dominimo (el intervalo $I$ en que la solución es válida).
+Para plantear un problema utilizando EDOs cuya solución, de existir, deba ser _única_, debemos agregar **restricciones**. Estas suelen venir en forma de ecuaciones algebráicas que obliguen a la solución a tener cierto valor al ser evaluada en un punto específico de su dominimo (el intervalo $I$ en que la solución es válida).
 
 """
 
 # ╔═╡ f2e5c611-e5ff-482a-8e2c-7b645f44424a
 md""" **Ejemplo**
 
-Consideremos nuevamente la EDO (1). Como hemos visto, la solución general $\{Ce^t \mid C\in\mathbb{R}\}$ es válida en el intervalo $I=\mathbb{R}$. Supongamos que, adicionalmente, queremos que nuestra solución valga $5$ cuando la evaluamos en $0\in I$, lo cual podemos escribir como $x(0) = 5$. ¿Puedes encontrar el valor de $C$ que hace que se cumpla esta condición?
+Consideremos nuevamente la EDO $(1)$. Como hemos visto, la solución general $\{Ce^t \mid C\in\mathbb{R}\}$ es válida en el intervalo $I=\mathbb{R}$. Supongamos que, adicionalmente, queremos que nuestra solución valga $5$ cuando la evaluamos en $0\in I$, lo cual podemos escribir como
+
+$$x(0) = 5. \quad (2)$$
+
+¿Puedes encontrar el valor de $C$ que hace que se cumpla esta condición?
 
 """
 
 # ╔═╡ 375b90c4-c8e3-4f15-bc70-bb613bc56908
-deslizador
+deslizador # Volvemos a mostrar el "slider" interactivo que le asigna un valor a C en el rango -10:0.1:10.
 
 # ╔═╡ 75c7a854-809c-4ba5-9d2b-4b17e9801c1f
-C
+C # Mostramos el valor de C.
 
 # ╔═╡ 3c095cfb-5b4b-436f-9c58-79571ae37537
 begin
-    plot(-1:0.05:1, x, ylims = (-10,10), label = L"$Ce^t$")
-	vline!([0,0], color = "grey", style = :dash, label = false)
-	hline!([0,0], color = "grey", style = :dash, label = false)
-	scatter!([0],[5], label = L"(0,5)")
+    plot(-1:0.05:1, x, ylims = (-10,10), label = L"$Ce^t$")     # Graficamos a la función x de -1 a 9,
+	vline!([0,0], color = "grey", style = :dash, label = false) # agregamos una línea punteada vertical y una
+	hline!([0,0], color = "grey", style = :dash, label = false) # línea punteada horizontal en el origen, y
+	scatter!([0],[5], label = L"(0,5)")                         # graficamos un punto en la coordenada (0,5).
 end
 
 # ╔═╡ 194d5ee5-0c88-4b12-a7b9-fda675709e84
@@ -132,7 +138,7 @@ md"""
 
 Veamos cómo resolver este problema de forma matemática. Usando nuestra solución general, tenemos que
 
-$$\begin{align*} x(0) = 5 &\implies Ce^0 = 5 \\ &\implies C = 5, \end{align*}$$
+$$\begin{align*} x(0) = 5 &\implies Ce^0 = 5 \\ &\implies C(1) = 5 \\ &\implies C = 5, \end{align*}$$
 
 por lo que la solución particular sería $x(t) = 5e^t$. Nota que no hay ninguna otra función de la forma $Ce^t$ que valga $5$ en $0$ más que ésta por lo que, al agregar una restricción a nuestra EDO $(1)$, pasamos de una solución general a una solución particular.
 
@@ -145,7 +151,7 @@ En general, las restricciones son ecuaciones de la forma
 
 $$x(t_0) = C_0. \quad (\ast\ast)$$
 
-Dado que, en la mayoría de los casos, las EDOs se utilizan para modelar variables que se asume que cambian en función del tiempo, a las restricciones impuestas se les conoce por convención como _condiciones iniciales_. A una EDO de la forma $(\ast)$ con una o más condiciones iniciales de la forma $(\ast\ast)$ le llamaremos un _problema de condiciones iniciales_.
+Dado que, en la mayoría de los casos, las EDOs se utilizan para modelar variables que se asume que cambian en función del tiempo, a las restricciones impuestas se les conoce por convención como _condiciones iniciales_. A una EDO de la forma $(\ast)$ con una condición inicial de la forma $(\ast\ast)$ (o más condiciones similares para sus derivadas $x', x''$, etc.) le llamaremos un _problema de condiciones iniciales_.
 
 """
 
@@ -154,7 +160,7 @@ md""" ### Soluciones analíticas y numéricas
 
 En el **Ejemplo** de la sección anterior, la solución que obtuvimos a un problema de condiciones iniciales fue una **función continua** que pudimos expresar matemáticamente mediante una regla de correspondencia sencilla. A esto se le conoce como una _solución analítica_.
 
-Desafortunadamente, dado que la ecuación $(*)$ es muy general, la mayoría de las EDOs existentes **no tienen solución analítica** y, por lo tanto, lo mismo vale para la mayor parte de los problemas de condiciones iniciales existentes. Afortunadamente, existen **métodos numéricos** que nos permiten **aproximar** la solución de casi cualquier EDO mediante una **función discreta**; a esto se le conoce como una _solución numérica_ de una EDO. Uno de los más simples es el **Método de Euler**, que sirve para aproximar soluciones a EDOs de grado uno, es decir, aquellas en donde sólo aparece la primera derivada $x'(t)$ de la función incógnita $x(t)$, como por ejemplo la ecuación $(1)$.
+Desafortunadamente, dado que la ecuación $(*)$ es muy general, la mayoría de las EDOs existentes **no tienen solución analítica** y, por lo tanto, lo mismo vale para la mayor parte de los problemas de condiciones iniciales existentes. Afortunadamente, existen **métodos numéricos** que nos permiten **aproximar** la solución de casi cualquier EDO mediante una **función discreta**; a esto se le conoce como una _solución numérica_ de una EDO. Uno de los más simples es el **método de Euler**, que sirve para aproximar soluciones a EDOs de grado uno.
 
 """
 
@@ -163,11 +169,11 @@ md""" ## Método de Euler
 
 Supongamos que tenemos un problema de condiciones iniciales de la forma
 
-$$\begin{align*} x'(t) &= g(t,x(t)), &(2) \\ x(t_0) &= C_0 &(3) \end{align*}$$
+$$\begin{align*} x'(t) &= g(t,x(t)), &(3) \\ x(t_0) &= C_0 &(4) \end{align*}$$
 
-que queremos aproximar en algún intervalo $[t_0,t_f]\subset\mathbb{R}$, donde $C_0\in\mathbb{R}$. Observemos que una ecuación de la forma $(2)$ se puede obtener fácilmente a partir de una EDO de primer grado $f(t,x(t),x'(t)) = 0$, simplemente despejando a $x'(t)$.
+que queremos aproximar en algún intervalo $[t_0,t_f]\subset\mathbb{R}$, donde $C_0\in\mathbb{R}$. Observemos que una ecuación de la forma $(3)$ se puede obtener fácilmente a partir de una EDO de primer grado $f(t,x(t),x'(t)) = 0$, simplemente despejando a $x'(t)$.
 
-El método de Euler consiste en crear un arreglo uniforme de puntos en el intervalo $[t_0,t_f]$ y aproximar los valores de $x(t)$ en esos puntos. Una forma sencilla de crear un arreglo de este es tomando un número entero positivo $N$ y luego definiendo un _tamaño de paso_
+El método de Euler consiste en crear un arreglo uniforme de puntos en el intervalo $[t_0,t_f]$ y aproximar los valores de $x(t)$ en esos puntos. Una forma sencilla de crear un arreglo de este tipo es tomando un número entero positivo $N$ y luego definiendo un _tamaño de paso_
 
 $$h = \frac{t_f-t_0}{N}$$
 
@@ -190,7 +196,7 @@ $$f(x) = \sum_{k=0}^\infty \frac{f^k(a)(x-a)^k}{k!},$$
 
 donde $f^k$ es la $k$-ésima derivada de $f$ y, en particular, $f^0=f$.
 
-Como por $(\ast\ast)$ estamos suponiendo que conocemos el valor de $x$ en $t_0$, lo usaremos como punto de partida. Observemos que, por el Teorema de Taylor, tenemos que
+Como por la ecuación $(4)$ estamos suponiendo que conocemos el valor de $x$ en $t_0$, lo usaremos como punto de partida. Observemos que, por el Teorema de Taylor, tenemos que
 
 $$x(t_1) = x(t_0) + hx'(t_0) + \frac{h^2}{2}x''(t_0) + \dots.$$
 
@@ -198,55 +204,102 @@ Quedándonos sólo con los primeros dos términos, tenemos que
 
 $$x(t_1) \approx x(t_0) + hx'(t_0).$$
 
-Como $x(t)$ satisface la EDO $(2)$, tenemos que
+Como $x(t)$ satisface la EDO $(3)$, tenemos que
 
 $$x(t_1) \approx x(t_0) + hg(t_0,x(t_0)).$$
 
 Ahora que tenemos un valor aproximado de $x$ en $t_1$, podemos usarlo como punto de partida y, aplicando los mismos argumentos, obtener 
 
-$$x(t_2) \approx x(t_1) + hg(t_1,x(t_1)).$$
+$$x(t_2) \approx x(t_1) + hg(t_1,x(t_1)),$$
 
-De esta forma recursiva, podemos siempre aproximar el valor de $x(t_{i+1})$ en términos de nuestra aproximación de $x(t_i)$ como
+donde $x(t_i)$ es el valor _aproximado_ que obtuvimos anteriormente. De esta forma recursiva, podemos siempre aproximar el valor de $x(t_{i+1})$ en términos de nuestra aproximación de $x(t_i)$ como
 
 $$x(t_{i+1}) \approx x(t_i) + hg(t_i,x(t_i))$$
 
-para todo $i\in\{0,1,2,\dots,N-1\}$.
+para todo $i\in\{0,1,2,\dots,N-1\}$. Notemos que, en particular, por $(3)$, tenemos que
+
+$$x(t_1) \approx C_0 + hg(t_0,x(t_0)).$$
 
 """
 
 # ╔═╡ 8655c243-679b-46fb-b506-a0b035e902b7
 md""" ### Implementación del método de Euler
 
-**Ejercicio** Crea una función `tamañoDePaso` que tome como argumentos `t0`, `tf` y `N`, donde
+**Ejercicio** Crea una función `tamañoDePaso` que tome argumentos `t0`, `tf` y `N`, donde
 * `t0` es el tiempo inicial de un problema de condiciones iniciales,
 * `tf` es el tiempo final en el que queremos aproximar una solución a dicho problema, y
-* `N` es un número menor en una unidad al número de puntos que queremos en el arreglo sobre el cual aproximaremos valores de la solución,
+* `N` es un número entero positivo,
 
-y devuelva el tamaño de paso `h` correspondiente.
+y devuelva el tamaño de paso $h$ correspondiente.
 
 """
 
-# ╔═╡ 0500c9ed-ef51-4028-85eb-074ad8334df4
+# ╔═╡ 643043b9-ae20-4071-9367-b282f2654fd7
+# Tu código va aquí :)
 
+# ╔═╡ c84d2b95-07a4-45f8-8e7e-e372acc89cb8
+md" **Ejercicio** Crea una función `arregloUniforme` que tome los mismos argumentos que `tamañoDePaso` **más** un argumento `h` para el tamaño de paso y devuelva un arreglo uniforme de números desde `t0` hasta `tf` con dicho tamaño de paso entre ellos. Esta función debe imprimir un mensaje de error si $N$ **no** es un entero positivo. "
+
+# ╔═╡ b0eb99e9-978a-4914-90a9-e05c73115e73
+# Tu código (comentado) va aquí :)
 
 # ╔═╡ fa999314-0038-498a-ac9e-3ce04a9435a3
-md""" **Ejercicio** Crea una función `paso_euler` que tome como argumentos `ti`, `xti` `tj` y `g`, donde
+md""" **Ejercicio** Crea una función `paso_euler` que tome argumentos `ti`, `xti`, `g` y `h`, donde
 
-* 
+* `ti` es un valor de tiempo,
+* `xti` es una aproximación de $x(t_i)$, donde $x$ es la solución al problema de condiciones iniciales $(2),(3)$,
+* `g` es la función de $x$ y $t$ dada por la ecuación $(2)$, y
+* `h` es el tamaño de paso de nuestro arreglo uniforme,
 
-
+y devuelva una aproximación de $x(t_{i+1})$.
 
 """
 
-# ╔═╡ 173daae4-fdac-4f72-8332-0c501ae0f455
-md""" ## Métodos de Runge-Kutta
-El **Método de Euler** forma parte de una familia de métodos numéricos para aproximar soluciones numéricas de EDOs conocidos como **Métodos de Runge-Kutta**, siendo el más sencillo; por ende, en este curso decidimos introducir los Métodos de Runge-Kutta usando el Método de Euler. Seguramente aprenderás más métodos de Runge-Kutta en tu curso de **Física Computacional**, incluyendo el método más "clásico", conocido como _RK4_.
+# ╔═╡ ecf4e2e8-821d-4e32-82d8-5eaec50363c3
+# Tu código (comentado) va aquí :)
+
+# ╔═╡ 1ec8d06d-160f-49de-a1aa-25c9d17cce64
+md""" **Ejercicio** Crea una función `euler` que tome argumentos `g`, `xt0` y `t`, donde
+
+* `g` es la función de $x$ y $t$ dada por la ecuación $(2)$,
+* `xt0` es la condición inicial dada por la ecuación $(1)$, y
+* `t` es un arreglo uniforme de "tiempos" de la forma $\big\{t_0 + i\big(\frac{t_f-t_0}{N}\big) \mid N\in\mathbb{Z}^+, \ 0\leq i\leq N\big\}$,
+
+y devuelva un arreglo con `xt0` y los valores aproximados de $x(t_i)$ para $1\leq i\leq N$, calculados mediante el método de Euler. (Sugerencia: utiliza las funciones definidas anteriormente.)
+
 """
+
+# ╔═╡ 7c8c2188-3173-4202-8ba4-83554831d940
+# Tu código (comentado) va aquí :)
+
+# ╔═╡ 1dc4a3c3-6b1c-4024-bfaf-ce72f5533209
+md"""
+
+**Ejercicio** En caso de que la función $g$ de la EDO $(2)$ sólo dependa del tiempo, ¿qué operación matemática estaríamos llevando a cabo al aplicar el método de Euler?
+
+_Tu respuesta va aquí._
+
+Verifica que tu implementación del método de Euler sea correcta aplicándola a alguna función `g` sencilla que sólo dependa del tiempo y comparando los resultados obtenidos con la solución analítica; recuerda que debes imponer una condición inicial.
+
+"""
+
+# ╔═╡ d821fc74-b60f-4571-bd82-44b4f7ece230
+#= Tu código (comentado) va aquí :)
+   También puedes agregar celdas para discutir tus resultados. =#
+
+# ╔═╡ c44f5b44-8899-444a-b5c4-f87e98102013
+md""" **Ejercicio** Utiliza tu implementación del método de Euler para solucionar el problema de condiciones iniciales $(1),(2)$. Grafica tu resultado junto con la gráfica de la solución analítica encontrada en el **Ejemplo** de la sección "Condiciones iniciales" y haz interactivo el parámetro $N$ para observar cómo cambia la aproximación que da tu solución numérica de la solución analítica en función del número de puntos utilizados en el intervalo $[t_0,t_f]$. """
+
+# ╔═╡ 80b45143-b908-4f89-bb6f-1cb500529ea9
+# Tu código (comentado) va aquí :)
 
 # ╔═╡ e0081798-1e7e-47b3-a7d2-1d0f29d59990
 md""" ## Nota final
 
-* La aproximaciones a una soluciones de EDOs obtenida por el Método de Euler (u otros métodos numéricos, como los de Runge-Kutta) **no siempre son válidas**; para que lo sean nuestros problemas de condiciones deben **tener soluciones únicas** (al menos en algún intervalo) y **estar bien planteadas**; es decir, que pequeños cambios en el planteamiento del problema introduce pequeños cambios en las soluciones aproximadas. Los resultados que dan condiciones bajo las cuales se asegura que un problema de condiciones iniciales tenga una solución única y esté bien planteado se demuestran en cursos de **análisis numérico**.
+* El **método de Euler** forma parte de una familia de métodos numéricos para aproximar soluciones numéricas de EDOs conocidos como **métodos de Runge-Kutta**, siendo el más sencillo de ellos. Los métodos de Runge-Kutta se abordan a mayor profundidad en los cursos de **Física Computacional**, incluyendo el método más "clásico", conocido como _RK4_.
+
+
+* La aproximaciones a soluciones de EDOs obtenida por el método de Euler (u otros métodos numéricos, como los de Runge-Kutta) **no siempre son válidas**; para que lo sean nuestros problemas de condiciones iniciales deben **tener soluciones únicas** (al menos en algún intervalo) y **estar bien planteadas**; es decir, que pequeños cambios en el planteamiento del problema introduce pequeños cambios en las soluciones aproximadas. Los resultados que dan condiciones bajo las cuales se asegura que un problema de condiciones iniciales tenga una solución única y esté bien planteado se demuestran en cursos de **análisis numérico**.
 
 
 * En la práctica, quienes hacen modelación y simulación aplicada utilizando ecuaciones diferenciales (ordinarias, parciales, estocásticas, etc.) pero _no_ se dedican al análisis numérico **no van por la vida estudiando muchos métodos a profundidad e implementándolos cada vez que los necesitan**. Por supuesto, es importante que esas personas estudien e implementen _algunos_ métodos numéricos básicos durante su formación pero, por eficiencia, es mejor dejar esa inmensa y complicada tarea a personas con conocimiento muy especializado tanto en las teorías matemáticas que dan soluciones a esos problemas como en el cómputo de alto rendimiento. En el caso de Julia, el paquete [`DifferentialEquations`](https://diffeq.sciml.ai/stable/) contiene una implementación de cientos de métodos numéricos altamente estables y veloces que permiten resolver una inmensa cantidad de problemas rápidamente, e inclusive es posible utilizar este paquete en otros lenguajes de programación como Python y R.
@@ -1243,9 +1296,17 @@ version = "0.9.1+5"
 # ╟─0bf8be91-fdec-455f-b419-848451ef686e
 # ╟─858b97dd-c384-49cd-981a-e2a29ffbfb2a
 # ╟─8655c243-679b-46fb-b506-a0b035e902b7
-# ╠═0500c9ed-ef51-4028-85eb-074ad8334df4
-# ╠═fa999314-0038-498a-ac9e-3ce04a9435a3
-# ╟─173daae4-fdac-4f72-8332-0c501ae0f455
+# ╠═643043b9-ae20-4071-9367-b282f2654fd7
+# ╟─c84d2b95-07a4-45f8-8e7e-e372acc89cb8
+# ╠═b0eb99e9-978a-4914-90a9-e05c73115e73
+# ╟─fa999314-0038-498a-ac9e-3ce04a9435a3
+# ╠═ecf4e2e8-821d-4e32-82d8-5eaec50363c3
+# ╟─1ec8d06d-160f-49de-a1aa-25c9d17cce64
+# ╠═7c8c2188-3173-4202-8ba4-83554831d940
+# ╟─1dc4a3c3-6b1c-4024-bfaf-ce72f5533209
+# ╠═d821fc74-b60f-4571-bd82-44b4f7ece230
+# ╟─c44f5b44-8899-444a-b5c4-f87e98102013
+# ╠═80b45143-b908-4f89-bb6f-1cb500529ea9
 # ╟─e0081798-1e7e-47b3-a7d2-1d0f29d59990
 # ╟─84f733e5-8e7a-4df7-880d-49ca09683257
 # ╟─fc7efcf9-70ca-4c3d-9822-720c67dcc7f7
