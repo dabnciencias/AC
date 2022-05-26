@@ -74,7 +74,7 @@ Como estamos modelando el espacio con los números enteros, cada paso sucesivo d
 # Tu código va aquí :)
 
 # ╔═╡ d3a7fcb3-b0a5-4b41-bf95-ac3ffdce7fb6
-md" **Ejercicio** Crea una función `variosPasos` que tome como argumento un número entero `n` y devuelva un arreglo con `n` entradas, donde cada una de ellas tiene la misma probabilidad de ser `1` ó `-1`. (Pista: Recuerda que colocar un punto (`.`) antes de un operador aritmético hace que funcione con arreglos.)"
+md" **Ejercicio** Crea una función `variosPasos` que tome como argumento un número entero positivo `n` y devuelva un arreglo con `n` entradas, donde cada una de ellas tiene la misma probabilidad de ser `1` ó `-1`. (Pista: Recuerda que colocar un punto (`.`) antes de un operador aritmético hace que funcione con arreglos.)"
 
 # ╔═╡ 544fdf8f-fb78-40be-8618-f071c47f00b2
 # Tu código va aquí :)
@@ -82,7 +82,7 @@ md" **Ejercicio** Crea una función `variosPasos` que tome como argumento un nú
 # ╔═╡ f2bb54fd-ccb9-4e8d-b8c4-3a4058ffbe4c
 md" **Ejercicio** Crea una función `caminataAleatoria` que
 * tome como entrada un número de pasos `n` y
-* devuelva como salida un arreglo con `n+1` posiciones, incluyendo la posición inicial `0`, siguiendo una caminata aleatoria. (Sugerencia: Puedes usar cualquiera de las funciones `unPaso` o `variosPasos`; la que te resulte más cómoda.)"
+* devuelva como salida un arreglo con `n+1` posiciones, incluyendo la posición inicial `0`, simulando una caminata aleatoria. (Sugerencia: Puedes usar cualquiera de las funciones `unPaso` o `variosPasos`; la que te resulte más cómoda.)"
 
 # ╔═╡ 9d09fc0f-ccba-477d-9968-82b9554f44e2
 # Tu código (comentado) va aquí :)
@@ -91,18 +91,18 @@ md" **Ejercicio** Crea una función `caminataAleatoria` que
 md"""**Ejercicio** Crea una función `graficaCaminata` que
 
 * tome como entrada un arreglo -que supondremos que simula una caminata aleatoria en una dimensión- y 
-* devuelva como salida una gráfica de posición contra número de pasos, con etiquetas en los ejes.
+* devuelva como salida una gráfica de posición contra número de pasos, usando _puntos_ (`scatter`) y con etiquetas en los ejes.
 
 (Sugerencia: Crea un bloque de código con `begin` y `end` para poder hacer todo en una sola celda de Pluto.)
 
-Luego, en una celda aparte, define una variable `x` como un número entero positivo y aplica tu función `graficaCaminata` a `caminataAleatoria(x)` para generar gráficas de caminatas aleatorias.
+Luego, en una celda aparte, define una variable `n2` como un número entero positivo y aplica tu función `graficaCaminata` a `caminataAleatoria(n2)` para generar gráficas de caminatas aleatorias.
 """
 
 # ╔═╡ 1ed85ab5-476d-4851-a0ab-c627f972b2c9
 # Tu código (comentado) va aquí :)
 
 # ╔═╡ 07edca52-f4bc-478f-b823-9811c320e171
-md"**Ejercicio** Crea una función `graficaCaminata!` que sea una versión modificadora de la función anterior y genera una gráfica con 5 caminatas aleatorias.
+md"**Ejercicio** Crea una función `graficaCaminata!` que sea una versión modificadora de la función anterior y utilice gráficas con líneas rectas punteadas (pues esto nos ayudará a discernir las trayectorias de distintos puntos más fácilmente). Luego, genera una gráfica con 5 caminatas aleatorias.
 "
 
 # ╔═╡ 896d6213-105b-403f-8aed-632303c7ba2b
@@ -135,18 +135,18 @@ Utiliza tu función `aleatorioUniforme` para generar números aleatorios en el i
 md"""**Ejercicio** Crea una función `graficaCaminata2D` que
 
 * tome como entrada un arreglo con dos subarreglos -que, supondremos, simulan una caminata aleatoria en dos dimensiones- y 
-* devuelva como salida una gráfica bidimensional que muestre la trayectoria de la caminata.
+* devuelva como salida una gráfica bidimensional que muestre la trayectoria de la caminata con una línea punteada.
 
 (Sugerencia: Crea un bloque de código con `begin` y `end` para poder hacer todo en una sola celda de Pluto.)
 
-Luego, en una celda aparte, define una variable `x` como un número entero positivo y aplica tu función `graficaCaminata2D` a `caminataAleatoria2D(x)` para generar gráficas de caminatas aleatorias en dos dimensiones.
+Luego, en una celda aparte, define una variable `n3` como un número entero positivo y aplica tu función `graficaCaminata2D` a `caminataAleatoria2D(n3)` para generar gráficas de caminatas aleatorias en dos dimensiones.
 """
 
 # ╔═╡ d292165a-b37b-47a6-a61e-dbdafbf1f928
 # Tu código (comentado) va aquí :)
 
 # ╔═╡ eb7afba3-6d48-4406-8ac7-75521a965a14
-md"**Ejercicio** Crea una función `graficaCaminata2D!` que sea una versión modificadora de la función anterior y genera una gráfica con 5 caminatas aleatorias.
+md"**Ejercicio** Crea una función `graficaCaminata2D!` que sea una versión modificadora de la función anterior. Luego, genera una gráfica con 5 caminatas aleatorias en dos dimensiones (espaciales).
 "
 
 # ╔═╡ ff3c8595-0466-412e-b20b-30336916f573
@@ -169,12 +169,9 @@ md"**Ejercicio** ¡Haz una caminata aleatoria en tres dimensiones espaciales y g
 # ╔═╡ 9bdee65a-5b90-4e1f-aec8-9939ba1c32e3
 md""" #### Nota final
 
-Como aclaración, la razón por la cual en los **Ejercicios** de los _notebooks_ de este curso generalmente se definen muchas funciones "pequeñas" que luego se unen en una función "grande" _no es necesariamente porque esto sea **siempre** la mejor práctica_, sino por una cuestión pedagógica. Cuando estamos aprendiendo a programar y queremos implementar la solución a un problema, es mucho más fácil dividirlo en problemas más pequeños y fáciles de atacar que, después de solucionar, podamos integrar en una solución al problema principal. Sin embargo, para hacer un uso eficiente de los recursos computacionales, generalmente no es recomendable crear funciones que hagan _cada pequeña cosa_, pues todas ellas ocupan espacio en la memoria, por lo que es preferible hacer una implementación más deliberada una vez resuelto el problema usando la estrategia anterior. Recordemos que la principal utilidad de las funciones está en crear bloques de código _reutilizables_ por lo que, una vez implementado un programa, debe encontrarse un punto medio entre cuantas funciones _realmente necesitamos_ por su reutilizabilidad y cuántos recursos computacionales que nuestro programa ocupe.
+Como aclaración, la razón por la cual en los **Ejercicios** de los _notebooks_ de este curso generalmente se definen muchas funciones "pequeñas" que luego se unen en una función "grande" _no es necesariamente porque esto sea **siempre** la mejor práctica_, sino por una cuestión pedagógica. Cuando estamos aprendiendo a programar y queremos implementar la solución a un problema, es mucho más fácil dividirlo en problemas más pequeños y fáciles de atacar que, después de solucionar, podamos integrar en una solución al problema principal. Sin embargo, para hacer un uso eficiente de los recursos computacionales, generalmente no es recomendable crear funciones que hagan _cada pequeña cosa_, pues todas ellas ocupan espacio en la memoria, por lo que es preferible hacer una implementación más deliberada una vez resuelto el problema usando la estrategia anterior. Recordemos que la principal utilidad de las funciones está en crear bloques de código _reutilizables_ por lo que, una vez implementado un programa, debe encontrarse un punto medio entre cuántas funciones _realmente necesitamos_ por su reutilizabilidad y cuántos recursos computacionales  tenemos a nuestra disposición.
 
 """
-
-# ╔═╡ a915b9c9-5bd2-49e0-9e9e-e188072fc6b7
-
 
 # ╔═╡ 8a5ab06a-12c5-4966-ba10-6d33e920f730
 md""" ## Recursos complementarios
@@ -236,7 +233,6 @@ manifest_format = "2.0"
 # ╟─ef1706ee-85dc-422b-98fa-aa43f75ae098
 # ╠═48e666c6-3a29-4ebb-993f-06696a49b025
 # ╟─9bdee65a-5b90-4e1f-aec8-9939ba1c32e3
-# ╠═a915b9c9-5bd2-49e0-9e9e-e188072fc6b7
 # ╟─8a5ab06a-12c5-4966-ba10-6d33e920f730
 # ╟─74e480de-ae20-46ca-a65a-6fb8db3fc202
 # ╟─00000000-0000-0000-0000-000000000001
