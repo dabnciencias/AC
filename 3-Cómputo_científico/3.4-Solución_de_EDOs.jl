@@ -319,7 +319,7 @@ md"""
 
 # ╔═╡ fc7efcf9-70ca-4c3d-9822-720c67dcc7f7
 md""" ## Créditos
-Este notebook de Pluto fue basado parcialmente en el notebook de Jupyter `13. Ecuaciones diferenciales ordinarias - metodo de Euler.ipynb` del repositorio [`FisicaComputacional2019_3`](https://github.com/dpsanders/FisicaComputacional2019_3/) del Dr. David Philip Sanders. 
+Este _notebook_ de Pluto fue basado parcialmente en el _notebook_ de Jupyter `13. Ecuaciones diferenciales ordinarias - metodo de Euler.ipynb` del repositorio [`FisicaComputacional2019_3`](https://github.com/dpsanders/FisicaComputacional2019_3/) del Dr. David Philip Sanders. 
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
