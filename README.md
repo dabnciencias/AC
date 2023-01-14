@@ -1,18 +1,21 @@
 # AC
-  Repositorio de [mi curso de Algoritmos Computacionales en la Facultad de Ciencias (UNAM)](https://www.fciencias.unam.mx/docencia/horarios/presentacion/333034).
+
+![](https://github.com/dabnciencias/AC/blob/main/misc/AC_2023-II.gif)
+
+Repositorio de [mi curso de Algoritmos Computacionales en la Facultad de Ciencias (UNAM)](https://www.fciencias.unam.mx/docencia/horarios/presentacion/343139).
 
 ## ¿Cómo puedo ejecutar los _notebooks_ del curso desde mi computadora?
 
 Para poder ejecutar los _notebooks_ localmente en tu computadora es necesario instalar [Julia](https://julialang.org/), [Jupyter](https://jupyter.org/), [Git](https://git-scm.com/doc), [IJulia](https://julialang.github.io/IJulia.jl/stable/) y [Pluto](https://github.com/fonsp/Pluto.jl):
-* **Julia** es el lenguaje en el cual están escritos los programas del repositorio,
-* **Jupyter** es un entorno cómodo para aprender a programar con el cual podremos abrir los _notebooks_ de Jupyter del repositorio (archivos con formato .ipynb),
+* **Julia** es el lenguaje de programación en el cual están escritos la mayoría de los programas del repositorio,
+* **Jupyter** es un entorno cómodo para aprender a programar con el cual podremos abrir los _notebooks_ (cuadernos interactivos) de Jupyter del repositorio (archivos con formato `.ipynb`),
 * **Git** nos servirá para "clonar" (es decir, descargar) el repositorio y actualizarlo cuando sea necesario (en el caso particular de sistemas operativos basados en Arch Linux, también nos ayudará a poder instalar los programas anteriores),
 * **IJulia** nos permitirá ejecutar código de Julia en los _notebooks_ de Jupyter y 
-* **Pluto** es un entorno reactivo con el cual podremos abrir y ejecutar los _notebooks_ de Pluto del repositorio (archivos con formato .jl, el formato estándar de los programas escritos en Julia).
+* **Pluto** es un entorno reactivo con el cual podremos abrir y ejecutar los _notebooks_ de Pluto del repositorio (archivos con formato `.jl`, el formato estándar de los programas escritos en Julia).
 
 A continuación, detallamos los pasos que debes seguir en distintos sistemas operativos para poder ejecutar los _notebooks_ del curso localmente en tu computadora. 
 
-**Si utilizas alguna otra distribución de Linux u otro sistema operativo distinto a los mencionados a continuación y necesitas soporte, contacta al profesor o al ayudante.**
+**Si utilizas alguna otra distribución de Linux u otro sistema operativo distinto a los mencionados a continuación y necesitas soporte técnico, contacta al ayudante del curso.**
 
 ### GNU/Linux y MacOS
 
@@ -88,4 +91,4 @@ En la [siguiente liga](https://colab.research.google.com/github/ageron/julia_not
 
 1. Anaconda  
 Una forma más sencilla (pero menos recomendada por el peso de descarga) para hacer la instalación es utilizando Anaconda Navigator.
-Puedes descargar Anaconda directamente desde [su página web](https://www.anaconda.com/products/individual). Si decides utilizar esta opción de descarga y necesitas soporte, contacta directamente al ayudante del curso.
+Puedes descargar Anaconda directamente desde [su página web](https://www.anaconda.com/products/individual). Si decides utilizar esta opción de descarga y necesitas soporte técnico, contacta directamente al ayudante del curso.

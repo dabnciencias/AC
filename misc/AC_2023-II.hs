@@ -53,7 +53,7 @@ curso = withSubglyphs [0] (withStrokeColorPixel miNaranja) $ withSubglyphs [0] (
 
 semestre :: SVG      
 semestre = withSubglyphs [0..3] (withStrokeColorPixel miAzul) $ withSubglyphs [0..3] (withFillColorPixel miAzul) $  withSubglyphs [5,6] (withStrokeColorPixel miRojo) $ withSubglyphs [5,6] (withFillColorPixel miRojo) $ withStrokeWidth 0 $ withFillOpacity 1 $ withStrokeColor "white" $ withFillColor "white" $ center $
-         latex "2022-II"
+         latex "2023-II"
 
 ---------------------------------------------------------------------------------
 ----------------------- Colores definidos con código RGBA. ----------------------
