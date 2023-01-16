@@ -1,4 +1,3 @@
-.ipynb_checkpoints
 .DS_Store
 *.aux
 *.fdb_latexmk
@@ -6,3 +5,5 @@
 *.log
 *.out
 *.synctex.gz
+__pycache__/
+.ipynb_checkpoints/
