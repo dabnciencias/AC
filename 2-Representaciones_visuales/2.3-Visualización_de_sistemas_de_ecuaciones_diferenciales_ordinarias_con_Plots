@@ -1,0 +1,11 @@
+### A Pluto.jl notebook ###
+# v0.19.19
+
+using Markdown
+using InteractiveUtils
+
+# ╔═╡ 7d0e5604-96ba-11ed-3a2e-0bf1253d0ebe
+md"# Visualización de sistemas de ecuaciones diferenciales ordinarias con Plots"
+
+# ╔═╡ Cell order:
+# ╠═7d0e5604-96ba-11ed-3a2e-0bf1253d0ebe

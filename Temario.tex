@@ -61,52 +61,53 @@
 
 \begin{document}
 \title{Temario de Algoritmos Computacionales}
-\author{Diego Alberto Barceló Nieves \\ Facultad de Ciencias \\ Universidad Nacional Autónoma de México}
+\author{M. en C. Diego Alberto Barceló Nieves \\ Facultad de Ciencias \\ Universidad Nacional Autónoma de México}
 \date{}
 \maketitle
 
-El siguiente temario está basado en el \href{https://www.fciencias.unam.mx/estudiar-en-ciencias/estudios/licenciaturas/asignaturas/2016/1430}{temario oficial del curso}. Al elaborarlo, asumimos que quienes tomarán el curso no tienen experiencia previa con programación, pero sí tienen bases teóricas sólidas de álgebra superior y cálculo diferencial e integral de una variable, así como nociones básicas de ecuaciones diferenciales ordinarias, pues esto último será necesario en el módulo 3. Para los módulos 1, 2 y 3 utilizaremos el lenguaje de programación \href{https://julialang.org/}{Julia}. La duración aproximada de cada módulo se indica en paréntesis.
+El siguiente temario está basado en el \href{https://www.fciencias.unam.mx/estudiar-en-ciencias/estudios/licenciaturas/asignaturas/2016/1430}{temario oficial del curso}. Al elaborarlo, asumimos que quienes tomarán el curso no tienen experiencia previa con programación, pero sí tienen bases teóricas sólidas de álgebra lineal y cálculo diferencial e integral de una variable, así como nociones básicas de ecuaciones diferenciales ordinarias. Para los Módulos 1, 2 y 3 utilizaremos el lenguaje de programación \href{https://julialang.org/}{Julia}. La duración aproximada de cada módulo se indica en paréntesis.
 
 \setcounter{section}{-1}
 
-\section{Introducción a la programación (2 semanas)} \label{Sec: Introducción a la programación (2 semanas)} 
+\section{Introducción a la programación (3 semanas)} \label{Sec: Introducción a la programación (3 semanas)} 
 
 \begin{enumerate}[label=\arabic*.]
 
     \item ¿Qué es un programa? (Paradigma imperativo de la programación)
 
-    \item ¿Cómo se ejecuta un programa? (Lenguaje de programación, código fuente y sintáxis, comentarios y mensajes de error)
-    \item Licencias: legalidad y ética. (\emph{Software} de código abierto/cerrado y \emph{software} privativo/libre)
+    \item ¿Qué ocurre cuando se ejecuta un programa? (Código de máquina y código fuente, lenguajes de programación, sintáxis y semántica, comentarios y mensajes de error)
+    \item Licencias: legalidad y ética. (\emph{Software} de código cerrado y de código abierto, \emph{software} privativo y \emph{software} libre)
     \item ¿Cómo escribo y ejecuto un programa? (Editor de texto y terminal virtual, REPLs e IDEs)
     \item ¿Cómo aprendo a programar? (Manuales, documentación y foros de preguntas)
     \item Herramientas útiles para hacer programación. (\href{https://jupyter.org/}{Jupyter} y \href{https://github.com/fonsp/Pluto.jl/blob/main/README.md}{Pluto}, \href{https://git-scm.com/}{Git} y \href{https://github.com/}{GitHub}/\href{https://about.gitlab.com/}{GitLab})
+    \item Algoritmos, diagramas de flujo y diseño de pseudocódigo.
 \end{enumerate}
 
-\section{Estructura básica de la programación (6 semanas)} \label{Sec: Estructura básica de la programación (3 semanas)}
+\section{Estructura básica de la programación (4 semanas)} \label{Sec: Estructura básica de la programación (4 semanas)}
 
 \begin{enumerate}[label=\arabic*.]
 
-    \item Operaciones aritméticas y tipos de datos numéricos. (Precedencia y asociatividad de operadores)
-    \item Sistemas numéricos de punto flotante y error numérico. (Épsilon de máquina y propagación de errores)
-    \item Operaciones lógicas y valores Booleanos.
-    \item Tipos de datos de texto, arreglos, variables y conversión de tipos implícita.
-    \item Algoritmos, diagramas de flujo y control de flujo.
-    \item Declaraciones condicionales. (Declaraciones \emph{if}, \emph{else} y \emph{elseif})
-    \item Ciclos iterativos. (ciclos \emph{while} y \emph{for}, rangos y arreglos por comprensión) 
-    \item Funciones y ciclos recursivos.
+    \item Operadores aritméticos y tipos de datos numéricos. (Precedencia y asociatividad)
+    \item Sistemas numéricos de punto flotante y error numérico. (Épsilon de máquina y propagación de error)
+    \item Tipos de datos de texto y arreglos. (Matrices, vectores, índices y subarreglos)
+    \item Variables, constantes y funciones. (Manejo de memoria y recursividad)
+    \item Operaciones lógicas y valores Booleanos. (Operadores lógicos y de comparación)
+    \item Condicionales y control de flujo. (Declaraciones \texttt{if}, \texttt{else} y \texttt{elseif})
+    \item Ciclos. (Ciclos iterativos \texttt{while}, \texttt{for}, y ciclos recursivos)
     \item Estructura de la programación modular. (Bibliotecas)
 \end{enumerate}
 
-\section{Representaciones visuales (2 semanas)} \label{Sec: Representaciones visuales (2 semanas)}
+\section{Representaciones visuales (3 semanas)} \label{Sec: Representaciones visuales (3 semanas)}
 
 \begin{enumerate}[label=\arabic*.]
 
-    \item Visualización de datos con \href{https://docs.juliaplots.org/latest/}{Plots}.
     \item Gráficación de funciones y animaciones con \href{https://docs.juliaplots.org/latest/}{Plots}.
+    \item Visualización de datos con \href{https://docs.juliaplots.org/latest/}{Plots}.
+    \item Visualización de sistemas de ecuaciones diferenciales ordinarias con \href{https://docs.juliaplots.org/latest/}{Plots}.
     \item Manipulación de imágenes digitales con \href{https://juliaimages.org/latest/}{JuliaImages}.
 \end{enumerate}
 
-\section{Cómputo científico (5 semanas)} \label{Sec: Cómputo científico: construcción de pseudocódigo e implementación en código (8 semanas)}
+\section{Cómputo científico (4 semanas)} \label{Sec: Cómputo científico: construcción de pseudocódigo e implementación en código (4 semanas)}
 
 \begin{enumerate}[label=\arabic*.]
 
@@ -117,13 +118,15 @@ El siguiente temario está basado en el \href{https://www.fciencias.unam.mx/estu
     \item Caminante aleatorio.
 \end{enumerate}
 
-\section{Introducción a otros lenguajes de programación (1 semana)} \label{Sec: Introducción a otros lenguajes de programación (1 semana)}
+\section{Introducción a otros lenguajes de programación (2 semanas)} \label{Sec: Introducción a otros lenguajes de programación (2 semana)}
 
 \begin{enumerate}[label=\arabic*.]
 
-    \item Cómputo científico con GNU Octave como alternativa a MATLAB y Mathematica.
-    \item Análisis estadístico con R como alternativa a SAS.
-    \item Animaciones programáticas en Python con \hyperlink{https://github.com/ManimCommunity/manim}{Manim} (introducción a programación orientada a objetos).
+    \item Introducción a Python. (Sintáxis, tipos de datos básicos y funciones con cantidades variables de parámetros)
+
+    \item Introducción a Programación Orientada a Objetos. (Clases y objetos, parámetros y atributos, herencia y polimorfismo)
+
+    \item Introducción a \href{https://www.manim.community/}{Manim}.
 \end{enumerate}
 
 \section*{Bibliografía recomandada para el curso} \label{Sec: Bibliografía}
