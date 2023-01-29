@@ -74,9 +74,15 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 
 #### Git/GitHub
 1. Crea una cuenta en la [página oficial de GitHub](https://github.com) usando tu correo @ciencias.
-1. Descarga GitHub Desktop desde la [página oficial](https://desktop.github.com/).
-1. Inicia GitHub Desktop dando click en el icono que se haya creado en tu escritorio y vincula tu sesión con la cuenta que acabas de crear.
-1. Para clonar el repositorio del curso en tu computadora da click en el botón 'Clonar un repositorio de internet', selecciona la pestaña correspondiente a 'URL', copia y pega la siguiente liga: `https://github.com/dabnciencias/AC` y determina la ubicación en la que quieres que se guarde el repositorio en el campo 'Local path' (puedes dejar ese campo con el valor predeterminado). Da click en el botón 'Clone' y espera a que se complete la carga, una vez que haya terminado podrás encontrar los archivos del repositorio en la ubicación que hayas determinado en el 'Local path'. Para una explicación más detallada visita la [siguiente página](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-a-repository-from-github-to-github-desktop).
+1. Descarga Git desde la [página oficial de Git](https://git-scm.com/download/win) (download for Windows).
+1. Ejecuta el instalador para Windows descargado (archivo con extensión `.exe`).
+1. Acepta los términos y revisa las configuraciones durante la installación. Se recomienda que selecciones 
+las configuraciones por defecto que ya vienen marcadas. 
+1. Selecciona el IDE de preferencia para integrar Git. Este paso no es tan relevante, si no tienes un IDE de preferencia elige
+cualquiera.
+1. Para clonar el repositorio del curso lleva a cabo los siguientes pasos. Abre Git Bash desde tu buscador de Windows,
+localízate en la carpeta donde quieres clonar el repositorio. Una vez que estés en esa carpeta ejecuta el comando:
+`git clone https://github.com/dabnciencias/AC`.
 
 ### Alternativas para cualquier sistema operativo
 1. Google Colab  
