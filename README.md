@@ -76,13 +76,10 @@ A continuación, detallamos los pasos que debes seguir en distintos sistemas ope
 1. Crea una cuenta en la [página oficial de GitHub](https://github.com) usando tu correo @ciencias.
 1. Descarga Git desde la [página oficial de Git](https://git-scm.com/download/win) (download for Windows).
 1. Ejecuta el instalador para Windows descargado (archivo con extensión `.exe`).
-1. Acepta los términos y revisa las configuraciones durante la installación. Se recomienda que selecciones 
-las configuraciones por defecto que ya vienen marcadas. 
-1. Selecciona el IDE de preferencia para integrar Git. Este paso no es tan relevante, si no tienes un IDE de preferencia elige
-cualquiera.
-1. Para clonar el repositorio del curso lleva a cabo los siguientes pasos. Abre Git Bash desde tu buscador de Windows,
-localízate en la carpeta donde quieres clonar el repositorio. Una vez que estés en esa carpeta ejecuta el comando:
-`git clone https://github.com/dabnciencias/AC`.
+1. Acepta los términos y revisa las configuraciones durante la instalación. Se recomienda que selecciones las configuraciones predeterminadas.
+1. Selecciona tu IDE de preferencia para integrar Git. Si no tienes preferencia, elige cualquiera.
+1. Para clonar el repositorio del curso, abre Git Bash desde tu buscador de Windows,
+navega hasta la carpeta donde quieres clonar el repositorio y ejecuta el siguiente comando: `git clone https://github.com/dabnciencias/AC`.
 
 ### Alternativas para cualquier sistema operativo
 1. Google Colab  
