@@ -14,3 +14,5 @@ class Curso(Scene):
         semestre[0][5:7].set_color(ROJO)
         self.play(Write(curso), run_time=2)
         self.play(Write(semestre), run_time=2)
+        self.wait()
+        self.play(FadeOut(curso, semestre))
