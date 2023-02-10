@@ -1,6 +1,6 @@
-# Uso de la linea de comandos o shell
+# Uso de la línea de comandos o shell
 
-El shell (o linea de comandos) es un lenguanje de comandos interactivos y un lengujae de programación, es usado por el sistema operativo para controlar la ejecución del sistema usando scripts de shell y también es útil para automatizar una variedad de tareas.
+El shell (o línea de comandos) es un lenguanje de comandos interactivos y un lengujae de programación. Es usado por el sistema operativo para controlar la ejecución del sistema usando scripts de shell y también es útil para automatizar una variedad de tareas.
 
 Es usado principalmente en sistemas operativos basados en Linux y Unix (como MacOS), existen distintos shells pero los más comunes son *bash*, *zsh* y *PowerShell*
 
@@ -8,7 +8,7 @@ Es usado principalmente en sistemas operativos basados en Linux y Unix (como Mac
 - zsh: shell predeterminado de MacOS
 - PowerShell: shell de Windows
 
-Puedes acceder a la linea de comandos dando click en la aplicación de 'Terminal' en Linux y MacOS o bien en la aplicación de 'PowerShell' en Windows, al abrirlo verás algo similar a esto:
+Puedes acceder a la línea de comandos dando clic en la aplicación de 'Terminal' en Linux y MacOS o bien en la aplicación de 'PowerShell' en Windows. Al abrirlo, verás algo similar a esto:
 
 ![prompt](prompt.png)
 
@@ -31,7 +31,7 @@ por ejemplo, para obtener la documentación del comando `ls`, se puede usar `man
 
 ## Movimientos básicos
 
-Los siguientes comandos pueden ser usados para moverte através de tus directorios
+Los siguientes comandos pueden ser usados para moverte a través de tus directorios
 
 | Comando | Descripción |
 | --- | --- |
@@ -47,7 +47,7 @@ Los siguientes comandos pueden ser usados para moverte através de tus directori
 
 ## Caracteres especiales
 
-Los siguientes caracteres especiales son de mucha ayuda cuando navegamos entre directorios, prueba usando el comando `cd` con el caracter especial `~` que indica el "home directory", *i.e.* usa el comando `cd ~` para cambiar a tu directorio principal
+Los siguientes caracteres especiales son de mucha ayuda cuando navegamos entre directorios; prueba usando el comando `cd` con el caracter especial `~` que indica el "home directory", *i.e.* usa el comando `cd ~` para cambiar a tu directorio principal.
 
 | Caracter especial | Descripción |
 | --- | --- |
@@ -63,14 +63,14 @@ Los siguientes caracteres especiales son de mucha ayuda cuando navegamos entre d
 | --- | --- |
 | cat | imprime todo el contenido de un archivo |
 | less/more | accede al contenido de un archivo por partes. Para navegar por la página usa las flechas hacia arriba y abajo o la barra espaciadora, para salir de la pagina de documentación usa la tecla `q` (quit). |
-| head | imprime las 10 primeras lineas de un archivo |
-| tail | imprime las 10 últimas lineas de un archivo |
+| head | imprime las 10 primeras líneas de un archivo |
+| tail | imprime las 10 últimas líneas de un archivo |
 | diff | compara las diferencias entre dos archivos |
 
 
 ### Editores de texto (nano)
 
-Existen una amplia variedad de editores de texto desde la terminal, sin embargo `nano` es el editor más sencillo. Nano te permite crear y editar archivos de texto (.py, .jl, .md, .txt, .csv, etc), para acceder a él utiliza el comando `nano` y el nombre del archivo que quieres crear o editar
+Existen una amplia variedad de editores de texto desde la terminal, sin embargo `nano` es el editor más sencillo. Nano te permite crear y editar archivos de texto (.py, .jl, .md, .txt, .csv, etc). Para acceder a él utiliza el comando `nano` y el nombre del archivo que quieres crear o editar
 
 ```
 $ nano filename.txt
@@ -85,7 +85,7 @@ Los atajos más importantes son aquellos para guardar y salir del archivo.
 - Save: Ctrl-o + Enter
 - Exit: Ctrl-x
 
-Si tratas de salir sin guardar los cambios aparecerá un mensaje en la parte inferior preguntando si quieres guardar antes de salir, escribe la letra `y` para 'yes', `n` para 'no' o Ctrl-C para cancelar.
+Si tratas de salir sin guardar los cambios aparecerá un mensaje en la parte inferior preguntando si quieres guardar antes de salir, escribe la letra `y` para 'yes', `n` para 'no' o `Ctrl-C` para cancelar.
 
 
 ## Ejemplos
@@ -116,7 +116,7 @@ Imaginemos que tenemos la siguiente estructura de archivos en nuestro home direc
 - `cp`
     - `cp books files` - copia la carpeta `books` en la carpeta `files`
 
-## Recursos
+## Recursos complementarios
 
 - [Command Line Crash Course](https://learnpythonthehardway.org/book/appendixa.html). Appendix A of Learn Python the Hard Way by 
 - (The Missing Semester of Your CS Education)[https://missing.csail.mit.edu/]. MIT course
