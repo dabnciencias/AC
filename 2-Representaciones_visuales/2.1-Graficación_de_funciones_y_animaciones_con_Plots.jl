@@ -38,7 +38,7 @@ md"# Graficación de funciones y animaciones con _Plots_"
 # ╔═╡ b3f850d8-60d4-4798-9beb-d42a9cdac9ae
 md"## Graficación de funciones
 
-Las computadoras grafican funciones de la misma manera en que tú lo haces en papel: forman un _arreglo_ con algunos valores de la variable independiente junto a sus respectivas imágenes bajo la función (a este proceso, como quizás recuerdes, se le llama _tabulación_), y luego marcan esos puntos sobre un plano cartesiano o espacio euclideano, dependiendo del tipo de función que se trate. La principal diferencia entre tú y ellas es la apantallante **velocidad** con la que ellas pueden hacerlo, por lo que a menudo resulta conveniente asignarles esa tarea ;)
+Las computadoras grafican funciones de la misma manera en que tú lo haces en papel: forman un _arreglo_ con algunos valores de la variable independiente junto a sus respectivas imágenes bajo la función (a este proceso, como quizás recuerdes, se le llama _tabulación_), y luego marcan esos puntos sobre un plano cartesiano o espacio euclideano, dependiendo del tipo de función que se trate. La principal diferencia entre tú y ellas es la apantallante **velocidad** con la que ellas pueden hacerlo, por lo que a menudo resulta conveniente asignarles esta tarea ;)
 
 "
 
@@ -47,29 +47,29 @@ md" ### Gráficas bidimensionales
 
 #### Las funciones `plot` y `scatter`
 
-¡Empecemos a graficar! La principales funciones para graficar de la biblioteca `Plots` son `plot` -para funciones continuas- y `scatter` -para conjuntos discretos de datos. Empezaremos graficando con el comando `plot(func,arr)`, donde `func` es el **nombre** de la función que queremos graficar y `arr` es el arreglo con el que queremos que tabule. Por ejemplo, grafiquemos la función `sin` de `0` a `2π`:
+¡Empecemos a graficar! Las principales funciones para graficar del paquete `Plots` son **`plot`** -para funciones continuas- y **`scatter`** -para conjuntos discretos de datos. Empezaremos graficando con el comando `plot(func,arr)`, donde `func` es el **nombre** de la función que queremos graficar y `arr` es el arreglo a partir del cual queremos que tabule. Por ejemplo, grafiquemos la función `sin` de `0` a `2π`:
 
 "
 
 # ╔═╡ 67c22c14-24a6-4080-803b-fba2be7d0fa4
-plot(sin,0:2π) # Grafica "sin" en el rango 0:2π
+plot(sin,0:2π) #Grafica "sin" en el rango 0:2π
 
 # ╔═╡ 22a9aee4-4c6d-47d3-8cca-e41e542a84ed
 md"""
 
-¡Se ve horrible! ¡¿Qué sucedió?! Observemos más de cerca lo que pusimos:
+¡Se ve horrible! ¡¿Qué sucedió?! Observemos más atentamente los argumentos que le pusimos a `plot`:
 * `sin` es la implementación de la función $\sin(x)$ en Julia, así que no hay problema ahí;
-* `0:2π` es un arreglo de `0` a `2π`... _¡con "pasos" de longitud uno!_
-
-Por lo tanto, al correr la celda anterior en realidad sólo hicimos que Julia tabulara los valores de `sin` en los enteros entre `0` y `2π`. Nota que la función `plot` luego _unió los puntos tabulados con líneas rectas_; para ver sólo los puntos tabulados, podemos utilizar la función `scatter` con la misma sintáxis `scatter(func,arr)`:
-
+* `0:2π` es un arreglo de `0` a `2π`... _¡con "pasos" de tamaño uno!_
 """
 
+# ╔═╡ 9520d566-f123-4b83-aa35-daebe75a83bd
+md"Por lo tanto, al ejecutar la celda anterior en realidad sólo hicimos que Julia tabulara los valores de `sin` en los números _enteros_ entre `0` y `2π`. Nota que la función `plot` luego _unió los puntos tabulados con líneas rectas_; para ver sólo los puntos tabulados, podemos utilizar la función `scatter` con la misma sintáxis, i.e. `scatter(func,arr)`:"
+
 # ╔═╡ 9bfbf61b-66b5-42d3-878b-fb02dd6d41ee
-scatter(sin,0:2π) # Tabula "sin" en el rango 0:2π
+scatter(sin,0:2π) #Tabula "sin" en el rango 0:2π
 
 # ╔═╡ e16ca2f5-4af7-4d16-b76e-4f124e1ddbbf
-md"""
+md"
 
 Lo que hacen ambas funciones es
 * tomar el arreglo de puntos de la variable independiente dado y
@@ -78,11 +78,13 @@ Lo que hacen ambas funciones es
 en lo que difieren es que
 * `scatter` _grafica los pares ordenados_ obtenidos de la tabulación _con puntos_, mientras que
 * `plots` _une los pares ordenados_ obtenidos de la tabulación _con líneas rectas_.
+"
 
-Para mejorar la gráfica que hicimos con `plot`, podemos meter un "tamaño de paso" más pequeño en el arreglo que le alimentamos a la función `plot`: """
+# ╔═╡ 7aaa5703-23a4-4c5d-8a1a-c12ff73d5a14
+md"""Para mejorar la gráfica que hicimos con `plot`, podemos meter un "tamaño de paso" más pequeño en el arreglo que le alimentamos a la función `plot`:"""
 
 # ╔═╡ 98c6c916-cdfa-4bc1-baad-8888aace5c98
-plot(sin,0:0.05:2π) # ¡Mucho mejor! :D
+plot(sin,0:0.05:2π) #¡Mucho mejor! :D
 
 # ╔═╡ c6a475fd-bef2-4c09-a03b-211f6676d215
 md"
@@ -91,31 +93,29 @@ Dado que evaluar una infinidad de valores le tomaría a una computadora una infi
 
 Sin embargo, podemos controlar el _nivel de detalle_ de nuestra gráfica controlando _el número de puntos en el arreglo de entrada_. Una forma de hacer esto es:
 * definir los extremos del dominio de nuestra gráfica,
-* crear un arreglo de intervalos uniformes de longitud `l` que cubran todo el dominio de nuestra gráfica, y
+* crear un arreglo de intervalos uniformes de longitud paramétrica `l` que cubran el dominio de nuestra gráfica, y
 * modificar el parámetro `l` a nuestra conveniencia.
 
 "
 
-# ╔═╡ 7a1e75c3-d56b-411e-a82c-f4b53302ac23
-md"  "
-
 # ╔═╡ d2472d6a-7072-49ae-ba55-207db17be3ca
 begin
-    l = 2          # ¡Cambia el valor de l y corre la celda,
-    plot(sin,0:l:2π) # y observa qué sucede con la gráfica!
+	l = 2            #¡Cambia el valor asignado a l, ejecuta la celda
+	plot(sin,0:l:2π) #y observa qué sucede con la gráfica!
 end
 
 # ╔═╡ 4d136dae-c66d-4c9e-a267-12b2fa9fd596
-md""" Con un poquito de 'magia' de Pluto, podemos hacer que el parámetro de longitud sea _interactivo_ (también existe una manera de hacer esto en Jupyter). Nota que cambiaremos el nombre del parámetro a `l1` para no generar conflicto con la variable `l` definida anteriormente pues, en Pluto, cada vez que corres una celda, Pluto después vuelve a correr todas las demás celdas para "actualizarlas". """
+md""" Con un poquito de 'magia' de Pluto, podemos hacer que el parámetro de longitud sea _interactivo_ (también existe una manera de hacer esto en Jupyter). Nota que cambiaremos el nombre del parámetro a `l1` para no generar conflicto con la variable `l` definida anteriormente pues, en Pluto, cada vez que ejecutas una celda, Pluto después vuelve a ejecutar todas las demás celdas para "actualizarlas". """
 
 # ╔═╡ af69d454-96fc-4e92-af71-1251cf99ae38
 @bind l1 Slider(0.05:0.05:2, default=0.5)
-
-# ╔═╡ cdd16f8e-e945-4d5f-a71d-6896f9146512
-l1
+#Asignamos un valor a 'l1' a través de un deslizador interactivo que toma valores en 0.05:0.05:2.
 
 # ╔═╡ 576a42f0-bd11-4480-9e97-2f9098312a25
 plot(sin,0:l1:2π)
+
+# ╔═╡ cdd16f8e-e945-4d5f-a71d-6896f9146512
+l1 #Mostramos el valor asignado a 'l1'
 
 # ╔═╡ 35d05477-a09e-4077-8513-2ac7dba4def1
 scatter(sin,0:l1:2π)
@@ -123,7 +123,7 @@ scatter(sin,0:l1:2π)
 # ╔═╡ fe4198bf-345a-46e5-bfeb-15619bd76f3a
 md""" #### Las funciones "modificadoras" `plot!` y `scatter!`
 
-El ejemplo anterior se varía mejor si pudiéramos encimar ambas gráficas. Para esto existen las funciones `plot!` y `scatter!` que, a diferencia de `plot` y `scatter`, _no borran las gráficas anteriores_ sino que _dibujan encima de ellas_.
+El ejemplo anterior se vería mejor si pudiéramos encimar ambas gráficas. Para esto existen las funciones **`plot!`** y **`scatter!`** que, a diferencia de `plot` y `scatter`, _no borran las gráficas anteriores_ sino que _dibujan encima de ellas_.
 
 """
 
@@ -135,8 +135,8 @@ l2
 
 # ╔═╡ 4d68a04e-6502-4478-a9c2-8a81bcc2b282
 begin
-    plot(sin,0:l2:2π)     # Haz una gráfica tipo 'plot' y luego
-    scatter!(sin,0:l2:2π) # haz una gráfica tipo 'scatter' encima
+    plot(sin,0:l2:2π)     #Haz una gráfica tipo 'plot' y luego
+    scatter!(sin,0:l2:2π) #haz una gráfica tipo 'scatter' encima.
 end
 
 # ╔═╡ d8875d6b-7a53-43ad-87b4-5088e0fc9eac
@@ -144,8 +144,8 @@ md" Noten que el código anterior esencialmente da el mismo resultado que"
 
 # ╔═╡ 0dd653e6-323f-450d-9097-ba4c0a304aa3
 begin
-    scatter(sin,0:l2:2π) # Haz una gráfica tipo 'scatter' y luego
-	plot!(sin,0:l2:2π)   # haz una gráfica tipo 'plot' encima
+    scatter(sin,0:l2:2π) #Haz una gráfica tipo 'scatter' y luego
+	plot!(sin,0:l2:2π)   #haz una gráfica tipo 'plot' encima.
 end
 
 # ╔═╡ 809327b3-0353-4519-a586-93403d121169
@@ -163,16 +163,16 @@ La única diferencia entre las dos figuras anteriores es el color de cada gráfi
 
 # ╔═╡ d0ec9526-1bf9-4e38-be43-9aeedc56e97e
 begin
-	plot(sin,0:0.25:2π, title = "plot y scatter", xlabel = "x", ylabel = "sin(x)", color = "darkorange", label = "plot")
-    scatter!(sin,0:0.25:2π, color = "green", label = "scatter", marker = :diamond)
+	plot(sin, 0:0.25:2π, title = "plot y scatter", xlabel = "x", ylabel = "sin(x)", color = "darkorange", label = "plot")
+    scatter!(sin, 0:0.25:2π, color = "green", label = "scatter", marker = :diamond)
 end
 
 # ╔═╡ f08d2863-8e08-4df1-a3e9-5914dc8f1600
-md"De hecho, agregarle un atributo `marker = true` a una gráfica tipo `plot` nos mostrará los puntos tabulados por ésta:"
+md"De hecho, agregarle un atributo `marker = true` a una gráfica tipo `plot` nos mostrará los puntos que tabuló:"
 
 # ╔═╡ fc94b6e8-cae9-46bc-9ac4-9cee5e86c8ee
 begin
-	plot(sin,0:0.25:2π, title = "plot y scatter", xlabel = "x", ylabel = "sin(x)", color = "darkorange", label = "plot", marker = true)
+	plot(sin, 0:0.25:2π, title = "plot con atributo 'marker = true'", xlabel = "x", ylabel = "sin(x)", color = "darkorange", label = "plot", marker = true)
 end
 
 # ╔═╡ 77a60b5d-ad7f-4c44-a68d-694417619668
@@ -186,7 +186,7 @@ md""" **Ejercicio** Define un parámetro interactivo `d` que controle el nivel d
 # ╔═╡ acfe0334-c7aa-471f-b39e-8276e2e3dd42
 md"""#### El paquete `LaTeXStrings`
 
-Podemos usar LaTeX para escribir texto dentro de una gráfica creada con Plots, pero tiene una sintáxis complicada. Por ejemplo, si quisiéramos que la etiqueta del eje vertical de la gráfica anterior estuviera escrita como $\sin(x)$, tendríamos que reemplazar el String `"sin(x)"` por (¡inténtalo!)
+Podemos usar $\LaTeX$ para escribir texto dentro de una gráfica creada con Plots, pero tiene una sintáxis complicada. Por ejemplo, si quisiéramos que la etiqueta del eje vertical de la gráfica anterior estuviera escrita como $\sin(x)$, tendríamos que reemplazar el `String` `"sin(x)"` por (¡inténtalo!)
 
 `"\$\\sin(x)\$"`.
 
@@ -199,42 +199,39 @@ md"""Luego, podemos escribir el String anterior simplemente como (¡inténtalo!)
 
 `L"\sin(x)"` 
 
-Es decir, si escribimos la letra `L` antes del inicio del String y el paquete LaTeXStrings está cargado, Julia interpretará el contenido del String utilizando LaTeX."""
+Es decir, si escribimos la letra `L` antes del inicio del `String` y el paquete LaTeXStrings está cargado, Julia interpretará el contenido del `String` utilizando LaTeX."""
 
 # ╔═╡ 1907f78f-e429-4a77-a90e-c9ebb94d6385
 md"""
 
 #### Campos vectoriales con `quiver`
 
-La función `quiver` nos permite graficar un conjunto de flechas en una gráfica bidimensional. La sintáxis usual es
+La función **`quiver`** nos permite graficar un conjunto de flechas en una gráfica bidimensional. La sintáxis usual es
 
 `quiver(x, y, quiver=(v1,v2))`
 
-donde `x` es un arreglo de puntos en el eje horizontal, `y` es un arreglo de puntos en el eje vertical, y `v1` y `v2` son arreglos con las coordenadas horizontales y verticales de las flechas, respectivamente. Nota que, dado que todos los arreglos anteriores son numéricos, entonces son vectores -en particular, vectores renglón.
+donde
+* `x` es un arreglo de puntos en el eje horizontal,
+* `y` es un arreglo de puntos en el eje vertical, y
+* `v1` y `v2` son arreglos con las coordenadas horizontales y verticales de las flechas, respectivamente.
+
+Nota que, dado que todos los arreglos anteriores son numéricos, entonces son de tipo `Vector`.
 
 Al ejecutar este comando:
 1. Julia creará una figura de una gráfica bidimensional.
-1. Para cada entrada `i` de los arreglos, Julia graficará una flecha con coordenadas `[v1[i], v2[i]]` con respecto a el punto con coordenadas `[x[i], y[i]]`.
+1. Para cada entrada `i` de los arreglos, Julia graficará una flecha que tendrá origen en las coordenadas `(x[i], y[i])` y cuyas coordenadas relativas serán `(v1[i], v2[i])`.
 1. Para cualquiera de los arreglos `x, y, v1, v2` que tenga menos entradas que los demás, Julia ciclará sobre los elementos de ese arreglo (es decir, empezará desde el principio) hasta haber utilizado todas las entradas del arreglo más grande de los cuatro.
-
-Por ejemplo:
-
 """
 
+# ╔═╡ d4f72b47-0c61-45af-85d6-ebe914cd6128
+md"Por ejemplo:"
+
 # ╔═╡ 18368069-bf83-48e9-a6df-a2b5e6181277
-quiver([1,1.5,3], [3,2,1],quiver=([-0.5,1,-1],[-1,1,0.5]))
-
-#= Julia crea una figura bidimensional,
-
-   grafica una flecha con coordenadas [-0.5,-1] 
-   partiendo del punto [1,3],
-
-   grafica una flecha con coordenadas [1,1] con 
-   respecto al punto [1.5,2] y
-
-   grafica una flecha con coordenadas [-1,0.5] tomando
-   como origen al punto [1,3].
-=#
+quiver([1,1.5,3], [3,2,1], quiver=([-0.5,1,-1], [-1,1,0.5]))
+#=Julia crea una figura bidimensional y,
+  partiendo del punto (1,3), grafica una flecha con coordenadas relativas (-0.5,-1);
+  partiendo del punto (1.5,2), grafica una flecha con coordenadas relativas (1,1);
+  partiendo del punto (3,1), grafica una flecha con coordenadas (-1,0.5).=#
 
 # ╔═╡ ec3dfa07-89c8-48a3-adaf-021c311d2c0d
 md"""
@@ -254,10 +251,7 @@ y, después, ejecutamos la función `quiver` _reemplazando el tercer argumento p
 """
 
 # ╔═╡ 7c580a14-b5ec-4bb1-960b-fbce583a9b62
-quiver((-2:0.2:2)', (-2:0.2:2) , quiver=g, color=:green)
-
-# ╔═╡ 8eac3ff8-f71a-41b2-a3b2-5d7965270cdf
-md"donde la apóstrofe `'` fue utilizada para transponer la matriz `(-2:0.2:2)`, pues un vector renglón es equivalente a una matriz de un renglón."
+quiver((-2:0.2:2)', (-2:0.2:2) , quiver=g, color="green") #¡La apóstrofe ' traspone matrices!
 
 # ╔═╡ 3910bcbb-0e94-4c70-93c4-106a5fd4006a
 md""" #### Conjuntos de nivel con `contour`
@@ -272,21 +266,18 @@ h(x,y) = cos(x) + sin(y)
 # ╔═╡ cc3f06b5-68b4-40c6-85ce-cb79a7f3a9df
 md"""
 
-Claramente, no podemos obtener una gráfica bidimensional completa de esta función, pues requerimos tres dimensiones...
-
-...¿o sí? En las gráficas que hemos visto hasta el momento, tenemos dos dimensiones _espaciales_, pero les podemos agregar una dimensión de _color_ y obtener una representación (al menos parcial) de nuestra función de $\mathbb{R}^2$ en $\mathbb{R}$. Esto se logra con la función `contour`. La sintáxis usual es
-
-`contour(x,y,h)`
-
-donde `x` es un arreglo que define el rango del eje horizontal, `y` es un arreglo que define el rango del eje vertical y `h` es una función que toma dos argumentos y devuelve un número.
-
-Por ejemplo:
-
+Claramente, no podemos obtener una gráfica bidimensional completa de esta función, pues requerimos tres dimensiones... ¿o sí? En las gráficas que hemos visto hasta el momento, tenemos dos dimensiones _espaciales_, pero les podemos agregar una dimensión de _color_ y obtener una representación (al menos parcial) de nuestra función de $\mathbb{R}^2$ en $\mathbb{R}$. Esto se logra con la función **`contour`**. La sintáxis usual es `contour(x,y,h)`, donde
+* `x` es un arreglo que define el rango del eje horizontal,
+* `y` es un arreglo que define el rango del eje vertical y
+* `h` es una función que toma dos argumentos y devuelve un número.
 """
+
+# ╔═╡ 86c6332b-da98-41e2-96ec-12ab5692ac37
+md"Por ejemplo:"
 
 # ╔═╡ 7c8f914f-ad47-4487-8434-f02f2ce6d9e6
 begin
-    R = 0:0.05:2π # Un rango arbitrario para los ejemplos
+    R = 0:0.05:2π #Definimos arbitrariamente un rango 'R' que utilizaremos para algunos ejemplos.
     contour(R,R,h)
 end
 
@@ -294,8 +285,8 @@ end
 md"Para tener una representación más completa de la función, podemos usar el atributo `fill` y asignarle el valor `true` o, equivalentemente, usar la función `contourf`:"
 
 # ╔═╡ 8af3a0a7-df3b-4204-a806-9c330e636d84
-contourf(R,R,h)
-# Esto es equivalente a contourf(0:0.05:2π,0:0.05:2π,h)
+contour(R,R,h,fill=true)
+#Esto es equivalente a contourf(0:0.05:2π,0:0.05:2π,h).
 
 # ╔═╡ db29912b-936a-4770-9f3b-fcd57a1ffd3a
 md"""### Gráficas tridimensionales
@@ -313,7 +304,7 @@ Supongamos que `x`, `y` y `z` son arreglos de números y ejecutamos la función 
 
 Al ejecutar este comando:
 1. Julia creará una figura de una gráfica tridimensional. 
-1. Para cada entrada `i` de los arreglos, Julia graficará un punto en la coordenada `[x[i], y[i], z[i]]`.
+1. Para cada entrada `i` de los arreglos, Julia graficará un punto en la coordenada `(x[i], y[i], z[i])`.
 1. Para cualquiera de los arreglos `x`, `y`, `z` que tenga menos entradas que los demás, Julia ciclará sobre los elementos de ese arreglo hasta haber utilizado todas las entradas del arreglo más grande de los tres.
 
 Por ejemplo:
@@ -324,13 +315,13 @@ Por ejemplo:
 scatter(0:10,0:10,0:10)
 
 # ╔═╡ 2caaaf8d-21f2-4cb8-9c06-b84e36b7e28c
-md"En particular, el arreglo `z` se puede obtener aplicando una función de dos variables a los arreglos `x` y `y`.
+md"""En particular, el arreglo `z` se puede obtener aplicando una función de dos variables a los arreglos `x` y `y`.
 
-Por ejemplo, utilizando la función `h` definida anteriormente y la sintáxis
+Por ejemplo, utilizando la función `h` definida anteriormente y la sintáxis "de punto" para aplicarle algo a un arreglo
 
 `h.(A,B)`
 
-para evaluarla en los puntos del arreglo `[ [A[1],B[1]], [A[2],B[2]], ... ]`, tenemos:"
+para evaluarla en los puntos del arreglo `[ [A[1],B[1]], [A[2],B[2]], ... ]`, tenemos:"""
 
 # ╔═╡ 3497133e-f009-47ba-bb70-c3c6d0b8bf7c
 scatter(R,R,h.(R,R))
@@ -354,17 +345,20 @@ Para graficar una función de $\mathbb{R}^2$ en $\mathbb{R}$ como una _superfici
 
 `surface(x,y,h)`
 
-donde `x` es un arreglo con un rango de valores del eje X, `y` es un arreglo con un rango de valores del eje Y y `h` es la función en cuestión.
-
-Por ejemplo:
-
+donde
+* `x` es un arreglo con un rango de valores del eje horizontal,
+* `y` es un arreglo con un rango de valores del eje vertical, y
+* `h` es la función en cuestión.
 """
+
+# ╔═╡ b541f5cb-6047-4322-bcaa-c5c1c695d766
+md"Por ejemplo:"
 
 # ╔═╡ 56c967bd-feb0-4266-8209-3c97379152b1
 surface(R,R,h, color = :gist_rainbow)
 
 # ╔═╡ 8eefdb22-91ad-494b-979a-d3b2a17f706e
-md"Para representar esta superficie como una _malla_ creada a partir de los puntos de la forma `[x[i],y[i]]` en los que se evalúa la función `h`, podemos usar la función `wireframe` con la misma sintáxis que `surface`:"
+md"Para representar esta superficie como una _malla_ creada a partir de los puntos de la forma `(x[i],y[i])` en los que se evalúa la función `h`, podemos usar la función `wireframe` con la misma sintáxis que `surface`:"
 
 # ╔═╡ 2d598963-c0e9-4808-93b0-d02740da047c
 wireframe(R,R,h)
@@ -377,7 +371,7 @@ md"""## Animaciones
 
 ### `@gif`
 
-La forma más fácil de animar un conjunto de gráficas es escribiendo la palabra `@gif` al inicio de un ciclo _for_ que genere las gráficas.
+Podemos animar un conjunto de gráficas colocando **`@gif`** al inicio de un ciclo _for_ que genere las gráficas.
 
 Por ejemplo, sabemos que la función de dos variables
 
@@ -391,46 +385,35 @@ Podemos animar esto como sigue:
 
 # ╔═╡ 0b199197-6d85-4530-b70f-b82e16d183d6
 begin
-	A = 0.5    # Definimos los valores de los parámetros.
-	B = 2
-	C = 0.25
-	f(x) = A*sin(B*x)+C # Definimos la función f.
+	A, B, C = 0.5, 2, 0.25 #Definimos los valores de los parámetros A, B y C,
+	f(x) = A*sin(B*x)+C    #así como la función f.
 	
-	@gif for t in 0:0.1:2π # para t en 0:0.1:2π
-	plot(f.( range(0,2π, step = 0.1) .- t/B),
-		 legend = false, title = L"A\sin(Bx-t)+C")
-    #= grafica Asin(B(x-t/B))+C = Asin(Bx-t)+C para todas
-	las x en el rango de 0 a 2π con tamaño de paso 0.1 =#
-		
+	@gif for t in 0:0.1:2π #Por cada t en 0:0.1:2π,
+	plot(f.( range(0,2π, step = 0.1) .- t/B),      #grafica Asin(B(x-t/B))+C para todas las x en
+		 legend = false, title = L"A\sin(Bx-t)+C") #el rango de 0 a 2π con tamaño de paso 0.1.
 	end
 end
 
 # ╔═╡ 09c41f2a-2be2-48e5-9b83-6e066c7e03bf
 md""" ### `@animate` y la función `gif`
 
-Otra forma de animar un conjunto de gráficas es utilizando `@animate` y la **función** `gif`. Este método permite especificar el nombre del archivo que se generará al hacer la animación, así como la cantidad de cuadros por segundo, como se muestra en el siguiente ejemplo:
+Otra forma de animar un conjunto de gráficas es utilizando **`@animate`** y la _función_ **`gif`**. Este método permite especificar el nombre del archivo que se generará al hacer la animación, así como la cantidad de cuadros por segundo, como se muestra en el siguiente ejemplo:
 """
 
 # ╔═╡ 46154837-a68e-4bf0-b39f-2b8670d9370c
 begin
 
-	#= No hace falta definir los valores de los 
-	   parámetros ni la función f, pues ya fueron 
-	   definidos en otra celda y Pluto ejecuta todas
-	   las celdas al mismo tiempo. =#
+	#=Recordatorio: No hace falta definir los valores de los parámetros A, B y C ni la función f, 
+	  pues ya fueron definidos en otra celda y Pluto ejecuta todas las celdas al mismo tiempo.=#
 	
-	anim = @animate for t in 0:0.1:2π # para t ∈ 0:0.1:2π
-	plot(f.( range(0,2π, step = 0.1) .- t/B),
-		 legend = false, title = L"A\sin(Bx-t)+C")
-    #= grafica Asin(B(x-t/B))+C = Asin(Bx-t)+C para todas
-	las x en el rango de 0 a 2π con tamaño de paso 0.1 =#
-		
+	anim = @animate for t in 0:0.1:2π # Por cada t ∈ 0:0.1:2π,
+	plot(f.( range(0,2π, step = 0.1) .- t/B),      #grafica Asin(B(x-t/B))+C para todas las x en
+		 legend = false, title = L"A\sin(Bx-t)+C") #el rango de 0 a 2π con tamaño de paso 0.1.
 	end
 
-	gif(anim, "onda_en_movimiento.gif", fps = 30)
-    #= Convertimos a la variable 'anim' en un gif de 
-	nombre "onda_en_movimiento.gif" con 30 cuadros por
-	segundo. =#
+	gif(anim, "ondaEnMovimiento.gif", fps = 30)
+    #=Convertimos a la variable 'anim' en un gif de nombre
+	"onda_en_movimiento.gif" con 30 cuadros por segundo.=#
 	
 end
 
@@ -445,27 +428,16 @@ La forma de generar la misma animación anterior _sin utilizar macros_ sería co
 
 # ╔═╡ 765a0e10-4217-4a50-8fb1-e46bee83aaa6
 begin
-
-	#= No hace falta definir los valores de los 
-	   parámetros ni la función f, pues ya fueron 
-	   definidos en otra celda y Pluto ejecuta todas
-	   las celdas al mismo tiempo. =#
-	
-	anim2 = Plots.Animation()
+	anim2 = Plots.Animation() #Hay que definir una variable asignándole 'Plots.Animation()'
 		
-	for t in 0:0.1:2π # para t ∈ 0:0.1:2π
+	for t in 0:0.1:2π
 		plot(f.( range(0,2π, step = 0.1) .- t/B),
 		     legend = false, title = L"A\sin(Bx-t)+C")
-    #= grafica Asin(B(x-t/B))+C = Asin(Bx-t)+C para todas
-	las x en el rango de 0 a 2π con tamaño de paso 0.1 =#
-		Plots.frame(anim2)
+		
+		Plots.frame(anim2)   #y agregar un cuadro a nuestra variable por cada gráfica generada
 	end
 
-	gif(anim2, "onda_en_movimiento.gif", fps = 30)
-    #= Convertimos a la variable 'anim' en un gif de 
-	nombre "onda_en_movimiento.gif" con 30 cuadros por
-	segundo. =#
-	
+	gif(anim2, "ondaEnMovimiento.gif", fps = 30)
 end
 
 # ╔═╡ abbce622-7912-40ee-8632-261b5129dcb4
@@ -477,20 +449,20 @@ md"""**Ejercicio** Haz un código donde definas cuatro variables `h`, `r`, `θ` 
 Sugerencia: Repasa las ecuaciones cinemáticaticas del tiro parabólico e investiga los atributos `xaxis` y `yaxis` para poder fijar los ejes de la gráfica durante la animación."""
 
 # ╔═╡ 50f7f46b-081e-4b07-94af-1331b33a7c7f
-# Tu código (comentado) va aquí :D
+#Tu código (comentado) va aquí :D
 
 # ╔═╡ 59ec3890-303c-436a-8043-8e6bc9c427ed
 md"**Ejercicio** Crea una función que tome parámetros `h`, `r`, `θ` y `t`, y haga lo descrito en el Ejercicio anterior."
 
 # ╔═╡ c3264b4d-81b1-4e0c-9205-ff818665788c
-# Tu código (comentado) va aquí :D
+#Tu código (comentado) va aquí :D
 
 # ╔═╡ 77aacd79-26e3-40c2-ac22-f9121aac4155
-md"""**Ejercicio** Crea una animación de cómo la superficie obtenida de la función $h(x,y) = \cos(x) + \sin(y)$ se desplaza hacia el eje Y.
+md"""**Ejercicio** Crea una animación de cómo la superficie obtenida de la función $h(x,y) = \cos(x) + \sin(y)$ se desplaza hacia el eje vertical.
 """
 
 # ╔═╡ 4e68ad0c-17ef-41f7-b9fe-8561415bb7f2
-# Tu código (comentado) va aquí :D
+#Tu código (comentado) va aquí :D
 
 # ╔═╡ 88299b4d-2a7d-4c18-956e-c6e75473c658
 md" ## Recursos complementarios
@@ -520,7 +492,7 @@ PlutoUI = "~0.7.38"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.4"
+julia_version = "1.8.5"
 manifest_format = "2.0"
 project_hash = "77e2734aeac55d5109eeed492b1ea958eae44caf"
 
@@ -1452,20 +1424,21 @@ version = "0.9.1+5"
 # ╟─8c5b9695-3625-4105-8a4f-9358e208115c
 # ╠═67c22c14-24a6-4080-803b-fba2be7d0fa4
 # ╟─22a9aee4-4c6d-47d3-8cca-e41e542a84ed
+# ╟─9520d566-f123-4b83-aa35-daebe75a83bd
 # ╠═9bfbf61b-66b5-42d3-878b-fb02dd6d41ee
 # ╟─e16ca2f5-4af7-4d16-b76e-4f124e1ddbbf
+# ╟─7aaa5703-23a4-4c5d-8a1a-c12ff73d5a14
 # ╠═98c6c916-cdfa-4bc1-baad-8888aace5c98
 # ╟─c6a475fd-bef2-4c09-a03b-211f6676d215
-# ╟─7a1e75c3-d56b-411e-a82c-f4b53302ac23
 # ╠═d2472d6a-7072-49ae-ba55-207db17be3ca
 # ╟─4d136dae-c66d-4c9e-a267-12b2fa9fd596
-# ╠═cdd16f8e-e945-4d5f-a71d-6896f9146512
-# ╠═af69d454-96fc-4e92-af71-1251cf99ae38
 # ╠═576a42f0-bd11-4480-9e97-2f9098312a25
+# ╠═af69d454-96fc-4e92-af71-1251cf99ae38
+# ╠═cdd16f8e-e945-4d5f-a71d-6896f9146512
 # ╠═35d05477-a09e-4077-8513-2ac7dba4def1
 # ╟─fe4198bf-345a-46e5-bfeb-15619bd76f3a
-# ╠═c6c40996-bb5f-4c4b-848b-821c79660042
 # ╠═d6a012c7-47b6-4374-8522-aa8e6efbe84f
+# ╠═c6c40996-bb5f-4c4b-848b-821c79660042
 # ╠═4d68a04e-6502-4478-a9c2-8a81bcc2b282
 # ╟─d8875d6b-7a53-43ad-87b4-5088e0fc9eac
 # ╠═0dd653e6-323f-450d-9097-ba4c0a304aa3
@@ -1479,15 +1452,16 @@ version = "0.9.1+5"
 # ╠═8302701b-02ac-4d35-b7de-5dec8fe701fb
 # ╟─02f9778e-21c8-42db-bed6-95a20d592f22
 # ╟─1907f78f-e429-4a77-a90e-c9ebb94d6385
+# ╟─d4f72b47-0c61-45af-85d6-ebe914cd6128
 # ╠═18368069-bf83-48e9-a6df-a2b5e6181277
 # ╟─ec3dfa07-89c8-48a3-adaf-021c311d2c0d
 # ╠═73d1cb8f-4fc5-4a11-885d-9bc97ecd73d9
 # ╟─324cf67f-7cf1-4613-b072-aff38958612f
 # ╠═7c580a14-b5ec-4bb1-960b-fbce583a9b62
-# ╟─8eac3ff8-f71a-41b2-a3b2-5d7965270cdf
 # ╟─3910bcbb-0e94-4c70-93c4-106a5fd4006a
 # ╠═d6d981f5-155f-4fa9-8985-ef9a1aa8e28c
 # ╟─cc3f06b5-68b4-40c6-85ce-cb79a7f3a9df
+# ╟─86c6332b-da98-41e2-96ec-12ab5692ac37
 # ╠═7c8f914f-ad47-4487-8434-f02f2ce6d9e6
 # ╟─28bff1c1-4fe1-41ce-92fa-09277a48762b
 # ╠═8af3a0a7-df3b-4204-a806-9c330e636d84
@@ -1499,6 +1473,7 @@ version = "0.9.1+5"
 # ╟─162a90d2-eda7-4a3a-b433-8c323bcf1334
 # ╠═c5101ce8-7a70-421a-81c6-efa16b368dd1
 # ╟─33cfe266-21ab-43e5-bcca-ec75dd12f49b
+# ╟─b541f5cb-6047-4322-bcaa-c5c1c695d766
 # ╠═56c967bd-feb0-4266-8209-3c97379152b1
 # ╟─8eefdb22-91ad-494b-979a-d3b2a17f706e
 # ╠═2d598963-c0e9-4808-93b0-d02740da047c

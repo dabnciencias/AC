@@ -44,11 +44,13 @@ end
 
 # ╔═╡ 512964ef-af35-476b-8199-e9c9037ca419
 scatter(X,Y)
+#=Aquí se grafican los pares ordenados
+  (1,1), (2,2) y (3,3)...=#
 
 # ╔═╡ c5948633-4440-4c1e-9771-8e3a0ae7717f
 scatter(Y,X)
-#= Mientras que aquí se grafican los puntos ([1],[1]),
-([2],[2]), ([3],[3]) =#
+#=...mientras que aquí se grafican los pares ordenados
+  (1,1), (2,2), (3,3), (4,1), (5,2) y (6,3).=#
 
 # ╔═╡ b5d5ffd3-10d7-40be-976b-c4ea5ecf96a1
 md"""
@@ -63,11 +65,11 @@ En Julia, esto se logra con los atributos `xerror`y `yerror`, respectivamente, d
 
 # ╔═╡ cf834b28-119f-483b-8d2d-379b085c2d82
 scatter(X, [3,2,1], xerror = [0.1,0.1,0.3], yerror = ([0.5,0.4,0.35],[0.1,0.2,0.25]) )
-#= Nota que los errores en el eje horizontal son 
-   simétricos porque sólo le asignamos 
-   un arreglo a xerror, mientras que los errores en el 
-   eje vertical no son simétricos,
-   pues le asignamos un par de arreglos a yerror. =#
+#=Nota que los errores en el eje horizontal son 
+  simétricos porque sólo le asignamos 
+  un arreglo a 'xerror', mientras que los errores en el 
+  eje vertical no son simétricos,
+  pues le asignamos un par de arreglos a 'yerror'.=#
 
 # ╔═╡ 59bd58b0-9852-4ace-8419-3b0a3eff8ab4
 md"""## Gráficas tipo _boxplot_
@@ -80,9 +82,9 @@ Para hacer gráficas de tipo caja, podemos usar la función `boxplot`:
 boxplot( repeat([1,2,3,4,5],outer=100), rand(500), legend=false )
 
 #= El primer arreglo está compuesto por 100 repeticiones 
-de 1,2,3,4,5, por lo que tiene 500 entradas. El segundo
-arreglo tiene 500 entradas de números aleatorios entre 0
-y 1. =#
+  de 1,2,3,4,5, por lo que tiene 500 entradas. El segundo
+  arreglo tiene 500 entradas de números aleatorios entre 0
+  y 1. =#
 
 # ╔═╡ 77d49b14-e755-4c01-98df-516765dc6576
 md"""## Gráficas de barras
@@ -94,8 +96,8 @@ Para hacer gráficas de barras, usamos la función `bar(A1,A2)`, donde `A1` es u
 # ╔═╡ 7f2e3c6f-d3cf-4ef7-a33b-a1f70e664744
 bar(["Categoría 1", "Categoría 2", "Categoría 3"],[4,5,6],fillcolor=[:red,:green,:blue],fillalpha=[0.2,0.4,0.6], legend=false)
 
-#= El valor alpha fija la opacidad de cada color, siendo
-   0 totalmente transparente y 1 totalmente opaco. =#
+#=El valor alpha fija la opacidad de cada color, siendo
+  0 totalmente transparente y 1 totalmente opaco.=#
 
 # ╔═╡ da118da6-0282-44cc-bb02-99c8e3a2d83a
 md"""## Histogramas
@@ -117,11 +119,10 @@ Los intervalos usados para categorizar los datos se generan de manera automátic
 # ╔═╡ 094abf25-8e17-4f40-837c-082e59b19512
 histogram([1,2,1,1,4,3,8], bins=0:9, legend=false)
 
-#= Aquí a 'bins' le asignamos el arreglo
-   [0,1,2,3,4,5,6,7,8,9], por lo que las categorías son
-   los intervalos [0,1), [1,2), ..., [8,9) (en notación
-   matemática).
-=#
+#=Aquí a 'bins' le asignamos el arreglo
+  [0,1,2,3,4,5,6,7,8,9], por lo que las categorías son
+  los intervalos [0,1), [1,2), ..., [8,9) (en notación
+  matemática).=#
 
 # ╔═╡ 85fd570b-a212-4f6e-9288-6d190209152e
 md"""## _Pie charts_
@@ -142,12 +143,12 @@ Para graficar mapas de calor, utilizamos la función `heatmap(M)`, donde `M` es 
 
 # ╔═╡ e8dcb3aa-20bd-4d5f-be64-62e38a6a1fe2
 M = rand(10,10)
-#= Esto genera una matriz de 10x10 cuyas entradas tienen
-   un valor aleatorio entre 0 y 1. =#
+#=Esto genera una matriz de 10x10 cuyas entradas
+  tienen un valor aleatorio entre 0 y 1.=#
 
 # ╔═╡ 6eefbe35-5e13-4818-9935-ac9882ba8fb9
 heatmap(M)
-# Graficamos la matriz como un mapa de calor
+#Graficamos la matriz como un mapa de calor.
 
 # ╔═╡ 7a98df29-4c26-49dd-afa2-3a00080ba137
 md"""
@@ -181,7 +182,7 @@ Lo que sí podemos hacer es asignarle cada una de estas gráficas a una variable
 """
 
 # ╔═╡ 4d035f03-3368-4372-a6cb-ce8650ca75dd
-begin # Asignamos cada gráfica a una variable diferente.
+begin #Asignamos cada gráfica a una variable diferente.
     p1 = scatter(X, [3,2,1], xerror = [0.1,0.1,0.3], yerror = ([0.5,0.4,0.35],[0.1,0.2,0.25]), legend=false )
 	p2 = boxplot( repeat([1,2,3,4,5],outer=100), rand(500), legend=false )
     p3 = bar([1,2,3],[4,5,6],fillcolor=[:red,:green,:blue],fillalpha=[0.2,0.4,0.6], legend=false)
@@ -192,7 +193,7 @@ end
 
 # ╔═╡ d16103a7-6836-4342-b466-4e7fa67eba69
 plot(p1, p2, p3, p4, p5, p6)
-# Usamos las variables como argumento de la función plot.
+#Usamos las variables como argumento de la función plot.
 
 # ╔═╡ 664dbe12-8594-4550-9f3f-5241667ca7a4
 md""" ### _Layouts_
@@ -203,9 +204,9 @@ Para ordenar la distribución de nuestras subfiguras dentro de una figura con mu
 
 # ╔═╡ 49370c36-a59d-4520-986e-6337cde1ebf8
 l = @layout [a b c d ; e f]
-#= La matriz debe tener letras como entrada. ¡Cambia su
-   definición y reasigna la variable `l` para observar
-   cómo cambia la figura de abajo! =#
+#=La matriz debe tener letras como entrada. ¡Cambia su
+  definición y reasigna la variable `l` para observar
+  cómo cambia la figura de abajo!=#
 
 # ╔═╡ 292822e5-b30e-43c0-95ac-46295059476d
 plot(p1, p2, p3, p4, p5, p6, layout = l)
@@ -253,8 +254,9 @@ StatsPlots = "~0.14.33"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.7.2"
+julia_version = "1.8.5"
 manifest_format = "2.0"
+project_hash = "37d92595355f3391ecfbdc1d38617e819160bbc4"
 
 [[deps.AbstractFFTs]]
 deps = ["ChainRulesCore", "LinearAlgebra"]
@@ -270,6 +272,7 @@ version = "3.3.3"
 
 [[deps.ArgTools]]
 uuid = "0dad84c5-d112-42e6-8d28-ef12dabb789f"
+version = "1.1.1"
 
 [[deps.Arpack]]
 deps = ["Arpack_jll", "Libdl", "LinearAlgebra", "Logging"]
@@ -302,7 +305,7 @@ uuid = "6e34b625-4abd-537c-b88f-471c36dfa7a0"
 version = "1.0.8+0"
 
 [[deps.Cairo_jll]]
-deps = ["Artifacts", "Bzip2_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
+deps = ["Artifacts", "Bzip2_jll", "CompilerSupportLibraries_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
 git-tree-sha1 = "4b859a208b2397a7a623a03449e4636bdb17bcf2"
 uuid = "83423d85-b0ee-5818-9007-b63ccbeb887a"
 version = "1.16.1+1"
@@ -352,6 +355,7 @@ version = "3.43.0"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
+version = "1.0.1+0"
 
 [[deps.Contour]]
 deps = ["StaticArrays"]
@@ -418,8 +422,9 @@ uuid = "ffbed154-4ef7-542d-bbb7-c09d3a79fcae"
 version = "0.8.6"
 
 [[deps.Downloads]]
-deps = ["ArgTools", "LibCURL", "NetworkOptions"]
+deps = ["ArgTools", "FileWatching", "LibCURL", "NetworkOptions"]
 uuid = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+version = "1.6.0"
 
 [[deps.EarCut_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -456,6 +461,9 @@ deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
 git-tree-sha1 = "c6033cc3892d0ef5bb9cd29b7f2f0331ea5184ea"
 uuid = "f5851436-0d7a-5f13-b9de-f02708fd171a"
 version = "3.3.10+0"
+
+[[deps.FileWatching]]
+uuid = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
 
 [[deps.FillArrays]]
 deps = ["LinearAlgebra", "Random", "SparseArrays", "Statistics"]
@@ -654,10 +662,12 @@ uuid = "4af54fe1-eca0-43a8-85a7-787d91b784e3"
 [[deps.LibCURL]]
 deps = ["LibCURL_jll", "MozillaCACerts_jll"]
 uuid = "b27032c2-a3e7-50c8-80cd-2d36dbcbfd21"
+version = "0.6.3"
 
 [[deps.LibCURL_jll]]
 deps = ["Artifacts", "LibSSH2_jll", "Libdl", "MbedTLS_jll", "Zlib_jll", "nghttp2_jll"]
 uuid = "deac9b47-8bc7-5906-a0fe-35ac56dc84c0"
+version = "7.84.0+0"
 
 [[deps.LibGit2]]
 deps = ["Base64", "NetworkOptions", "Printf", "SHA"]
@@ -666,6 +676,7 @@ uuid = "76f85450-5226-5b5a-8eaa-529ad045b433"
 [[deps.LibSSH2_jll]]
 deps = ["Artifacts", "Libdl", "MbedTLS_jll"]
 uuid = "29816b5a-b9ab-546f-933c-edad1886dfa8"
+version = "1.10.2+0"
 
 [[deps.Libdl]]
 uuid = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
@@ -696,9 +707,9 @@ version = "1.42.0+0"
 
 [[deps.Libiconv_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
-git-tree-sha1 = "42b62845d70a619f063a7da093d995ec8e15e778"
+git-tree-sha1 = "c7cb1f5d892775ba13767a87c7ada0b980ea0a71"
 uuid = "94ce4f54-9a6c-5748-9c1c-f9c7231a4531"
-version = "1.16.1+1"
+version = "1.16.1+2"
 
 [[deps.Libmount_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -756,6 +767,7 @@ version = "1.0.3"
 [[deps.MbedTLS_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "c8ffd9c3-330d-5841-b78e-0817d7145fa1"
+version = "2.28.0+0"
 
 [[deps.Measures]]
 git-tree-sha1 = "e498ddeee6f9fdb4551ce855a46f54dbd900245f"
@@ -773,6 +785,7 @@ uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 
 [[deps.MozillaCACerts_jll]]
 uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
+version = "2022.2.1"
 
 [[deps.MultivariateStats]]
 deps = ["Arpack", "LinearAlgebra", "SparseArrays", "Statistics", "StatsAPI", "StatsBase"]
@@ -793,6 +806,7 @@ version = "0.4.10"
 
 [[deps.NetworkOptions]]
 uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
+version = "1.2.0"
 
 [[deps.Observables]]
 git-tree-sha1 = "fe29afdef3d0c4a8286128d4e45cc50621b1e43d"
@@ -814,10 +828,12 @@ version = "1.3.5+1"
 [[deps.OpenBLAS_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Libdl"]
 uuid = "4536629a-c528-5b80-bd46-f80d51c5b363"
+version = "0.3.20+0"
 
 [[deps.OpenLibm_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "05823500-19ac-5b8b-9628-191a04bc5112"
+version = "0.8.1+0"
 
 [[deps.OpenSSL_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -869,6 +885,7 @@ version = "0.40.1+0"
 [[deps.Pkg]]
 deps = ["Artifacts", "Dates", "Downloads", "LibGit2", "Libdl", "Logging", "Markdown", "Printf", "REPL", "Random", "SHA", "Serialization", "TOML", "Tar", "UUIDs", "p7zip_jll"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+version = "1.8.0"
 
 [[deps.PlotThemes]]
 deps = ["PlotUtils", "Statistics"]
@@ -900,9 +917,9 @@ uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
 
 [[deps.Qt5Base_jll]]
 deps = ["Artifacts", "CompilerSupportLibraries_jll", "Fontconfig_jll", "Glib_jll", "JLLWrappers", "Libdl", "Libglvnd_jll", "OpenSSL_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libxcb_jll", "Xorg_xcb_util_image_jll", "Xorg_xcb_util_keysyms_jll", "Xorg_xcb_util_renderutil_jll", "Xorg_xcb_util_wm_jll", "Zlib_jll", "xkbcommon_jll"]
-git-tree-sha1 = "c6c0f690d0cc7caddb74cef7aa847b824a16b256"
+git-tree-sha1 = "0c03844e2231e12fda4d0086fd7cbe4098ee8dc5"
 uuid = "ea2cea3b-5b76-57ae-a6ef-0a8af62496e1"
-version = "5.15.3+1"
+version = "5.15.3+2"
 
 [[deps.QuadGK]]
 deps = ["DataStructures", "LinearAlgebra"]
@@ -966,6 +983,7 @@ version = "0.3.0+0"
 
 [[deps.SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+version = "0.7.0"
 
 [[deps.Scratch]]
 deps = ["Dates"]
@@ -1058,6 +1076,7 @@ uuid = "4607b0f0-06f3-5cda-b6b1-a6196a1729e9"
 [[deps.TOML]]
 deps = ["Dates"]
 uuid = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
+version = "1.0.0"
 
 [[deps.TableOperations]]
 deps = ["SentinelArrays", "Tables", "Test"]
@@ -1080,6 +1099,7 @@ version = "1.7.0"
 [[deps.Tar]]
 deps = ["ArgTools", "SHA"]
 uuid = "a4e569a6-e804-4fa4-b0f3-eef7a1d5b13e"
+version = "1.10.1"
 
 [[deps.Test]]
 deps = ["InteractiveUtils", "Logging", "Random", "Serialization"]
@@ -1273,6 +1293,7 @@ version = "1.4.0+3"
 [[deps.Zlib_jll]]
 deps = ["Libdl"]
 uuid = "83775a58-1f1d-513f-b197-d71354ab007a"
+version = "1.2.12+3"
 
 [[deps.Zstd_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1289,6 +1310,7 @@ version = "0.15.1+0"
 [[deps.libblastrampoline_jll]]
 deps = ["Artifacts", "Libdl", "OpenBLAS_jll"]
 uuid = "8e850b90-86db-534c-a0d3-1478176c7d93"
+version = "5.1.1+0"
 
 [[deps.libfdk_aac_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
@@ -1311,10 +1333,12 @@ version = "1.3.7+1"
 [[deps.nghttp2_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "8e850ede-7688-5339-a07c-302acd2aaf8d"
+version = "1.48.0+0"
 
 [[deps.p7zip_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "3f19e933-33d8-53b3-aaab-bd5110c3b7a0"
+version = "17.4.0+0"
 
 [[deps.x264_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
