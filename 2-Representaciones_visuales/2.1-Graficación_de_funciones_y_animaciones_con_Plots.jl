@@ -471,6 +471,7 @@ md" ## Recursos complementarios
 * Documentación de [`Plots`](https://docs.juliaplots.org/stable/).
 * Documentación de las funciones de [`Plots`](https://docs.juliaplots.org/latest/api/)
 * Repositorio de GitHub del paquete [LaTeXStrings](https://github.com/stevengj/LaTeXStrings.jl).
+* Tutorial de [backends de Plots](https://docs.juliaplots.org/latest/tutorial/#plotting-backends) en Julia.
 * Manual de [backends de Plots](https://docs.juliaplots.org/latest/backends/) en Julia.
 * Manual de [Animaciones](https://docs.juliaplots.org/latest/animations/) en Julia.
 "

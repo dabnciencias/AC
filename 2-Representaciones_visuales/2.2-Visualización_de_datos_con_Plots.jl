@@ -22,87 +22,113 @@ html"""
 # ╔═╡ 59aabf72-b698-11ec-02c5-71c3f7918cd2
 md"""# Visualización de datos con _Plots_
 
-En este _notebook_ veremos varias funciones del paquete _Plots_ útiles para visualizar conjuntos de datos, tales como datos experimentales. Para empezar, por supuesto, debemos cargar el módulo:
+En este _notebook_ veremos varias funciones del paquete _Plots_ útiles para visualizar conjuntos de datos, tales como datos experimentales. Para empezar, por supuesto, debemos cargar el módulo `Plots`, junto con otro módulo que nos auxiliará para algunos ejemplos:
 
 """
 
 # ╔═╡ 6c4b8ea6-f01f-48a1-b2ad-9d16d634de81
 md"""## Gráficas de puntos en dos dimensiones
 
-Hasta ahora, hemos utilizado la función `scatter` con la sintáxis `scatter(X,f.(X))`, donde `X` es un arreglo de puntos y `f`es una función, para graficar puntos de la forma $(x,f(x))$ para los valores $x$ del arreglo `X`. En realidad, lo que estamos haciendo es alimentarle a la función `scatter` dos arreglos: el de los puntos del dominio que queremos graficar `X`, y el de las imágenes de dichos puntos bajo la función `f.(X)`.
-
-Esto es porque, en general, si ejecutamos el comando `scatter(A1,A2)` con dos arreglos `A1` y `A2` en su argumento, esta función graficará todos los puntos con coordenadas `A1[i],A2[i]` para cada índice `ì` de las entradas de su primer argumento (en este caso, `A1`), ciclando sobre las entradas del arreglo en su segundo argumento de ser necesario: 
-
+En la sección **Gráficas bidimensionales** del _notebook_ anterior utilizamos la función `scatter` con la sintáxis `scatter(f,X)`, con `f` una función y `X` un arreglo, para generar a la gráfica de la función $f$ en $X$:
 
 """
 
+# ╔═╡ bfacad82-4607-4b5a-a814-d26d6c9a6190
+scatter(sin,0:2π,legend=false) #Tabula "sin" en el rango 0:2π sin leyenda en la figura
+
+# ╔═╡ f38b4026-54da-4929-b86a-77381dc5d1ba
+md"
+Recordemos que la gráfica de una función $f$ con dominio $X$ no es más que el conjunto de pares ordenados
+
+$$\{(x,f(x)) \mid x\in X\}.$$
+
+Existe una forma alternativa de usar la función `scatter` más parecida a esta definición: `scatter(X,f.(X))`. Reescribiendo la celda de código anterior de esta forma, tenemos:
+
+"
+
+# ╔═╡ 213565e7-70d3-45ce-bd33-dbb8113a7ae6
+scatter(0:2π,sin.(0:2π),legend=false) #Tabula "sin" en el rango 0:2π sin leyenda en la figura
+
+# ╔═╡ 2be154bf-949f-4a79-b387-ec45452f98aa
+md"
+Esto se debe a que, al ejecutar el comando `scatter(A,B)` con dos arreglos `A` y `B`, sucede lo siguiente:
+1. Julia crea una gráfica bidimensional.
+1. Para cada entrada `i` de los arreglos, Julia grafica un punto con coordenadas (`A[i]`, `B[i]`).
+1. Si el arreglo en el primer argumento tiene más entradas que el arreglo en el segundo argumento, Julia ciclará sobre los elementos del segundo (es decir, empezará desde el principio) hasta haber utilizado todas las entradas del primero.
+
+Esto se puede observar comparando las dos gráficas que aparecen a continuación.
+"
+
 # ╔═╡ 388c5f8f-0bc8-4897-a312-7243000e2392
 begin
-    X = [1, 2, 3]
-    Y = [1, 2, 3, 4, 5, 6]
+    X = [1, 2, 3]          #Definimos arreglos con los
+    Y = [1, 2, 3, 4, 5, 6] #cuales graficaremos puntos.
 end
 
 # ╔═╡ 512964ef-af35-476b-8199-e9c9037ca419
 scatter(X,Y)
-#=Aquí se grafican los pares ordenados
-  (1,1), (2,2) y (3,3)...=#
+#=En esta gráfica se grafican los pares
+  ordenados (1,1), (2,2) y (3,3)...=#
 
 # ╔═╡ c5948633-4440-4c1e-9771-8e3a0ae7717f
 scatter(Y,X)
-#=...mientras que aquí se grafican los pares ordenados
+#=...mientras que en ésta se grafican los pares ordenados
   (1,1), (2,2), (3,3), (4,1), (5,2) y (6,3).=#
+
+# ╔═╡ f0380540-489a-4978-918d-d73166f65de9
+md"""
+Esto es muy similar a lo visto en la sección **Puntos en tres dimensiones con `scatter`** del _notebook_ anterior, con la excepción que, en el caso de puntos _en dos dimensiones_, los arreglos sí pueden tener distintas longitudes.
+
+"""
 
 # ╔═╡ b5d5ffd3-10d7-40be-976b-c4ea5ecf96a1
 md"""
 
 ### Barras de error
 
-Dado que toda medición experimental es inprecisa -al igual que la mayoría de los cálculos aritméticos realizados con números de punto flotante, como hemos visto anteriormente-, algo muy útil al graficar datos obtenidos de esta forma es utilizar barras de error horizontales y verticales.
+Dado que toda medición experimental es imprecisa -al igual que la mayoría de los cálculos aritméticos realizados con números de punto flotante, como vimos anteriormente- y, por lo tanto, tienen una **incertidumbre** asociada, algo muy útil al graficar datos obtenidos de esta forma es utilizar **barras de error** horizontales y verticales.
 
-En Julia, esto se logra con los atributos `xerror`y `yerror`, respectivamente, de la función `scatter`. A cualquiera de estos atributos se les puede asignar un arreglo `E` o un par de arreglos `(E1,E2)`. Si le asignamos un arreglo a `xerror` o `yerror`, entonces el $i$-ésimo valor de ese arreglo será utilizado para graficar el error absoluto del $i$-ésimo punto graficado _de forma simétrica_ en el eje horizontal o vertical, respectivamente. Por otro lado, si le asignamos a `xerror` un par de arreglos, el primer arreglo será utilizado para graficar los errores absolutos a la izquierda de cada punto, mientras que el segundo será utilizado para graficar los errores a la derecha. Similarmente, si le asignamos a `yerror`un par de arreglos, el primero determinará los errores debajo de cada punto y el segundo, los de arriba. Por ejemplo:
+En Julia, esto se logra con los atributos `xerror`y `yerror`, respectivamente. A cualquiera de estos atributos se les puede asignar un arreglo `E` o un par ordenado de arreglos `(E1,E2)`. Si le asignamos un arreglo a `xerror` o `yerror`, entonces el $i$-ésimo valor de ese arreglo será utilizado para graficar el error absoluto del $i$-ésimo punto graficado _de forma simétrica_ en el eje horizontal o vertical, respectivamente. Por otro lado, si le asignamos a `xerror` un par de arreglos, el primer arreglo será utilizado para graficar los errores absolutos a la izquierda de cada punto, mientras que el segundo será utilizado para graficar los errores a la derecha. Similarmente, si le asignamos a `yerror`un par de arreglos, el primero determinará los errores debajo de cada punto y el segundo, los de arriba. Por ejemplo:
 
 """
 
 # ╔═╡ cf834b28-119f-483b-8d2d-379b085c2d82
-scatter(X, [3,2,1], xerror = [0.1,0.1,0.3], yerror = ([0.5,0.4,0.35],[0.1,0.2,0.25]) )
-#=Nota que los errores en el eje horizontal son 
-  simétricos porque sólo le asignamos 
-  un arreglo a 'xerror', mientras que los errores en el 
-  eje vertical no son simétricos,
+scatter(X, [3,2,1], xerror = [0.1,0.1,0.3], yerror = ([0.5,0.3,0.35],[0.1,0.2,0.55]) )
+#=Nota que los errores en el eje horizontal son simétricos
+  porque sólo le asignamos un arreglo a 'xerror',
+  mientras que los errores en el eje vertical no son simétricos,
   pues le asignamos un par de arreglos a 'yerror'.=#
 
 # ╔═╡ 59bd58b0-9852-4ace-8419-3b0a3eff8ab4
 md"""## Gráficas tipo _boxplot_
 
-Para hacer gráficas de tipo caja, podemos usar la función `boxplot`:
+Para hacer gráficas de tipo caja (o **_boxplot_**), que muestran una distrubución estadística basada en _cuartiles_ por cada categoría, podemos usar la función `boxplot`. Por ejemplo:
 
 """
 
 # ╔═╡ 2d11057d-1a23-471a-abfc-ff7146e640e4
-boxplot( repeat([1,2,3,4,5],outer=100), rand(500), legend=false )
-
-#= El primer arreglo está compuesto por 100 repeticiones 
-  de 1,2,3,4,5, por lo que tiene 500 entradas. El segundo
-  arreglo tiene 500 entradas de números aleatorios entre 0
-  y 1. =#
+boxplot(repeat([1,2,3,4,5],outer=100), rand(500), legend=false)
+#= El primer arreglo está compuesto por 100 repeticiones de 1,2,3,4 y 5;
+   el segundo está compuesto de números aleatorios entre 0 y 1.
+   Ambos tienen 500 entradas.=#
 
 # ╔═╡ 77d49b14-e755-4c01-98df-516765dc6576
 md"""## Gráficas de barras
 
-Para hacer gráficas de barras, usamos la función `bar(A1,A2)`, donde `A1` es un arreglo que contiene las categorías de cada barra y `A2` es un arreglo con los valores de cada categoría:
+Para hacer **gráficas de barras**, usamos la función `bar(A,B)`, donde `A` es un arreglo que contiene las categorías correspondientes a cada barra y `B` es un arreglo con los valores de cada categoría. Por ejemplo:
 
 """
 
 # ╔═╡ 7f2e3c6f-d3cf-4ef7-a33b-a1f70e664744
-bar(["Categoría 1", "Categoría 2", "Categoría 3"],[4,5,6],fillcolor=[:red,:green,:blue],fillalpha=[0.2,0.4,0.6], legend=false)
-
-#=El valor alpha fija la opacidad de cada color, siendo
+bar(["Categoría 1", "Categoría 2", "Categoría 3"], [4,5,6],
+	fillcolor=[:red,:green,:blue], fillalpha=[0.2,0.5,0.8], legend=false)
+#=El "valor alpha" fija la opacidad de cada color, siendo
   0 totalmente transparente y 1 totalmente opaco.=#
 
 # ╔═╡ da118da6-0282-44cc-bb02-99c8e3a2d83a
 md"""## Histogramas
 
-Para hacer un histograma, usamos la función `histogram(A)`, donde `A` es el arreglo de datos a partir del cual haremos el histograma:
+Para hacer un **histograma** -el cual, dado un arreglo de valores, representa la frecuencia con la que dichos valores caen dentro de ciertos intervalos- usamos la función `histogram(A)`, donde `A` es el arreglo para el cual queremos hacer el histograma. Por ejemplo:
 
 """
 
@@ -111,56 +137,51 @@ histogram([1,2,1,1,4,3,8], legend=false)
 
 # ╔═╡ 22e835b4-2ef7-435c-b1a6-494b6c2c8057
 md"""
-
-Los intervalos usados para categorizar los datos se generan de manera automática. Para fijar nuestros propios intervalos, podemos asignarle un arreglo con los límites de los intervalos al atributo `bins`:
+Al utilizar la función `histogram` de esta forma, los intervalos usados para categorizar los datos se generan automáticamente. Para fijar nuestros propios intervalos debemos utilizar el atributo `bins` (que significa "cajones" en inglés) y asignarle un arreglo o rango que contenga los límites de los intervalos que queremos para nuestro histograma. Por ejemplo:
 
 """
 
 # ╔═╡ 094abf25-8e17-4f40-837c-082e59b19512
-histogram([1,2,1,1,4,3,8], bins=0:9, legend=false)
-
-#=Aquí a 'bins' le asignamos el arreglo
-  [0,1,2,3,4,5,6,7,8,9], por lo que las categorías son
-  los intervalos [0,1), [1,2), ..., [8,9) (en notación
-  matemática).=#
+histogram([2.1, 2.2, 3, 4, 2, 5, 7, 5.5, 5.6], bins=0:9, legend=false)
+#=Aquí a 'bins' le asignamos el rango con enteros del 0 al 9,
+  por lo que las categorías (en notación matemática)
+  son los intervalos [0,1), [1,2), ..., [8,9).=#
 
 # ╔═╡ 85fd570b-a212-4f6e-9288-6d190209152e
 md"""## _Pie charts_
 
-Para hacer gráficas de pastel, utilizamos la función `pie(A1,A2)`, donde `A1` es un arreglo que contiene las categorías de cada "rebanada" y `A2` es un arreglo con los valores de frecuencia de categoría:
+Para hacer gráficas de pastel (o **_pie charts_**), utilizamos la función `pie(A,B)`, donde `A` es un arreglo que contiene las categorías de cada "rebanada" y `B` es un arreglo con los valores de _frecuencia_ de categoría. Por ejemplo:
 
 """
 
 # ╔═╡ 4d0558b2-f7b0-402f-899b-b07477083126
-pie(["Windows","Mac","GNU/Linux"],[18,2,4], title="Sistemas operativos utilizados en el grupo")
+pie(["Windows","Mac","GNU/Linux"], [18,2,4],
+	title="Sistemas operativos utilizados por el grupo (2022-II)")
 
 # ╔═╡ 41cdba33-6d38-4c9a-ba36-31a929bf4e96
 md"""## Mapas de calor
 
-Para graficar mapas de calor, utilizamos la función `heatmap(M)`, donde `M` es una matriz:
+Para graficar **mapas de calor**, utilizamos la función `heatmap(M)`, donde `M` es una matriz. Como ejemplo, observemos las siguientes dos celdas de código:
 
 """
 
 # ╔═╡ e8dcb3aa-20bd-4d5f-be64-62e38a6a1fe2
-M = rand(10,10)
-#=Esto genera una matriz de 10x10 cuyas entradas
-  tienen un valor aleatorio entre 0 y 1.=#
+M = rand(8,8) #Generamos una matriz de 8x8 con entradas aleatorias entre 0 y 1.=#
 
 # ╔═╡ 6eefbe35-5e13-4818-9935-ac9882ba8fb9
-heatmap(M)
-#Graficamos la matriz como un mapa de calor.
+heatmap(M) #Graficamos la matriz como un mapa de calor.
 
 # ╔═╡ 7a98df29-4c26-49dd-afa2-3a00080ba137
 md"""
 
-Ahora, observa el mapa de calor anterior. Si te fijas en la celda que está en el renglón marcado como $i$ y la columna marcada como $j$ en la figura notarás que, de acuerdo al mapa de colores a la derecha de la figura, el color que tiene esa celda corresponde al valor de la entrada $(i,j)$ de la matriz. Por lo tanto, _el mapa de calor es una representación de una matriz numérica que asigna un color a cada entrada de la matriz_. Retomaremos esta idea cuando hablemos de almacenamiento y manipulación de imágenes digitales.
+Notemos que, siguiendo la escala de color del lado derecho de la figura, el valor correspondiente al color de la celda que está en el renglón $i$ y la columna $j$ de la figura corresponde precisamente al valor de la entrada `[i,j]` de la matriz con la cual se genera el mapa de calor. En otras palabras, _el **mapa de calor** es una **representación de una matriz numérica** que **asigna un color a cada entrada numérica** de la matriz_. Retomaremos esta idea más adelante cuando hablemos sobre almacenamiento y manipulación de imágenes digitales.
 
 """
 
 # ╔═╡ 47ddeb2c-f122-4a22-939d-b4874779d452
 md"""## Subfiguras
 
-Si queremos crear una figura que tenga muchas subfiguras con gráficas diferentes, no sirve sólo usar las versiones modificadoras (con terminacióñ `!`) para cada función que grafica, pues obtendremos un montón de gráficas encimadas:
+Si queremos crear una figura que tenga muchas subfiguras con gráficas diferentes, no sirve sólo usar las versiones modificadoras (con terminación `!`) de las funciones que usamos para graficar, pues esto da como resultado un montón de gráficas encimadas, como en el siguiente ejemplo:
 
 """
 
@@ -175,18 +196,16 @@ begin
 end
 
 # ╔═╡ f7930b26-809c-4e9c-9d81-865907305cc7
-md"""
-
-Lo que sí podemos hacer es asignarle cada una de estas gráficas a una variable diferente y luego llamar a la función `plot` con todas estas variables como argumento:
+md"""La forma correcta de crear una figura con varias subfiguras es primero asignando cada gráfica que queremos que aparezca como subfigura a una variable diferente y luego ejecutando la función `plot` con todas estas variables como argumento, como se muestra en las siguentes dos celdas de código:
 
 """
 
 # ╔═╡ 4d035f03-3368-4372-a6cb-ce8650ca75dd
-begin #Asignamos cada gráfica a una variable diferente.
+begin #Asignamos cada gráfica que queremos como subfigura a una variable diferente.
     p1 = scatter(X, [3,2,1], xerror = [0.1,0.1,0.3], yerror = ([0.5,0.4,0.35],[0.1,0.2,0.25]), legend=false )
 	p2 = boxplot( repeat([1,2,3,4,5],outer=100), rand(500), legend=false )
     p3 = bar([1,2,3],[4,5,6],fillcolor=[:red,:green,:blue],fillalpha=[0.2,0.4,0.6], legend=false)
-	p4 = histogram([1,2,1,1,4,3,8],bins=0:8, legend=false)
+	p4 = histogram([2.1, 2.2, 3, 4, 2, 5, 7, 5.5, 5.6], bins=0:9, legend=false)
 	p5 = pie(["Windows","Mac","GNU/Linux"],[18,2,4])
 	p6 = heatmap(rand(10,10))
 end
@@ -198,7 +217,7 @@ plot(p1, p2, p3, p4, p5, p6)
 # ╔═╡ 664dbe12-8594-4550-9f3f-5241667ca7a4
 md""" ### _Layouts_
 
-Para ordenar la distribución de nuestras subfiguras dentro de una figura con muchas gráficas pordemos utilizar el macro @layout, como en el ejemplo siguiente:
+Para ordenar la distribución de nuestras subfiguras dentro de una figura con muchas gráficas pordemos utilizar el macro `@layout`, como en el ejemplo siguiente:
 
 """
 
@@ -214,12 +233,12 @@ plot(p1, p2, p3, p4, p5, p6, layout = l)
 # ╔═╡ 9bad0e5e-5b4e-4548-b3b6-b021788c9366
 md"""## Guardar figuras con `savefig`
 
-Para guardar una figura, usamos la función `savefig(p,s)`, donde `p` es la gráfica que queremos guardar y `s` es un _string_ con el nombre del archivo, que puede tener terminación `.png` (del formato png para imágenes pixeladas) ó `.pdf` (del formato pdf para imágenes vectorizadas).
+Para guardar una figura, usamos la función `savefig(p,s)`, donde `p` es la gráfica que queremos guardar y `s` es un dato de tipo `String` con el nombre del archivo, que puede tener terminación `.png` (del formato png para imágenes pixeladas) ó `.pdf` (del formato pdf para imágenes vectorizadas).
 
 """
 
 # ╔═╡ 2ca2182d-ae1a-467d-af64-c78472ca6f00
-savefig(plot(p1, p2, p3, p4, p5, p6, layout = l), "myplot.png")
+savefig(plot(p1, p2, p3, p4, p5, p6, layout = l), "miFigura.pdf")
 
 # ╔═╡ d9b3cf32-a53b-4119-8d34-0dbe01addab7
 md"""
@@ -231,12 +250,11 @@ md"""
 # ╔═╡ 977c682f-6833-4156-85b7-9c6b4325fc4e
 md" ## Recursos complementarios
 
-* Repositorio de GitHub del paquete [`Pluto`](https://github.com/fonsp/Pluto.jl).
 * Documentación de [`Plots`](https://docs.juliaplots.org/stable/).
-* Documentación de las funciones de [`Plots`](https://docs.juliaplots.org/latest/api/)
 * Documentación de [atributos de series en `Plots`](https://docs.juliaplots.org/latest/generated/attributes_series/).
+* Tutorial de [backends de Plots](https://docs.juliaplots.org/latest/tutorial/#plotting-backends) en Julia.
 * Manual de [backends de Plots](https://docs.juliaplots.org/latest/backends/) en Julia.
-* Manual del paquete [`Measurements`](https://juliaphysics.github.io/Measurements.jl/stable/usage/).
+* Manual del paquete [`Measurements`](https://juliaphysics.github.io/Measurements.jl/stable/usage/), útil para trabajar con incertidumbres.
 "
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -1364,9 +1382,14 @@ version = "0.9.1+5"
 # ╟─59aabf72-b698-11ec-02c5-71c3f7918cd2
 # ╠═01262438-917e-43f0-81f1-a3d14d591891
 # ╟─6c4b8ea6-f01f-48a1-b2ad-9d16d634de81
+# ╠═bfacad82-4607-4b5a-a814-d26d6c9a6190
+# ╟─f38b4026-54da-4929-b86a-77381dc5d1ba
+# ╠═213565e7-70d3-45ce-bd33-dbb8113a7ae6
+# ╟─2be154bf-949f-4a79-b387-ec45452f98aa
 # ╠═388c5f8f-0bc8-4897-a312-7243000e2392
 # ╠═512964ef-af35-476b-8199-e9c9037ca419
 # ╠═c5948633-4440-4c1e-9771-8e3a0ae7717f
+# ╟─f0380540-489a-4978-918d-d73166f65de9
 # ╟─b5d5ffd3-10d7-40be-976b-c4ea5ecf96a1
 # ╠═cf834b28-119f-483b-8d2d-379b085c2d82
 # ╟─59bd58b0-9852-4ace-8419-3b0a3eff8ab4
