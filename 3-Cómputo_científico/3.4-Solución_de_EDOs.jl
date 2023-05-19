@@ -245,7 +245,7 @@ md" **Ejercicio** Crea una función `arregloUniforme` que tome los mismos tres p
 # Tu código (comentado) va aquí :)
 
 # ╔═╡ fa999314-0038-498a-ac9e-3ce04a9435a3
-md""" **Ejercicio** Crea una función `pasoEuler` que tome argumentos `ti`, `xti`, `g` y `h`, donde
+md""" **Ejercicio** Crea una función `pasoEuler` con parámetros `ti`, `xti`, `g` y `h`, donde
 
 * `ti` es un valor de tiempo,
 * `xti` es una aproximación de $x(t_i)$, donde $x$ es la solución al problema de condiciones iniciales $(3-4)$,
@@ -260,15 +260,15 @@ y devuelva una aproximación de $x(t_{i+1})$.
 # Tu código (comentado) va aquí :)
 
 # ╔═╡ 1ec8d06d-160f-49de-a1aa-25c9d17cce64
-md""" **Ejercicio** Crea una función `euler` que tome argumentos `g`, `xt0` y `T`, donde
+md""" **Ejercicio** Crea una función `euler` con parámetros `g`, `xt0` y `T`, donde
 
 * `g` es la función de $x$ y $t$ dada por la ecuación $(3)$,
 * `xt0` es la condición inicial dada por la ecuación $(4)$, y
-* `T` es un arreglo uniforme de "tiempos" de la forma $\big\{t_0 + i\big(\frac{t_f-t_0}{N}\big) \mid N\in\mathbb{Z}^+, \ 0\leq i\leq N\big\}$,
+* `T` es un arreglo uniforme de "tiempos" de la forma $\{t_0 + ih \mid h\in\mathbb{R}^+, i\in\mathbb{N}, 0\leq i\leq N\}$,
 
 y devuelva un arreglo con `xt0` y los valores aproximados de $x(t_i)$ para $1\leq i\leq N$, calculados mediante el método de Euler.
 
-**Sugerencia**: Utiliza las funciones definidas anteriormente.
+**Sugerencia**: Utiliza algunas de las funciones definidas anteriormente.
 
 """
 

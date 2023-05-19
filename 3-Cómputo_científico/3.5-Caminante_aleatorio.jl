@@ -119,7 +119,7 @@ md"**Ejercicio** Crea una función `animaCaminata` que
 # Tu código (comentado) va aquí :)
 
 # ╔═╡ 24490a53-4b2b-49bd-bf9d-f8994ed6a3a7
-md"""### Caminante aleatorio en dos dimensiones
+md"""## Caminante aleatorio en dos dimensiones
 
 Generalicemos nuestro modelo de caminante aleatorio suponiendo que ahora nuestra partícula se mueve en un espacio _continuo_ de _dos_ dimensiones espaciales; con tamaño de paso _continuo_ y _variable_. Es decir que, a pesar de que seguiremos modelando con un tiempo discreto e intervalos de tiempo uniformes, ahora el espacio será _continuo_ y tendrá _dos_ dimensiones espaciales, y distintos pasos podrán tener diferentes tamaños.
 """
@@ -171,7 +171,7 @@ md"**Ejercicio** ¡Haz una caminata aleatoria en tres dimensiones espaciales y g
 # Tu código (comentado) va aquí :)
 
 # ╔═╡ 9bdee65a-5b90-4e1f-aec8-9939ba1c32e3
-md""" #### Nota final
+md""" ## Nota final
 
 Como aclaración, la razón por la cual en los **Ejercicios** de los _notebooks_ de este curso generalmente se definen muchas funciones "pequeñas" que luego se unen en una función "grande" _no es necesariamente porque esto sea **siempre** la mejor práctica_, sino por una cuestión pedagógica. Cuando estamos aprendiendo a programar y queremos implementar la solución a un problema, es mucho más fácil dividirlo en problemas más pequeños y fáciles de atacar que, después de solucionar, podamos integrar en una solución al problema principal. Sin embargo, para hacer un uso eficiente de los recursos computacionales, generalmente no es recomendable crear funciones que hagan _cada pequeña cosa_, pues todas ellas ocupan espacio en la memoria, por lo que es preferible hacer una implementación más deliberada una vez resuelto el problema usando la estrategia anterior. Recordemos que la principal utilidad de las funciones está en crear bloques de código _reutilizables_ por lo que, una vez implementado un programa, debe encontrarse un punto medio entre cuántas funciones _realmente necesitamos_ por su reutilizabilidad y cuántos recursos computacionales  tenemos a nuestra disposición.
 
