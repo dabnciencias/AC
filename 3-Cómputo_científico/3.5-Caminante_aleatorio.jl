@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.4
+# v0.19.25
 
 using Markdown
 using InteractiveUtils
@@ -18,7 +18,7 @@ html"""
 
 # ╔═╡ 6f5f31aa-2941-42f5-aceb-bedb2bd30ea2
 md"# Caminante aleatorio
-Un caminante aleatorio (o _random walk_, en inglés) es un tipo de modelo estocástico en el cual la posición de una partícula en cierto instante depende de su posición en el instante previo y alguna variable aleatoria que determina su subsecuente dirección y la longitud de paso.
+Un caminante aleatorio (o _random walk_, en inglés) es un tipo de modelo estocástico en el cual la posición de una partícula en cierto instante depende de su posición en el instante previo y alguna variable aleatoria que determina su subsecuente dirección y longitud de paso.
 
 Este tipo de modelo es muy útil para hacer simulaciones en Física Estadística; por ejemplo, se puede utilizar para modelar el movimiento browniano de moléculas en un gas.
 "
@@ -68,21 +68,23 @@ md" ### Modelando una caminata aleatoria
 
 Como estamos modelando el espacio con los números enteros, cada paso sucesivo de nuestro caminante aleatorio debería sumar o restar `1` a la posición anterior con igual probabilidad. 
 
-**Ejercicio** Crea una función `unPaso` que no tome argumentos de entrada y devuelva sólamente los valores `1` y `-1` con igual probabilidad. (Pista: La forma más sencilla de hacerlo es usando `rand(Bool)` y un poco de aritmética...)"
+**Ejercicio** Crea una función sin parámetros `unPaso` que devuelva sólamente los valores `1` y `-1` con igual probabilidad. (Pista: La forma más sencilla de hacerlo es usando `rand(Bool)` y un poco de aritmética...)"
 
 # ╔═╡ fc77bf6a-1864-431a-bd9b-0e3a471d81b7
 # Tu código va aquí :)
 
 # ╔═╡ d3a7fcb3-b0a5-4b41-bf95-ac3ffdce7fb6
-md" **Ejercicio** Crea una función `variosPasos` que tome como argumento un número entero positivo `n` y devuelva un arreglo con `n` entradas, donde cada una de ellas tiene la misma probabilidad de ser `1` ó `-1`. (Pista: Recuerda que colocar un punto (`.`) antes de un operador aritmético hace que funcione con arreglos.)"
+md" **Ejercicio** Crea una función `variosPasos` cuyo parámetro sea un número entero positivo `n` y devuelva un arreglo con `n` entradas, donde cada una de ellas tiene la misma probabilidad de ser `1` ó `-1`. (Pista: Recuerda que colocar un punto (`.`) antes de un operador aritmético hace que se aplique a arreglos entrada a entrada.)"
 
 # ╔═╡ 544fdf8f-fb78-40be-8618-f071c47f00b2
 # Tu código va aquí :)
 
 # ╔═╡ f2bb54fd-ccb9-4e8d-b8c4-3a4058ffbe4c
 md" **Ejercicio** Crea una función `caminataAleatoria` que
-* tome como entrada un número de pasos `n` y
-* devuelva como salida un arreglo con `n+1` posiciones, incluyendo la posición inicial `0`, simulando una caminata aleatoria. (Sugerencia: Puedes usar cualquiera de las funciones `unPaso` o `variosPasos`; la que te resulte más cómoda.)"
+* tome como entrada un número (entero positivo) de pasos `n` y
+* devuelva como salida un arreglo con `n+1` posiciones, incluyendo la posición inicial `0`, simulando una caminata aleatoria.
+
+**Sugerencia:** Puedes usar cualquiera de las funciones `unPaso` o `variosPasos`; la que te resulte más cómoda."
 
 # ╔═╡ 9d09fc0f-ccba-477d-9968-82b9554f44e2
 # Tu código (comentado) va aquí :)
@@ -90,10 +92,10 @@ md" **Ejercicio** Crea una función `caminataAleatoria` que
 # ╔═╡ 1e68a5ca-d78e-4371-a63c-d329d11b187f
 md"""**Ejercicio** Crea una función `graficaCaminata` que
 
-* tome como entrada un arreglo -que supondremos que simula una caminata aleatoria en una dimensión- y 
+* tome como entrada un arreglo -que (supondremos) simula una caminata aleatoria en una dimensión- y 
 * devuelva como salida una gráfica de posición contra número de pasos, usando _puntos_ (`scatter`) y con etiquetas en los ejes.
 
-(Sugerencia: Crea un bloque de código con `begin` y `end` para poder hacer todo en una sola celda de Pluto.)
+**Sugerencia:** Crea un bloque de código con `begin` y `end` para poder hacer todo en una sola celda de Pluto.
 
 Luego, en una celda aparte, define una variable `n2` como un número entero positivo y aplica tu función `graficaCaminata` a `caminataAleatoria(n2)` para generar gráficas de caminatas aleatorias.
 """
@@ -119,14 +121,14 @@ md"**Ejercicio** Crea una función `animaCaminata` que
 # ╔═╡ 24490a53-4b2b-49bd-bf9d-f8994ed6a3a7
 md"""### Caminante aleatorio en dos dimensiones
 
-Generalicemos nuestro modelo de caminante aleatorio suponiendo que ahora nuestra partícula se mueve en un espacio _continuo_ de _dos_ dimensiones espaciales; con tamaño de paso _continuo_ y _variable_. Es decir que, a pesar de que seguiremos modelando con un tiempo discreto e intervalos de tiempo uniformes, ahora el espacio será _continuo_ y tendrá _dos_ dimensiones espaciales.
+Generalicemos nuestro modelo de caminante aleatorio suponiendo que ahora nuestra partícula se mueve en un espacio _continuo_ de _dos_ dimensiones espaciales; con tamaño de paso _continuo_ y _variable_. Es decir que, a pesar de que seguiremos modelando con un tiempo discreto e intervalos de tiempo uniformes, ahora el espacio será _continuo_ y tendrá _dos_ dimensiones espaciales, y distintos pasos podrán tener diferentes tamaños.
 """
 
 # ╔═╡ 09361d57-7c4c-4832-afc4-edf6f8819368
 md""" **Ejercicio** Crea una función `caminataAleatoria2D` que
 * tome como entrada un número de pasos `n` y
 * devuelva como salida un arreglo con dos subarreglos que tengan `n+1` "posiciones" cada uno -uno de posiciones horizontales y otro de posiciones verticales, incluyendo las posiciones iniciales `0` en cada caso-, simulando una caminata aleatoria.
-Utiliza tu función `aleatorioUniforme` para generar números aleatorios en el intervalo $[-1,1]$ y suma números generados por esta función a las posiciones horizontales y verticales para simular un paso continuo en dos dimensiones."""
+Utiliza tu función `aleatorioUniforme` para generar números aleatorios en el intervalo de números reales $[-1,1]$ y suma números generados por esta función a las posiciones horizontales y verticales para simular un paso continuo en dos dimensiones."""
 
 # ╔═╡ d1c6a096-583d-4f85-b2cd-89d227311c1d
 # Tu código (comentado) va aquí :)
@@ -137,7 +139,7 @@ md"""**Ejercicio** Crea una función `graficaCaminata2D` que
 * tome como entrada un arreglo con dos subarreglos -que, supondremos, simulan una caminata aleatoria en dos dimensiones- y 
 * devuelva como salida una gráfica bidimensional que muestre la trayectoria de la caminata con una línea punteada.
 
-(Sugerencia: Crea un bloque de código con `begin` y `end` para poder hacer todo en una sola celda de Pluto.)
+**Sugerencia:** Crea un bloque de código con `begin` y `end` para poder hacer todo en una sola celda de Pluto.
 
 Luego, en una celda aparte, define una variable `n3` como un número entero positivo y aplica tu función `graficaCaminata2D` a `caminataAleatoria2D(n3)` para generar gráficas de caminatas aleatorias en dos dimensiones.
 """
@@ -155,13 +157,15 @@ md"**Ejercicio** Crea una función `graficaCaminata2D!` que sea una versión mod
 # ╔═╡ ec2b4750-3522-4c26-87ff-06b0b2e3b5d6
 md"**Ejercicio** Crea una función `animaCaminata2D` que
 * tome como entrada un arreglo con dos subarreglos -que, supondremos, simulan una caminata aleatoria en dos dimensiones- y 
-* devuelva como salida una *animación* de la caminata. (Sugerencia: Usa tu función `graficaCaminata2D`.)"
+* devuelva como salida una *animación* de la caminata.
+
+**Sugerencia:** Usa tu función `graficaCaminata2D`."
 
 # ╔═╡ f08b6ef6-65c1-4b53-ba50-128e589f70ee
 # Tu código (comentado) va aquí :)
 
 # ╔═╡ ef1706ee-85dc-422b-98fa-aa43f75ae098
-md"**Ejercicio** ¡Haz una caminata aleatoria en tres dimensiones espaciales y grafícala! (Así se modelan, por ejemplo, las partículas en un gas)." 
+md"**Ejercicio** ¡Haz una caminata aleatoria en tres dimensiones espaciales y grafícala (o anímala)! (Así se modelan, por ejemplo, las partículas en un gas)." 
 
 # ╔═╡ 48e666c6-3a29-4ebb-993f-06696a49b025
 # Tu código (comentado) va aquí :)
@@ -180,7 +184,7 @@ md""" ## Recursos complementarios
 
 # ╔═╡ 74e480de-ae20-46ca-a65a-6fb8db3fc202
 md""" ## Créditos
-Este _notebook_ de Pluto fue basado parcialmente en los _notebooks_ de Jupyter `4. Caminatas aleatorias.ipynb` y `Tarea 1.ipynb` del repositorio [`FisicaComputacional2019_3`](https://github.com/dpsanders/FisicaComputacional2019_3/) del Dr. David Philip Sanders. 
+Este _notebook_ de Pluto fue basado parcialmente en los _notebooks_ de Jupyter [`4. Caminatas aleatorias.ipynb`](https://github.com/dpsanders/FisicaComputacional2019_3/blob/master/notebooks/04.%20Caminatas%20aleatorias.ipynb) y [`Tarea 1.ipynb`](https://github.com/dpsanders/FisicaComputacional2019_3/blob/master/tareas/Tarea%201.ipynb) del repositorio [`FisicaComputacional2019_3`](https://github.com/dpsanders/FisicaComputacional2019_3/) del Dr. David Philip Sanders. 
 """
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
@@ -192,8 +196,9 @@ PLUTO_PROJECT_TOML_CONTENTS = """
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.7.2"
+julia_version = "1.9.0"
 manifest_format = "2.0"
+project_hash = "da39a3ee5e6b4b0d3255bfef95601890afd80709"
 
 [deps]
 """
