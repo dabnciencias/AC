@@ -2,7 +2,35 @@
 
 ![](https://github.com/dabnciencias/AC/blob/main/misc/AC_2023-II.gif)
 
-Repositorio de [mi curso de Algoritmos Computacionales en la Facultad de Ciencias (UNAM)](https://www.fciencias.unam.mx/docencia/horarios/presentacion/343139).
+Repositorio de mi curso de Algoritmos Computacionales en la Facultad de Ciencias (UNAM).
+
+## Temario
+
+1. Introducción a la programación
+    1. Paradigma imperativo de la programación ([video](youtube.com/watch?v=DmXbDtHkE-I)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/0-Introducci%C3%B3n_a_la_programaci%C3%B3n/0.1-Qu%C3%A9_es_un_programa.ipynb))
+    2. Lenguajes de programación ([video](https://www.youtube.com/watch?v=2moJeSFBQCM&t=6s)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/0-Introducci%C3%B3n_a_la_programaci%C3%B3n/0.2-Qu%C3%A9_ocurre_cuando_se_ejecuta_un_programa.ipynb))
+    3. Legalidad y ética en la programación ([video](https://www.youtube.com/watch?v=3qMqOn_f9GY))
+    4. Herramientas de programación ([video 1](https://www.youtube.com/watch?v=QjnnE7qfnCY&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=4&pp=gAQBiAQB)) ([video 2](https://www.youtube.com/watch?v=WT67kHkdFTI&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=5&pp=gAQBiAQB)) ([video 3](https://www.youtube.com/watch?v=U09WGvFJMRQ&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=6&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/0-Introducci%C3%B3n_a_la_programaci%C3%B3n/0.6-Herramientas_%C3%BAtiles_para_hacer_programaci%C3%B3n.ipynb))
+    5. Algoritmos, diagramas de flujo y pseudocódigo ([video](https://www.youtube.com/watch?v=29XBRqfDy1c&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=7&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/0-Introducci%C3%B3n_a_la_programaci%C3%B3n/0.7-Algoritmos_diagramas_de_flujo_y_pseudoc%C3%B3digo.ipynb))
+2. Estructura básica de la programación
+    1. Operadores aritméticos y tipos de datos numéricos ([video](https://www.youtube.com/watch?v=m_AZfiDw1jc&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=8&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/1-Estructura_b%C3%A1sica_de_la_programaci%C3%B3n/1.1-Operadores_aritm%C3%A9ticos_y_tipos_de_datos_num%C3%A9ricos.ipynb))
+    2. Sistemas numéricos de punto flotante y error numérico ([video](https://www.youtube.com/watch?v=TR89vub9UPw&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=9&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/1-Estructura_b%C3%A1sica_de_la_programaci%C3%B3n/1.2-Sistemas_num%C3%A9ricos_de_punto_flotante_y_error_num%C3%A9rico.ipynb))
+    3. Tipos de dato de texto y arreglos ([video](https://www.youtube.com/watch?v=NgNvuwrGTvQ&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=10&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/1-Estructura_b%C3%A1sica_de_la_programaci%C3%B3n/1.3-Tipos_de_datos_de_texto_y_arreglos.ipynb))
+    4. Variables, constantes y funciones ([video](https://www.youtube.com/watch?v=sXJhXyJ3_pM&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=11&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/1-Estructura_b%C3%A1sica_de_la_programaci%C3%B3n/1.4-Variables_constantes_y_funciones.ipynb))
+    5. Operaciones lógicas y valores Booleanos ([video](https://www.youtube.com/watch?v=iA2YA1AAgWY&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=12&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/1-Estructura_b%C3%A1sica_de_la_programaci%C3%B3n/1.5-Operaciones_l%C3%B3gicas_y_valores_Booleanos.ipynb))
+    6. Declaraciones condicionales y control de flujo ([video](https://www.youtube.com/watch?v=GWwF_DvJu9U&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=13&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/1-Estructura_b%C3%A1sica_de_la_programaci%C3%B3n/1.6-Condicionales_y_control_de_flujo.ipynb))
+    7. Bucles iterativos y recursivos ([video](https://www.youtube.com/watch?v=nEmlsLrVSHw&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=14&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/1-Estructura_b%C3%A1sica_de_la_programaci%C3%B3n/1.7-Ciclos.ipynb))
+    8. Estructura de la programación modular ([video](https://www.youtube.com/watch?v=bojoOqzPaJg&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=15&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/1-Estructura_b%C3%A1sica_de_la_programaci%C3%B3n/1.8-Estructura_de_la_programaci%C3%B3n_modular.ipynb))
+3. Representaciones visuales
+    1. Graficación y animación de funciones ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/2-Representaciones_visuales/2.1-Graficaci%C3%B3n_de_funciones_y_animaciones_con_Plots.jl))
+    2. Visualización de datos ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/2-Representaciones_visuales/2.2-Visualizaci%C3%B3n_de_datos_con_Plots.jl))
+    3. Manipulación de imágenes digitales ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/2-Representaciones_visuales/2.3-Manipulaci%C3%B3n_de_im%C3%A1genes_digitales_con_JuliaImages.jl))
+4. Métodos numéricos
+    1. Estabilidad y convergencia ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/3-C%C3%B3mputo_cient%C3%ADfico/3.1-M%C3%A9todos_num%C3%A9ricos.ipynb))
+    2. Solución de sistemas lineales de ecuaciones algebraicas a través del método de eliminación Gaussiana ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/3-C%C3%B3mputo_cient%C3%ADfico/3.2-Soluci%C3%B3n_de_sistemas_lineales_de_ecuaciones_algebr%C3%A1icas.ipynb))
+    3. Aproximación de raíces a través del método de Newton ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/3-C%C3%B3mputo_cient%C3%ADfico/3.3-Aproximaci%C3%B3n_de_ra%C3%ADces.jl))
+    4. Solución de ecuaciones diferenciales ordinarias a través del método de Euler ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/3-C%C3%B3mputo_cient%C3%ADfico/3.4-Soluci%C3%B3n_de_EDOs.jl))
+    5. Caminante aleatorio ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/3-C%C3%B3mputo_cient%C3%ADfico/3.5-Caminante_aleatorio.jl))
 
 ## ¿Cómo puedo ejecutar los _notebooks_ del curso desde mi computadora?
 
