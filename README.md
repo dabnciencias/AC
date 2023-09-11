@@ -7,7 +7,7 @@ Repositorio de mi curso de Algoritmos Computacionales en la Facultad de Ciencias
 ## Temario
 
 1. Introducción a la programación
-    1. Paradigma imperativo de la programación ([video](youtube.com/watch?v=DmXbDtHkE-I)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/0-Introducci%C3%B3n_a_la_programaci%C3%B3n/0.1-Qu%C3%A9_es_un_programa.ipynb))
+    1. Paradigma imperativo de la programación ([video](https://www.youtube.com/watch?v=DmXbDtHkE-I)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/0-Introducci%C3%B3n_a_la_programaci%C3%B3n/0.1-Qu%C3%A9_es_un_programa.ipynb))
     2. Lenguajes de programación ([video](https://www.youtube.com/watch?v=2moJeSFBQCM&t=6s)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/0-Introducci%C3%B3n_a_la_programaci%C3%B3n/0.2-Qu%C3%A9_ocurre_cuando_se_ejecuta_un_programa.ipynb))
     3. Legalidad y ética en la programación ([video](https://www.youtube.com/watch?v=3qMqOn_f9GY))
     4. Herramientas de programación ([video 1](https://www.youtube.com/watch?v=QjnnE7qfnCY&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=4&pp=gAQBiAQB)) ([video 2](https://www.youtube.com/watch?v=WT67kHkdFTI&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=5&pp=gAQBiAQB)) ([video 3](https://www.youtube.com/watch?v=U09WGvFJMRQ&list=PLtoBPDPjYod54trSakX0zW2AQPi9eevXm&index=6&pp=gAQBiAQB)) ([cuaderno interactivo](https://github.com/dabnciencias/AC/blob/main/0-Introducci%C3%B3n_a_la_programaci%C3%B3n/0.6-Herramientas_%C3%BAtiles_para_hacer_programaci%C3%B3n.ipynb))
